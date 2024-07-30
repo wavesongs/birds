@@ -1,0 +1,11 @@
+__pycache__
+.ipynb_checkpoints
+.vscode
+_site/
+
+.venv
+venv
+.conda
+
+examples/results
+package-lock.json

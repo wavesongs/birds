@@ -128,18 +128,21 @@ conda activate birdsong
 
 #### Docker
 
+In process...
+
 ```bash
 docker compose up --build
 ```
 
 #### Python Environment
 
-1. Install the library venv for python, ```
-sudo apt install python3-venv``` . Select the correct version of python (python, python3.11, etc).
-2. Create a new Python environment with ```python3 -m venv venv```. 
-3. Activate the enviroment with ```source venv/bin/activate```.
+```bash
+sudo apt install python3-venv  # install virtual environments
+python3 -m venv venv           # create venv
+source venv/bin/activate       # activate venv
+```
 
-If you are using the 3rd step must be change to: ```source venv/bin/Activate```.
+If you are working on Windows, activate the venv with ```source venv/bin/Activate```.
 
 #### Package
 First of all, clone the the **birdsongs** repository and enter to it.
@@ -155,19 +158,31 @@ If you are using a version of Python higher than 3.10, to listening the audios y
 pip install playsound@git+https://github.com/taconi/playsound
 ```
 
-The next step is to install the package and the required librearies. You can just use pip 
+The next step is to install the package and the required librearies. There are two options:
 
-```bash
-pip install .
-``` 
+1. Using pip
 
-or [poetry](https://python-poetry.org/), which make it easier the installation. If you want to use poetry, first install it with `pipx install poetry` where `x` is the pip verison. Then, to install **birdsongs** execute: 
+    ```bash
+    pip install .
+    ``` 
 
-```bat
-poetry install
-```
+2. Using [poetry](https://python-poetry.org/). First, install poetry
 
-If you are using an IDE, reset it. That's all. Now let's create a synthetic birdsong!
+    ```bat
+    sudo apt update
+    sudo apt install pipx
+    pipx ensurepath
+    ```
+
+    for more information visit [Installing pipx](https://pipx.pypa.io/stable/installation/#installing-pipx). Then, install poetry with `pipx install poetry`. Finally, install **birdsongs** with: 
+
+    ```bat
+    poetry install
+    ```
+
+If you are using an IDE, reset it. 
+
+That's all!. Now let's create a synthetic birdsong!
 
 >[!NOTE]
 >Take a look at the tutorials notebooks for basic uses: physical model implementation, [Motor_Gestures.ipynb](./tutorials/Motor_Gestures.ipynb); define and generate a syllable from a recorded sample, [Syllable.ipynb](./tutorials/Syllable.ipynb); to generate a whole birdsong, several syllables, [Birdsong.ipynb](./tutorials/Birdsong.ipynb); or if you already create a synthetic birdsongs and save its motor gesture, you can use the model as a data augmentation technique, [Data_Augmentation.ipynb](./tutorials/Data_Augmentation.ipynb).

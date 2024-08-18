@@ -123,7 +123,7 @@ For easyness and improve user expierience you can use install the package via do
 
 ```bash
 conda create -n birdsongs python=3.12
-conda activate birdsong
+conda activate birdsongs
 ```
 
 #### Docker

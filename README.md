@@ -1,10 +1,18 @@
-<a href="https://github.com/saguileran/birdsongs/"><img src="./assets/img/logo.png" width="300"></a>
+ <table align="center">
+  <tr>
+    <td>
+      <a href="https://github.com/saguileran/birdsongs/"><img src="./assets/img/logo.png" width="300px"></a>
+    </td>
+    <td>
+      <h1>Birdsongs</h1>
+      <p>
+      <br>
+      A python package for analyzing, visualizing and generating synthetic birdsongs from recorded audios.
+      </p>
+      <a href="https://mybinder.org/v2/gh/saguileran/birdsongs/main?labpath=Syllable.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a>
+  </tr>
+</table> 
 
-# Birdsongs
-
-A python package for analyzing, visualizing and generating synthetic birdsongs from recorded audios.
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/saguileran/birdsongs/main?labpath=Syllable.ipynb)
 
 ---
 
@@ -70,10 +78,11 @@ The physical model used, Motor Gestures for birdsongs [1], have been developed b
 
 Schematic description of the physical model **motor gestures for birdsongs** with the organs involved in the sound production (syrinx, trachea, glotis, OEC, and beak) and their corresponding ODEs. 
 
-<figure><center>
-  <img src="./assets/img/model.png" width="600" alt="methodology">
-  <figcaption><b>Figure 1.</b>  Motor gestures model diagram.</figcaption>
-</figure></center>
+<p align="center">
+  <img src="./assets/img/model.png" width="70%" alt="methodology">
+  <br>
+  <b>Figure 1.</b>  Motor gestures model diagram.
+</p>
 
 #### Object-Oriented Thinking
 
@@ -87,11 +96,11 @@ By leveraging the Object-Oriented Programming (OOP) paradigm, the need for lengt
 
 For each object an icon is defined as follows:
 
-<figure><center>
-  <img src="./assets/img/objects.png" width="600" alt="methodology">
-  <figcaption><b>Figure 2.</b> Objects implemented.</figcaption>
-</figure></center>
-
+<p align="center">
+  <img src="./assets/img/objects.png" width="70%" alt="methodology">
+  <br>
+  <b>Figure 2.</b> Objects implemented.
+</p>
 
 This approach simplifies the interpretation of the methodology diagram. Each icon represents an object that handles different tasks. The major advantage of this implementation is the ability to easily compare features between syllable or chunk (small part of a syllable) objects.
 
@@ -101,11 +110,11 @@ Using the previous defined objects, the optimization problem is solved by follow
 
 <!-- <p align="center"> <img src="./assets/img/methodology.png" width="600" alt="methodology"></p>
 -->
-<figure><center>
-  <img src="./assets/img/methodology.png" width="600" alt="methodology">
+<p align="center">
+  <img src="./assets/img/methodology.png" width="70%" alt="methodology">
+  <br>
   <figcaption><b>Figure 3.</b> Methodology diagram.</figcaption>
-</figure></center>
-
+</p>
 
 Each step includes the icon of the object involved. The final output is a parameters object (a data frame similar to the lmfit library parameters objects) containing the optimal control parameter coefficients for the motor gestures that best reproduce the real birdsong.
 
@@ -359,10 +368,20 @@ Simple syllable of a birdsong of the Ocellated Tapaculo - Acropternis
 
 The PDF document of the bachelor thesis, <a href="https://github.com/saguileran/birdsongs/blob/dissertation/dissertation.pdf">Design, development, and evaluation of a computational physical model to generate synthetic birdsongs from recorded samples</a>, is stored in the `dissertation` brach of this repository.
 
-<figure><center>
-  <img src="https://raw.githubusercontent.com/saguileran/birdsongs/gh-pages/assets/img/cover.jpg" width="250" height="350"><img src="https://raw.githubusercontent.com/saguileran/birdsongs/gh-pages/assets/img/under-cover.png" width="250" height="350">
-  <figcaption><b>Figure 6.</b> Bachelor's thesis PDF document.</figcaption>
-</figure></center>
+ <table align="center">
+  <tr>
+    <td align="center">Front Cover</td>
+    <td align="center">Back Cover</td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/saguileran/birdsongs/gh-pages/assets/img/cover.jpg" width="300px">
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/saguileran/birdsongs/gh-pages/assets/img/under-cover.png" width="300px">  
+    </td>
+  </tr>
+</table> 
 
 ## Conclusions
 

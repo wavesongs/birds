@@ -6,11 +6,12 @@ lmfit
 matplotlib
 mpl_pan_zoom
 mpl_point_clicker
-numpy<2.0
+numpy
 pandas
 PeakUtils
 plotly
 scikit_learn
 scikit_maad
-scipy
+scipy>=1.7.0
 sympy
+pygobject

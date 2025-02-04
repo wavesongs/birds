@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jdk-jammy
+FROM python:3.10
 
 RUN apt-get update
 RUN apt-get install -y python3-pip unzip
@@ -7,17 +7,16 @@ RUN apt-get install -y python3-pip unzip
 COPY requirements.tx[t] .
 RUN ([ -f requirements.txt ] \
     && pip3 install --no-cache-dir -r requirements.txt) \
-    || pip3 install --no-cache-dir jupyter jupyterlab
+    || pip3 install --no-cache-dir jupyter jupyterlab 
 
 USER root
 
 # Download the kernel release
-RUN curl -L https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip > ijava-kernel.zip
+RUN git clone https://github.com/wavesongs/wavesongs
 
 # Unpack and install the kernel
-RUN unzip ijava-kernel.zip -d ijava-kernel \
-  && cd ijava-kernel \
-  && python3 install.py --sys-prefix
+RUN cd wavesongs \
+  && pip install -e .
 
 # Set up the user environment
 

@@ -13,7 +13,7 @@
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![Open Source Love](https://img.shields.io/badge/open%20source-♡-lightgrey)
 ![Python 3.10](https://img.shields.io/badge/python->=3.10%20-blue.svg)
-<a href="https://mybinder.org/v2/gh/saguileran/birdsongs/main?labpath=Tutorial.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a>
+<a href="https://mybinder.org/v2/gh/wavesongs/wavesongs/main?labpath=test.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a>
 
 **WaveSongs** A python package for birdsongs creation and data extraction.
 

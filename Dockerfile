@@ -1,52 +1,40 @@
-# syntax=docker/dockerfile:1
+FROM eclipse-temurin:21-jdk-jammy
 
-# Comments are provided throughout this file to help you get started.
-# If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/go/dockerfile-reference/
+RUN apt-get update
+RUN apt-get install -y python3-pip unzip
 
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
+# add requirements.txt, written this way to gracefully ignore a missing file
+COPY requirements.tx[t] .
+RUN ([ -f requirements.txt ] \
+    && pip3 install --no-cache-dir -r requirements.txt) \
+    || pip3 install --no-cache-dir jupyter jupyterlab
 
-ARG PYTHON_VERSION=3.10
-FROM python:${PYTHON_VERSION}-slim AS base
+USER root
 
-# Prevents Python from writing pyc files.
-ENV PYTHONDONTWRITEBYTECODE=1
+# Download the kernel release
+RUN curl -L https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip > ijava-kernel.zip
 
-# Keeps Python from buffering stdout and stderr to avoid situations where
-# the application crashes without emitting any logs due to buffering.
-ENV PYTHONUNBUFFERED=1
+# Unpack and install the kernel
+RUN unzip ijava-kernel.zip -d ijava-kernel \
+  && cd ijava-kernel \
+  && python3 install.py --sys-prefix
 
-WORKDIR /app
+# Set up the user environment
 
-# Create a non-privileged user that the app will run under.
-# See https://docs.docker.com/go/dockerfile-user-best-practices/
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
+ENV NB_USER=saguileran
+ENV NB_UID=1000
+ENV HOME=/home/$NB_USER
 
-# Download dependencies as a separate step to take advantage of Docker's caching.
-# Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
-# Leverage a bind mount to requirements.txt to avoid having to copy them into
-# into this layer.
-RUN  pip install --upgrade pip
-RUN --mount=type=cache,target=/root/.cache/pip \
-    --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid $NB_UID \
+    $NB_USER
 
-# Switch to the non-privileged user to run the application.
-USER appuser
+COPY . $HOME
+RUN chown -R $NB_UID $HOME
 
-# Copy the source code into the container.
-COPY . .
+USER $NB_USER
 
-# Expose the port that the application listens on.
-EXPOSE 8000
-
-# Run the application.
-#CMD python3 -m flask run --host=0.0.0.0 --port=8000
+# Launch the notebook server
+WORKDIR $HOME
+CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser"]

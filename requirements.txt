@@ -1,17 +1,15 @@
 ffmpeg
 ipympl
-ipython
+ipykernel
 librosa
-lmfit
 matplotlib
 mpl_pan_zoom
 mpl_point_clicker
 numpy
 pandas
 PeakUtils
-plotly
-scikit_learn
+# plotly
+#scikit_learn
 scikit_maad
-scipy>=1.7.0
+scipy
 sympy
-pygobject

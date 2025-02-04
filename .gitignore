@@ -7,8 +7,12 @@ _site/
 venv
 .conda
 
-examples/results
+assets/results/*
 package-lock.json
 
-
 package
+
+audios
+results
+imgs
+examples

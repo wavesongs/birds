@@ -1,25 +1,23 @@
 FROM python:3.10
 
 RUN apt-get update
-RUN apt-get install -y python3-pip unzip
+RUN apt-get install -y python3-pip
+
+RUN git clone https://github.com/wavesongs/wavesongs
 
 # add requirements.txt, written this way to gracefully ignore a missing file
-COPY requirements.tx[t] .
+COPY requirements.txt .
 RUN ([ -f requirements.txt ] \
     && pip3 install --no-cache-dir -r requirements.txt) \
     || pip3 install --no-cache-dir jupyter jupyterlab 
 
 USER root
 
-# Download the kernel release
-RUN git clone https://github.com/wavesongs/wavesongs
-
 # Unpack and install the kernel
 RUN cd wavesongs \
-  && pip install -e .
+    && pip install -e .
 
 # Set up the user environment
-
 ENV NB_USER=saguileran
 ENV NB_UID=1000
 ENV HOME=/home/$NB_USER

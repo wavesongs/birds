@@ -30,13 +30,7 @@ This package contains the python implementation of the [motor gestures model for
 
 The model implementation is tested with the species Zonotrichia Capensis, Ocellated Tapaculo, and Mimus Gilvus. The results obtained achived a relative error lower than 5 % respecto to the FF for the Zonotrichia Capensis samples.
 
-
-
 ## ⚒️ Installation
-
-### Requirments
-
-`wavesong` is tested in Python 3.10 or higher. The required libraries are listed in the [requirements.txt](./requirements.txt) file.
     
 ### Environment
 
@@ -64,8 +58,16 @@ conda activate wavesongs
 In process...
 
 ```bash
-docker build -t wavesongs .
-docker run -p 8888:8888 wavesongs
+docker build --tag wavesongs .
+docker run --detach wavesongs
+```
+
+### Requirments
+
+`wavesong` is tested in Python 3.10 or higher. The required libraries are listed in the [requirements.txt](./requirements.txt) file.
+
+```bash
+pip install -r requirements.txt
 ```
 
 ### WaveSongs
@@ -120,7 +122,7 @@ The evaluated audio samples are downloaded from [Xeno Canto](https://xeno-canto.
 
 ## 📜 License
 
-The project is licensed under the [License](./LICENSE).
+The project is licensed under the [GNU General Public License v3.0](./LICENSE).
 
 ## 📒 Citation
 

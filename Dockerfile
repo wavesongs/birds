@@ -9,13 +9,15 @@ RUN git clone https://github.com/wavesongs/wavesongs
 COPY requirements.txt .
 RUN ([ -f requirements.txt ] \
     && pip3 install --no-cache-dir -r requirements.txt) \
-    || pip3 install --no-cache-dir jupyter jupyterlab 
+    || pip3 install --no-cache-dir jupyter jupyterlab notebook
 
 USER root
 
+# EXPOSE 8888
+
 # Unpack and install the kernel
 RUN cd wavesongs \
-    && pip install -e .
+    && pip3 install -e .
 
 # Set up the user environment
 ENV NB_USER=saguileran

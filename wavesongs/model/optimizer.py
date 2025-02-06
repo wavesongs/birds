@@ -39,6 +39,7 @@ __methods__ = [
     "direct",
     "fmin",
 ]
+
 # trust regions ranges for minimization
 _aplha_range = (0, 0.3)
 _beta_range = (0, 0.8)

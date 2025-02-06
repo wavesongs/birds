@@ -1,4 +1,4 @@
-<div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 600px; min-width: 500px ; margin: 0 auto; padding: 10px 0 15px 0; border-bottom: 1px solid">
+<div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 70%; min-width: 400px ; margin: 0 auto; padding: 10px 0 15px 0; border-bottom: 1px solid">
     <div class="image-container" style="flex: 1; padding: 0 0 0 10px;">
         <img src="" alt="wavesongs logo" style="max-width: 100%; height: auto; display: block;">
     </div>
@@ -8,7 +8,6 @@
     </div>
 </div>
 
-
 <div align='center' style="margin: 20px 0 0px 0">
 
 ![version](https://img.shields.io/badge/version-1.0.0-008000)
@@ -16,12 +15,12 @@
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/Licenses/gpl-3.0)
 ![Open Source Love](https://img.shields.io/badge/open%20source-♡-lightgrey)
 ![Python 3.10](https://img.shields.io/badge/python->=3.10%20-blue.svg)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wavesongs/wavesongs/HEAD?urlpath=%2Fdoc%2Ftree%2Ftest.ipynb)
 
 [Overview](#overview) •
 [Installation](#installation) •
 [Getting Started](#getting-started) •
 [References](#references)
+
 </div>
 
 ## 🔎 Overview
@@ -31,10 +30,22 @@ This package contains the python implementation of the [motor gestures model for
 The model implementation is tested with the species Zonotrichia Capensis, Ocellated Tapaculo, and Mimus Gilvus. The results obtained achived a relative error lower than 5 % respecto to the FF for the Zonotrichia Capensis samples.
 
 ## ⚒️ Installation
-    
+
+### Requirments
+
+`wavesong` is tested in Python 3.10 and work for higher versions. 
+
+
+First of all, clone the the **wavesongs** repository and enter to it.
+
+```bat
+git clone https://github.com/wavesongs/wavesongs
+cd wavesongs
+```
+
 ### Environment
 
-First of all, let's create an evironment for the project. This can be done in three ways:
+Create an evironment for the project and activate it.
 
 #### Python
 
@@ -53,39 +64,37 @@ conda create -n wavesongs python=3.12
 conda activate wavesongs
 ```
 
-#### Docker
+<!-- #### Docker
 
 In process...
 
 ```bash
 docker build --tag wavesongs .
 docker run --detach wavesongs
+``` -->
+
+### WaveSongs
+
+Install the pacakge with a single command line:
+
+```bash
+pip install -r wavesongs
 ```
 
-### Requirments
-
-`wavesong` is tested in Python 3.10 or higher. The required libraries are listed in the [requirements.txt](./requirements.txt) file.
+Alternative, if you get an issue, install the repository manually. First, install the required libraries listed in the [requirements.txt](./requirements.txt) file.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### WaveSongs
+Next, install `wavesongs`
 
-Now, clone the the **wavesongs** repository and enter to it.
+```bash
+pip install -e .
+``` 
 
-```bat
-git clone https://github.com/wavesongs/wavesongs
-cd wavesongs
-```
-
-Next, install the package and the required libraries. To do this there are two options:
-
+<!-- 
 1. `pip`:
-
-    ```bash
-    pip install -e .
-    ``` 
 
 2. [`poetry`](https://python-poetry.org/):
 
@@ -96,23 +105,21 @@ Next, install the package and the required libraries. To do this there are two o
     pipx ensurepath
     ```
 
-    For more information visit [Installing pipx](https://pipx.pypa.io/stable/installation/#installing-pipx). You can also install poetry with `pipx install poetry`. 
+    You can install poetry with `pipx install poetry`. For more information visit [Installing pipx](https://pipx.pypa.io/stable/installation/#installing-pipx). 
     
-    Finally, install **wavesongs**,
+    Finally, install **wavesongs**
 
     ```bat
     poetry install
     ```
 
-    If you are using an IDE, reset it.
-
-That's all!. Now let's create a synthetic song!
+    Reset the kernel or IDE. -->
 
 ## 💪 Getting Started
 
-See the [tutorial](./Tutorial.ipynb) for a complete use guide. 
+See the [Tutorial](./Tutorial.ipynb) for the use guide. 
 
-
+![getting started](./assets/)
 
 If you want to know more about the physical modeling, constans details, ff algorithm, etc, visit the [documentation](./).
 
@@ -130,24 +137,42 @@ If you use `wavesongs` in your own work, please cite the associated article and/
 
 ```bibtex
 @software{san_wavesongs_2025,
-  author = {Aguilera Novoa, Sebastian},
-  month = feb,
-  title = {wavesongs},
-  url = {https://github.com/wavesongs/wavesongs/},
-  version = {1.0.0},
-  year = {2025}
+    author = {Aguilera Novoa, Sebastian},
+    month = feb,
+    title = {wavesongs},
+    url = {https://github.com/wavesongs/wavesongs/},
+    version = {1.0.0},
+    year = {2025}
 }
 ```
+
+## 📝 To Do
+
+- [] Donwload data from xeno canto
+- [] Rois maad
+- [] Change FF parametrization 
 
 
 ## 📚 References
 
 ### Literature
 
-- 2013 Mindlin
+1. Amador, A., Perl, Y. S., Mindlin, G. B., & Margoliash, D. (2013). Elemental 
+5. gesture dynamics are encoded by song premotor cortical neurons. *Nature*, 495(7439), 59–64. [doi:10.1038/nature11967](https://doi.org/10.1038/nature11967)  
+
+2. Mindlin, G., & Laje, R. (2005). The Physics of Birdsong. *The Physics of Birdsong: Biological and Medical Physics, Biomedical Engineering*. Springer-Verlag Berlin Heidelberg. [doi:10.1007/3-540-28249-1](https://doi.org/10.1007/3-540-28249-1)
+
+### Datasets
+
+3. Xeno-canto Foundation and Naturalis Biodiversity Center (2005). xeno-canto: Sharing bird sounds from around the world.  
+
+4. The Cornell Lab of Ornithology (2005). Macaulay Library - eBird. [ebird.com](https://ebird.com)
 
 ### Software
 
-- Librosa
-- Scipy
-- yin
+5. McFee, B., Raffel, C., Liang, D., Ellis, D. P., McVicar, M., Battenberg, E., & Nieto, O. (2015). [librosa](https://librosa.org/): Audio and music signal analysis in Python. *Proceedings of the 14th Python in Science Conference*, 8.  
+
+6. Virtanen, P., Gommers, R., Oliphant, T. E., et al. (2020). SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. *Nature Methods*, 17, 261–272. [doi:10.1038/s41592-019-0686-2](https://doi.org/10.1038/s41592-019-0686-2)  
+[Read online](https://rdcu.be/b08Wh)
+
+7. Ulloa, J. S., Haupert, S., Latorre, J. F., Aubin, T., & Sueur, J. (2021). scikit-maad: An open-source and modular toolbox for quantitative soundscape analysis in Python. *Methods in Ecology and Evolution*, 12(12), 2334–2340. [doi:10.1111/2041-210X.13711](https://doi.org/10.1111/2041-210X.13711)  

@@ -45,7 +45,7 @@ class ProjDirs:
     def __init__(
         self,
         root: AnyStr = "./",
-        assets = "assets",
+        assets: AnyStr = "assets",
         audios: AnyStr = "audio",
         results: AnyStr = "result",
         spreadsheet: AnyStr = "spreadsheet.csv",

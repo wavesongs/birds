@@ -37,8 +37,10 @@ dynamic = [ "classifiers" ]
 
 [tool.poetry]
 classifiers = [
-    "Topic :: Software Development :: Sound Generation",
-    "Topic :: Software Development :: Libraries :: Python Modules"
+    "Development Status :: 4 - Beta",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Multimedia :: Sound/Audio :: Sound Synthesis",
+    "Topic :: Scientific/Engineering :: Physics"
 ]
 
 [project.urls]

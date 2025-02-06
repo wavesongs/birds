@@ -6,6 +6,11 @@ import json
 import numpy as np
 import pandas as pd
 
+from numpy.linalg import norm
+from IPython.display import Audio
+from maad.sound import normalize, write
+from scipy.interpolate import interp1d
+
 from wavesongs.utils.paths import ProjDirs
 from wavesongs.utils.tools import envelope
 from wavesongs.model.bird import (
@@ -14,12 +19,6 @@ from wavesongs.model.bird import (
     alpha_beta,
     motor_gestures
 )
-
-from scipy.interpolate import interp1d
-from maad.sound import normalize, write
-# from playsound import playsound
-from IPython.display import Audio
-from numpy.linalg import norm
 
 from os.path import (
     basename,
@@ -59,11 +58,11 @@ from typing import (
 from typing import TypeVar
 
 Syllable = TypeVar('Syllable')
+Song = TypeVar('Song')
 DataFrame = TypeVar('pandas.core.frame.DataFrame')
 
 import warnings
 # warnings.warn()
-
 
 #%%
 def read_MG(
@@ -473,7 +472,7 @@ class Syllable:
         params: Dict = _params,
         order: int = 2,
         method: AnyStr = "best"
-    ) -> Self :
+    ) -> Syllable :
         """
         
         
@@ -513,9 +512,9 @@ class Syllable:
     #%%
     def synth_scores(
         self,
-        synth: Self,
+        synth: Syllable,
         order: int = 2
-    ) -> Self:
+    ) -> Syllable:
         """
         
         

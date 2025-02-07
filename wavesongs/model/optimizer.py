@@ -403,8 +403,8 @@ def optimal_bs(
     print(
         f"\t Optimal values: b_0={b0:.4f}, b_2={b2:.4f}, t={tdiff:.2f} min"
     )
-    syllable.z["b0"] = float(b0)
-    syllable.z["b2"] = float(b2)
+    syllable.z["b0"] = round(float(b0), 5)
+    syllable.z["b2"] = round(float(b2), 5)
     # ---------------- b1--------------------
     ranges1 = (_b1_range,)
     start1 = time()
@@ -421,7 +421,7 @@ def optimal_bs(
     else:
         raise Exception(f"The method {method} does not exits.")
     end1 = time()
-    b1 = float(x0[0])
+    b1 = round(float(x0[0]), 5)
     print(
         f"\t Optimal values: b_1={b1:.4f}, t={(end1-start1)/60:.2f} min"
     )
@@ -485,7 +485,7 @@ def optimal_a(
     else:
         raise Exception(f"The method {method} does not exits.")
     end = time()
-    a0 = float(x0[0])
+    a0 = round(float(x0[0]), 5)
     print(f"\t Optimal values: a_0={a0:.4f}, t={(end-start)/60:.2f} min")
     syllable.z["a0"] = a0
     return syllable.z

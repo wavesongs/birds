@@ -14,15 +14,7 @@ from mpl_point_clicker import clicker
 from matplotlib.gridspec import GridSpec
 from matplotlib.ticker import FuncFormatter, NullFormatter
 
-from typing import (
-    Optional,
-    Tuple,
-    Union,
-    List,
-    AnyStr,
-    Dict,
-    Any
-)
+from typing import Optional, Tuple, Union, List, AnyStr, Dict, Any
 
 # --------------------------
 _COLORES = {
@@ -39,14 +31,26 @@ _COLORES = {
 }
 _CMAP = "magma"
 _TITLE_FONTSIZE = 18
-
+#%%
 def _suptitle(obj) -> AnyStr:
+    """
+
+    Parameters
+    ----------
+        obj : Syllable | Song
+            _description_
+
+    Returns
+    -------
+        title : AnyStr
+            Title template
+    """    
     format = obj.file_name[-3:]
     file_name = obj.file_name[:-4].replace("synth_","")
     title = f"{file_name}-{obj.no_syllable}-{obj.type}.{format}" \
                 if obj.type!="" else f"{file_name}-{obj.no_syllable}.{format}"
     return title
-
+#%%
 def _save_name(obj) -> AnyStr:
     file_name = obj.file_name[:-4]
     img_text = f"{file_name}-{obj.no_syllable}-{obj.type}" \
@@ -151,9 +155,14 @@ def alpha_beta(
     ax3.sharey(ax2)
     ax3.legend()
 
+    if obj.type!="":
+        gs.update(top=0.8)
+        suptitle = f"Motor Gesture Curves\n{_suptitle(obj)}"
+    else:
+        suptitle = f"Motor Gesture Curves: {_suptitle(obj)}"
     # fig.tight_layout()
     plt.suptitle(
-        f"Motor Gesture Curves: {_suptitle(obj)}",
+        suptitle,
         fontsize=_TITLE_FONTSIZE,
         y=0.99,
         fontweight="bold",
@@ -169,7 +178,7 @@ def alpha_beta(
         print(f"Image save at {save_name}")
 
     if show:
-        plt.show(show)
+        plt.show()
     else: plt.close()
 
     # return fig, gs
@@ -219,6 +228,10 @@ def phsyical_variables(
 
     fig, ax = plt.subplots(2, 2, figsize=figsize, sharex=True)
 
+    plt.subplots_adjust(
+        hspace=0.25, wspace=0.2, top=0.825, bottom=0.1, left=0.075, right=0.99
+    )
+
     ax[1, 0].ticklabel_format(
         axis="y", style="scientific", scilimits=(-1, 1)
     )
@@ -244,20 +257,17 @@ def phsyical_variables(
     ax[0, 1].set_title(r"Labial Walls Velocity")
     ax[0, 1].set_xlim(xlim)
 
-    
+    if obj.type!="":
+        plt.subplots_adjust(top=0.8)
+        suptitle = f"Physical Model Variables\n{_suptitle(obj)}"
+    else:
+        suptitle = f"Physical Model Variables: {_suptitle(obj)}"
+
     fig.suptitle(
-        f"Physical Model Variables: {_suptitle(obj)}",
+        suptitle,
         fontsize=_TITLE_FONTSIZE,
         y=0.99,
         fontweight="bold",
-    )
-    plt.subplots_adjust(
-        hspace=0.25,
-        wspace=0.2,
-        top=0.825,
-        bottom=0.1,
-        left=0.075,
-        right=0.99,
     )
     # fig.tight_layout()
 
@@ -271,11 +281,9 @@ def phsyical_variables(
         print(f"Image save at {image_text}")
     # return fig, ax
     if show:
-        plt.show(show)
+        plt.show()
     else:
         plt.close()
-
-
 # %%
 def spectrogram_waveform(
     obj: Any,  # Union[Syllable,Song],
@@ -454,7 +462,6 @@ def spectrogram_waveform(
             y=0.99,
             fontweight="bold",
         )
-
         plt.subplots_adjust(wspace=0, hspace=0, top=0.9)
     # ----------------------------- syllable -----------------------------
     else:
@@ -500,16 +507,22 @@ def spectrogram_waveform(
         ax[1].set_ylabel("Frequency (kHz)")
         ax[1].set_xlabel("Time (s)")
 
-        fig.suptitle(
-            f"Waveform and Spectrogram: {_suptitle(obj)}",
-            fontsize=_TITLE_FONTSIZE,
-            y=0.99,
-            fontweight="bold",
-        )
         plt.subplots_adjust(
             wspace=0.1, hspace=0.1, top=0.85, bottom=0.05, left=0.05, right=0.7
         )
 
+        if obj.type!="":
+            plt.subplots_adjust(top=0.8)
+            suptitle = f"Waveform and Spectrogram\n{_suptitle(obj)}"
+        else:
+            suptitle = f"Waveform and Spectrogram: {_suptitle(obj)}"
+            
+        fig.suptitle(
+            suptitle,
+            fontsize=_TITLE_FONTSIZE,
+            y=0.99,
+            fontweight="bold",
+        )
         path_save = obj.proj_dirs.IMAGES / _save_name(obj)
 
     fig.tight_layout()
@@ -520,7 +533,7 @@ def spectrogram_waveform(
                     bbox_inches="tight")
         print(f"Image save at {path_save}")
 
-    if show: plt.show(show)
+    if show: plt.show()
     else: plt.close()
 
     if select_time:
@@ -628,14 +641,20 @@ def syllables(
     ax[1, 1].yaxis.set_major_formatter(NullFormatter())
     ax[0, 1].yaxis.set_major_formatter(NullFormatter())
 
+    plt.subplots_adjust(
+        wspace=0.05, hspace=0.075, left=0.07, top=0.85, right=0.93, bottom=0.07
+    )
+    if obj.type!="":
+        plt.subplots_adjust(top=0.8)
+        suptitle = f"Comparing Syllables\n{_suptitle(obj)}"
+    else:
+        suptitle = f"Comparing Syllables: {_suptitle(obj)}"
+
     fig.suptitle(
-        f"Comparing Syllables : {_suptitle(obj)}",
+        suptitle,
         y=0.99,
         fontsize=_TITLE_FONTSIZE,
         fontweight="bold",
-    )
-    fig.subplots_adjust(
-        wspace=0.05, hspace=0.075, left=0.07, top=0.85, right=0.93, bottom=0.07
     )
 
     if save:
@@ -648,7 +667,7 @@ def syllables(
         print(f"Image save at {img_name}")
     # return fig, ax
     if show: 
-        plt.show(show)
+        plt.show()
     else:
         plt.close()
 # %%
@@ -823,8 +842,14 @@ def scores(
     clb = fig.colorbar(img, cax=cbar_ax)
     clb.set_label("Power (dB)", labelpad=12, y=0.5, rotation=90)
 
+    if obj.type!="":
+        plt.subplots_adjust(top=0.775)
+        suptitle = f"Scoring Variables\n{_suptitle(obj)}"
+    else:
+        suptitle = f"Scoring Variables: {_suptitle(obj)}"
+
     fig.suptitle(
-        f"Scoring Variables: {_suptitle(obj)}",
+        suptitle,
         fontsize=_TITLE_FONTSIZE,
         y=0.99,
         fontweight="bold",
@@ -838,8 +863,9 @@ def scores(
             bbox_inches="tight",
         )
         print(f"Image save at {img_name}")
+
     if show:
-        plt.show(show)
+        plt.show()
     else:
         plt.close()
     # return fig, gs
@@ -1060,8 +1086,14 @@ def spectrum_comparison(
 
     fig.colorbar(img, ax=ax6)
 
+    if obj.type!="":
+        plt.subplots_adjust(top=0.8)
+        suptitle = f"Comparing Spectral Content\n{_suptitle(obj)}"
+    else:
+        suptitle = f"Comparing Spectral Content: {_suptitle(obj)}"
+
     fig.suptitle(
-        f"Comparing Spectral Content: {_suptitle(obj)}",
+        suptitle,
         fontsize=_TITLE_FONTSIZE,
         y=0.99,
         fontweight="bold",
@@ -1076,6 +1108,6 @@ def spectrum_comparison(
         print(f"Image save at {img_name}")
     # return fig, gs
     if show: 
-        plt.show(show)
+        plt.show()
     else:
         plt.close()

@@ -2,69 +2,63 @@
 # -*- coding: utf-8 -*-
 """
 Create project directory trees, assign path variables, and get paths for
-different types of files
+different types of output files
 """
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 from os import makedirs
 from librosa import load
-
 from os.path import isdir, basename
-
 from pathlib import Path, PosixPath
-
 from typing import Union, List, AnyStr
 
 _CATALOG_LABEL = "ML Catalog Number"
 _AUDIO_FORMATS = (".mp3", ".wav")
 
-
+#%%
 class ProjDirs:
     """
 
     Parameters
     ----------
-        root : str = "./"
-            Folder name for the project root
-        audios : str ='data'
-            Folder name where the audios are stored
-        results: str = "results"
-            Folder name for the results
-        spreadsheet: str = "spreadsheet.csv"
-            Name of the spreadsheet csv file with the metadata of the audios
+        audios : str ='./assets/audio'
+            Folder path where the audio samples are saved.
+        results: str = "./assets/results"
+            Folder path for the generated files and data.
+        metadata: str = "spreadsheet.csv"
+            Name of the csv file with the metadata of the audios. 
+            Usually given by the data provider.
 
     Attributes
     ----------
 
     Example
     -------
-        >>>
+        >>> proj_dirs = ProjDirs(
+        >>>     "./assets/audio", "./assets/results", "spreadsheet.csv"
+        >>> )
     """
-
     # %%
     def __init__(
         self,
-        root: AnyStr = "./",
-        assets: AnyStr = "assets",
-        audios: AnyStr = "audio",
-        results: AnyStr = "result",
-        spreadsheet: AnyStr = "spreadsheet.csv",
+        audios: AnyStr = "./assets/audio",
+        results: AnyStr = "./assets/results",
+        metadata: AnyStr = "spreadsheet.csv",
         catalog: bool = False
     ):
-
-        self.ROOT = Path(root)
-        self.AUDIOS = self.ROOT / f"{assets}/{audios}"
-        self.RESULTS = self.ROOT / f"{assets}/{results}"
+        """Constructor"""
+        self.AUDIOS = Path(audios)
+        self.RESULTS = Path(results)
 
         self.MG_param = self.RESULTS / "mg_params"
-        self.IMAGES = self.RESULTS / "imgs"
-        self.examples = self.RESULTS / f"{audios}s"
-        self.SPREADSHEET = self.AUDIOS / spreadsheet
+        self.IMAGES = self.RESULTS / "images"
+        
+        self.examples = self.RESULTS / "audios"
+        self.SPREADSHEET = self.AUDIOS / metadata
         self.CATALOG = catalog
 
         # create folder in case they do not exist
-        if not isdir(self.ROOT) and self.ROOT != "./":
-            makedirs(self.ROOT)
         if not isdir(self.RESULTS):
             makedirs(self.RESULTS)
         if not isdir(self.MG_param):
@@ -74,27 +68,32 @@ class ProjDirs:
         if not isdir(self.examples):
             makedirs(self.examples)
 
-        # Check if there is a spreadsheet file inside audios folder
-        spreadsheet_file = list(Path(self.AUDIOS).glob("*" + spreadsheet))
+        # Check if there is a metadata spreadsheet file inside audios folder
+        spreadsheet_file = list(Path(self.AUDIOS).glob("*" + metadata))
         if len(spreadsheet_file) > 0 and self.CATALOG==True:
             self.CATALOG = True 
-        self.CATALOG_LABEL = _CATALOG_LABEL
+            self.CATALOG_LABEL = _CATALOG_LABEL
 
         self.find_audios()
-
     # %%
     def find_audios(self) -> Union[List, pd.DataFrame]:
         """
-
-
+        Search for all audios, mp3 and wav type, in the audios folder. 
+        
         Parameters
         ----------
-
+            None
 
         Return
         ------
             files_names : list
                 List with the audios files names
+
+        Notes
+        -----
+            If the audios folder contains a metadata file, spreadsheet.csv,
+            the method will return a dataframe. However, the attribute
+            files_names always is present.
 
         Example
         -------
@@ -124,27 +123,26 @@ class ProjDirs:
             return self.data
 
         return self.files_names
-
-        # %%
-
+    # %%
     def audios_info(self) -> None:
         """
-        Print information about the audios folder
+        Display information about the audios folder: audios path and 
+        number of audios in the folder.
 
         Parameters
         ----------
-
+            None
 
         Return
         ------
-
+            None
 
         Example
         -------
             >>>
         """
         print(f"Audios path: {self.AUDIOS}\n")
-        print("The folder has {} songs:".format(self.no_files))
+        print("The folder has {} audio samples:".format(self.no_files))
 
         if self.CATALOG:
             print(self.data)
@@ -154,15 +152,17 @@ class ProjDirs:
 
     def find_audio(self, id: AnyStr) -> PosixPath:
         """
-        Find an audio in the root folder based on the id/filename
+        Find an audio in the audios folder by the id or filename
 
         Parameters
         ----------
             id : str
+                Whole filename of a part of it. Usually, the catalog number. 
 
         Return
         ------
             path : PosixPath
+                Path location of the audio. 
 
         Example
         -------

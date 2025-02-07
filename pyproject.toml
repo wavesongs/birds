@@ -13,7 +13,7 @@ authors = [
 maintainers = [
     { name = "saguileran@unal.edu.co", email = "saguileran@unal.edu.co" },
 ]
-keywords = [ "numerical methods", "motor gestures", "birdsongs" ]
+keywords = [ "numerical methods", "motor gestures", "birdsongs", "syhnthetic songs" ]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -49,7 +49,11 @@ repository = "https://github.com/wavesongs/wavesongs/"
 documentation = "https://wavesongs.github.io/"
 
 [project.optional-dependencies]
-dev = ["ipywidgets <= 8.0.3", "ipykernel", "pytest >= 7", "nox", "black"]
+dev = [
+    "ipykernel",
+    "black",
+    "poetry"
+]
 test = ["pytest >= 7"]
 
 [tool.poetry.group.docs]

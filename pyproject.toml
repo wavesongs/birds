@@ -4,8 +4,8 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "wavesongs"
-version = "1.0.0"
-oncreationdescription = "A python package for birdsongs creation and data extraction."
+version = "1.0.1b1"
+description = "A python package for birdsongs creation and data extraction."
 license = "GPL-3.0"
 authors = [
     { name = "saguileran@unal.edu.co", email = "saguileran@unal.edu.co" },

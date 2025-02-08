@@ -1,3 +1,12 @@
+<!-- <div align='center' style="margin: 20px 0 0px 0">
+   <img src="./assets/logo.png" alt="WaveSongs logo" style="max-width: 100%; height: 200px;">
+
+   <div class="text-container" style="flex: 2;">
+      <h1 style="margin: 0; padding: 10px 0 0px 0; border-bottom: 0">WaveSongs</h1>
+      <p style="margin: 0; padding: 0px 0 10px 0;">A Python package for birdsong synthesis and bioacoustic analysis</p>
+   </div> 
+</div>
+ -->
 
 <div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 70%; min-width: 400px; margin: 0 auto; padding: 10px 0 15px 0; border-bottom: 1px solid">
     <div class="image-container" style="flex: 1; padding: 0 0 0 10px;">
@@ -9,9 +18,9 @@
     </div>
 </div>
 
-<div align='center' style="margin: 20px 0 0px 0">
+<div align='center' style="margin: 20px 0 50px 0">
 
-![version](https://img.shields.io/badge/version-1.0.0-008000)
+![version](https://img.shields.io/badge/version-1.0.1-008000)
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Python 3.10+](https://img.shields.io/badge/python->=3.10-blue.svg)
 ![Open Source](https://img.shields.io/badge/open%20source-♡-lightgrey)
@@ -23,6 +32,8 @@
 [References](#-references)
 
 </div>
+
+---
 
 
 ## 🔎 Overview
@@ -140,10 +151,8 @@ To report issues or suggest features, open a [GitHub Issue](https://github.com/w
 ## 📚 References
 
 ### Core Methodology
-1. Mindlin, G. B., & Laje, R. (2005). *The Physics of Birdsong*. Springer.  
-   [DOI](https://doi.org/10.1007/3-540-28249-1)
-2. Amador, A., et al. (2013). Elemental gesture dynamics in song premotor neurons. *Nature*.  
-   [DOI](https://doi.org/10.1038/nature11967)
+1. Mindlin, G. B., & Laje, R. (2005). *The Physics of Birdsong*. Springer. [DOI](https://doi.org/10.1007/3-540-28249-1)
+2. Amador, A., et al. (2013). Elemental gesture dynamics in song premotor neurons. *Nature*. [DOI](https://doi.org/10.1038/nature11967)
 
 ### Software
 - [Librosa](https://librosa.org/) • Audio analysis
@@ -151,6 +160,5 @@ To report issues or suggest features, open a [GitHub Issue](https://github.com/w
 - [scikit-maad](https://github.com/scikit-maad/scikit-maad) • Soundscape metrics
 
 ### Data Sources
-- [Xeno Canto](https://xeno-canto.org/) • Field recordings
-- [eBird](https://ebird.org/) • Species metadata
-
+- [Xeno-Canto](https://xeno-canto.org/): Sharing wildlife sounds from around the world
+- [eBird](https://ebird.org/): Macaulay Library. The Cornell Lab of Ornithology (2005) 

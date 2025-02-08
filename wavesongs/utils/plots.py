@@ -49,13 +49,13 @@ def _suptitle(obj) -> AnyStr:
     file_name = obj.file_name[:-4].replace("synth_","")
     title = f"{file_name}-{obj.no_syllable}-{obj.type}.{format}" \
                 if obj.type!="" else f"{file_name}-{obj.no_syllable}.{format}"
-    return title
+    return title.replace(" ","")
 #%%
 def _save_name(obj) -> AnyStr:
     file_name = obj.file_name[:-4]
     img_text = f"{file_name}-{obj.no_syllable}-{obj.type}" \
                 if obj.type!="" else f"{file_name}-{obj.no_syllable}"
-    return img_text
+    return img_text.replace(" ","")
 #%%
 def alpha_beta(
     obj: Any,  # Union[Syllable,Song],

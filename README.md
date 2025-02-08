@@ -1,4 +1,4 @@
-<!-- <div align='center' style="margin: 20px 0 0px 0">
+<div align='center' style="margin: 20px 0 0px 0">
    <img src="./assets/logo.png" alt="WaveSongs logo" style="max-width: 100%; height: 200px;">
 
    <div class="text-container" style="flex: 2;">
@@ -6,9 +6,9 @@
       <p style="margin: 0; padding: 0px 0 10px 0;">A Python package for birdsong synthesis and bioacoustic analysis</p>
    </div> 
 </div>
- -->
 
-<div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 70%; min-width: 400px; margin: 0 auto; padding: 10px 0 15px 0; border-bottom: 1px solid">
+
+<!-- <div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 70%; min-width: 400px; margin: 0 auto; padding: 10px 0 15px 0; border-bottom: 1px solid">
     <div class="image-container" style="flex: 1; padding: 0 0 0 10px;">
         <img src="./assets/logo.png" alt="WaveSongs logo" style="max-width: 100%; height: auto; display: block;">
     </div>
@@ -16,7 +16,7 @@
         <h1 style="margin: 0; padding: 0 0 5px 0; border-bottom: 0">WaveSongs</h1>
         <p style="margin: 0; padding: 5px 0 0 0;">A Python package for birdsong synthesis and bioacoustic analysis</p>
     </div>
-</div>
+</div> -->
 
 <div align='center' style="margin: 20px 0 50px 0">
 
@@ -34,7 +34,6 @@
 </div>
 
 ---
-
 
 ## 🔎 Overview
 
@@ -86,7 +85,7 @@ Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapacul
 
 ## 🚀 Gettint Started
 
-Explore the [Tutorial Notebook](./Tutorial.ipynb) to generate synthetic birdsongs and analyze acoustic features. Here is an example of simple code to import and display an audio.
+Explore the [Tutorial Notebook](https://github.com/wavesongs/wavesongs/blob/main/Tutorial.ipynbup) to generate synthetic birdsongs and analyze acoustic features. Here is an example of simple code to import and display an audio.
 
 ```python
 # select matplotlib backend for notebook, enable interactive plots

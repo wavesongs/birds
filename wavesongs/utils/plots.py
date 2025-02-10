@@ -198,10 +198,8 @@ def alpha_beta(
         plt.show()
     else: plt.close()
 
-    # return fig, gs
 
-
-# %% plot physical variables
+# %% 
 def phsyical_variables(
     obj: Any,  # Union[Syllable,Song],
     xlim: Tuple[float] = (),
@@ -296,7 +294,6 @@ def phsyical_variables(
             bbox_inches="tight",
         )
         print(f"Image save at {image_text}")
-    # return fig, ax
     if show:
         plt.show()
     else:
@@ -393,7 +390,7 @@ def spectrogram_data(
     
     fig.tight_layout()
     plt.subplots_adjust(
-            top=0.9, bottom=0.075, left=0.075, right=0.825
+            top=0.9, bottom=0.075, left=0.075, right=0.86
     )
 
     return klicker_multiple(fig, ax, 

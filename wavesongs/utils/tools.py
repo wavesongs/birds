@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """ """
 import numpy as np
+import pandas as pd
 
 from maad import sound
 from matplotlib.axes import Axes
@@ -15,7 +16,6 @@ from sympy import (
     lambdify,
     solveset
 )
-
 
 from mpl_pan_zoom import (
     zoom_factory,
@@ -50,6 +50,10 @@ _N = 1000
 _mu2_beta = -2.5
 _mu1_alpha = 1/3
 
+def _shift_time(array, obj):
+    for point in array:
+       point[0] += obj.t0_bs
+    return array
 
 #%%
 def envelope(s: ArrayLike, sr: int, Nt: int) -> ArrayLike:
@@ -155,10 +159,10 @@ def klicker_time(fig: Figure, ax: Axes):
                     )
 
     klicker_time._pm = pm
-    #ax.legend(title="Interval Points", bbox_to_anchor=(1.1, 1.05))
     return klicker_time
-    #%%
-def get_positions(klicker: clicker) -> List[Tuple[float]]:
+
+# %%
+def get_roi(klicker: clicker) -> List[Tuple[float]]:
     """
     
     Parameters
@@ -189,6 +193,117 @@ def get_positions(klicker: clicker) -> List[Tuple[float]]:
         else:
             times = [[(tinis[0,0],tends[0,0]), (tinis[0,1],tends[0,1])]]
     return times
+
+# %%
+def get_measures(klicker, obj, save=False, labels=_LABELS):
+    f_max_min = _shift_time(klicker.get_positions()[labels[0]], obj)
+    theme_ini = _shift_time(klicker.get_positions()[labels[1]], obj)
+    theme_end = _shift_time(klicker.get_positions()[labels[2]], obj)
+    trill_ini = _shift_time(klicker.get_positions()[labels[3]], obj)
+    trill_end = _shift_time(klicker.get_positions()[labels[4]], obj)
+
+    if f_max_min[0][1] > f_max_min[1][1]:
+      fmax = f_max_min[0][1]
+      fmin = f_max_min[1][1]
+    else:
+      fmax = f_max_min[1][1]
+      fmin = f_max_min[0][1]
+
+    # automatic syllable type computing
+    # type_themes = []
+    # for s in theme_syllables:
+    #     if (s[1][1]-s[0][1])*-1>0:
+    #     els "up":
+    # -------------------------------- theme --------------------------------
+    theme_syllables = [[theme_ini[i], theme_end[i]] for i in range(len(theme_ini))]
+    no_themes = len(theme_syllables)
+    theme_sep_times = [theme_syllables[i+1][0][0]-theme_syllables[i][1][0]
+                        for i in range(no_themes-1)]
+    theme_sep_freqs = [theme_syllables[i+1][0][1]-theme_syllables[i][1][1]
+                        for i in range(no_themes-1)]
+    theme_sep_time_means = np.mean(theme_sep_times)
+    theme_sep_freq_means = np.mean(theme_sep_freqs)
+
+    theme_slopes = [(s[1][1]-s[0][1])/(s[1][0]-s[0][0]) for s in theme_syllables]
+    theme_types = ["down" if s<0 else "up" for s in theme_slopes]
+    theme_len_times = [s[1][0]-s[0][0] for s in theme_syllables]
+    theme_len_freqs = [np.abs(s[1][1]-s[0][1]) for s in theme_syllables]
+
+    theme_avg_len_times = np.mean(theme_len_times)
+    theme_band_widths = np.mean(theme_len_freqs)
+
+    theme_sep_song_time_avg = theme_sep_time_means + theme_avg_len_times
+    theme_rates = 1 / theme_sep_song_time_avg
+
+    # -------------------------------- trill --------------------------------
+    trill_syllables = [[trill_ini[i], trill_end[i]]for i in range(len(trill_ini))]
+    no_trills = len(trill_syllables)
+    trill_sep_times = [trill_syllables[i+1][0][0]-trill_syllables[i][1][0]
+                        for i in range(no_trills-1)]
+    trill_sep_freqs = [trill_syllables[i+1][0][1]-trill_syllables[i][1][1]
+                        for i in range(no_trills-1)]
+    trill_sep_time_means = np.mean(trill_sep_times)
+    trill_sep_freq_means = np.mean(trill_sep_freqs)
+
+    trill_slopes = [(s[1][1]-s[0][1])/(s[1][0]-s[0][0]) for s in trill_syllables]
+    trill_types = ["down" if s<0 else "up" for s in trill_slopes]
+    trill_len_times = [s[1][0]-s[0][0] for s in trill_syllables] # rate
+    trill_len_freqs = [np.abs(s[1][1]-s[0][1]) for s in trill_syllables] # Band Width
+
+    trill_avg_len_times = np.mean(trill_len_times)
+    trill_band_widths = np.mean(trill_len_freqs) # trills_avg_len_freqs 
+
+    theme_trill_time_sep = trill_syllables[0][0][0]-trill_syllables[-1][1][0]
+
+    trill_sep_song_time_avg = trill_sep_time_means + trill_avg_len_times
+    trill_rates = 1 / trill_sep_song_time_avg
+
+    data_df = pd.DataFrame(
+      {
+      "fmax": fmax,
+      "fmin": fmin,
+      "theme_trill_time_sep": theme_trill_time_sep
+      } | {
+      "trill_bw": trill_band_widths,
+      "trill_rates": trill_rates,
+      "trill_len_times": str(trill_len_times),
+      "trill_len_freqs": str(trill_len_freqs),
+      "trill_slopes": str(trill_slopes),
+      "trill_tinis": str([t[0] for t in trill_ini]),
+      "trill_tends": str([t[1] for t in trill_ini]),
+      "trill_types": str(trill_types),
+      "trills_avg_len_time": trill_avg_len_times,
+      "trills_band_width": trill_band_widths,
+      "trill_sep_freq_means": trill_sep_freq_means,
+      "trill_sep_time_means": trill_sep_time_means,
+      "trill_sep_freqs": str(trill_sep_freqs),
+      "trill_sep_times": str(trill_sep_times),
+      "no_trills": no_trills
+      } | {
+      "theme_bw": theme_band_widths,
+      "theme_rates": theme_rates,
+      "theme_len_times": str(theme_len_times),
+      "theme_len_freqs": str(theme_len_freqs),
+      "theme_slopes": str(theme_slopes),
+      "theme_tinis": str([t[0] for t in theme_ini]),
+      "theme_tends": str([t[1] for t in theme_ini]),
+      "theme_types": str(theme_types),
+      "themes_avg_len_time": theme_avg_len_times,
+      "themes_band_width": theme_band_widths,
+      "theme_sep_freq_means": theme_sep_freq_means,
+      "theme_sep_time_means": theme_sep_time_means,
+      "theme_sep_freqs": str(theme_sep_freqs),
+      "theme_sep_times": str(theme_sep_times),
+      "no_themes": no_themes
+      }
+    , index=[0])
+
+    if save:
+        # data_df.to_csv()
+        pass
+
+    return data_df
+
 #%%
 def bifurcation_ode(f1, f2):
     """

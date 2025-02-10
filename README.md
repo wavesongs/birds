@@ -71,7 +71,6 @@ Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapacul
    pip install -e .
    ```
 
-
 ## 🚀 Gettint Started
 
 Explore the [Tutorial 1 Notebook](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb) to generate synthetic birdsongs and explore the model plots. Here is an example of simple code to import and display an audio.
@@ -97,7 +96,7 @@ plots.spectrogram_waveform(copeton_song, save=False)
 
 ![Sample Output](./assets/results/images/574179401%20-%20Zonotrichia%20Capensis-Song.png)
 
-For advanced usage (e.g., custom gestures, parameter tuning, data measures, etc), check the other tutorials: [Data Extraction](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb) or [Synthetic Songs](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb). You can also check the  [Documentation](https://wavesongs.github.io/doc).
+For advanced usage (e.g., custom gestures, parameter tuning, data measures, etc), check the other tutorials: [Spectrum Measures](https://github.com/wavesongs/wavesongs/blob/main/Tutorial2_SpectrumMeasures.ipynb) or [Synthetic Songs](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb). You can also check the  [Documentation](https://wavesongs.github.io/doc).
 
 
 ## 🎶 Data Integration
@@ -105,7 +104,7 @@ For advanced usage (e.g., custom gestures, parameter tuning, data measures, etc)
 Pre-processed field recordings from [Xeno Canto](https://xeno-canto.org/) and [eBird](https://ebird.org/home) are included in `./assets/audio`. To use custom recordings place `.wav` or `.mp3` files in `./assets/audio/` or define the audios path with the `ProjDirs` class.
 
 
-## 📜 License
+## 🔐 License
 
 WaveSongs is licensed under the [GNU General Public License v3.0](./LICENSE).
 

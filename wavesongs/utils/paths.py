@@ -51,7 +51,7 @@ class ProjDirs:
         self.AUDIOS = Path(audios)
         self.RESULTS = Path(results)
 
-        self.MG_param = self.RESULTS / "mg_params"
+        self.mg_param = self.RESULTS / "mg_params"
         self.IMAGES = self.RESULTS / "images"
         self.examples = self.RESULTS / "audios"
         
@@ -60,7 +60,7 @@ class ProjDirs:
 
         # create folder in case they do not exist
         Path(self.RESULTS).mkdir(parents=True, exist_ok=True)
-        Path(self.MG_param).mkdir(parents=True, exist_ok=True)
+        Path(self.mg_param).mkdir(parents=True, exist_ok=True)
         Path(self.IMAGES).mkdir(parents=True, exist_ok=True)
         Path(self.examples).mkdir(parents=True, exist_ok=True)
         

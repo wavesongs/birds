@@ -62,7 +62,8 @@ Song = TypeVar('Song')
 DataFrame = TypeVar('pandas.core.frame.DataFrame')
 
 #%%
-def read_MG(
+def read_mg(
+    proj_dirs,
     file_name: AnyStr,
     no_syllable: Union[int, AnyStr],
     results: AnyStr = "../results",
@@ -83,10 +84,10 @@ def read_MG(
     -------
         >>>
     """
-    folder = f"{results}/MG_param"
-    file_name = f"{folder}/{file_name}-{no_syllable}-MG.csv" \
+    folder = proj_dirs.mg_param # f"{results}/MG_param"
+    file_name = f"{folder}/{file_name}-{no_syllable}-mg.csv" \
                     if type=="" \
-                    else f"{folder}/{file_name}-{no_syllable}-{type}-MG.csv"
+                    else f"{folder}/{file_name}-{no_syllable}-{type}-mg.csv"
     df = pd.read_csv(file_name, index_col=0)
 
     data = df.to_dict()["value"]

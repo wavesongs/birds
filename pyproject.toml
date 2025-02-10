@@ -31,7 +31,8 @@ dependencies = [
     "scikit-maad (>=1.4.3,<2.0.0)",
     "scikit-learn (>=1.6.1,<2.0.0)",
     "plotly (>=6.0.0,<7.0.0)",
-    "ipympl (>=0.9.6,<0.10.0)"
+    "ipympl (>=0.9.6,<0.10.0)",
+    "playsound (==1.2.2)",
 ]
 dynamic = [ "classifiers" ]
 

@@ -53,21 +53,17 @@ class ProjDirs:
 
         self.MG_param = self.RESULTS / "mg_params"
         self.IMAGES = self.RESULTS / "images"
-        
         self.examples = self.RESULTS / "audios"
+        
         self.SPREADSHEET = self.AUDIOS / metadata
         self.CATALOG = catalog
 
         # create folder in case they do not exist
-        if not isdir(self.RESULTS):
-            makedirs(self.RESULTS)
-        if not isdir(self.MG_param):
-            makedirs(self.MG_param)
-        if not isdir(self.IMAGES):
-            makedirs(self.IMAGES)
-        if not isdir(self.examples):
-            makedirs(self.examples)
-
+        Path(self.RESULTS).mkdir(parents=True, exist_ok=True)
+        Path(self.MG_param).mkdir(parents=True, exist_ok=True)
+        Path(self.IMAGES).mkdir(parents=True, exist_ok=True)
+        Path(self.examples).mkdir(parents=True, exist_ok=True)
+        
         # Check if there is a metadata spreadsheet file inside audios folder
         spreadsheet_file = list(Path(self.AUDIOS).glob("*" + metadata))
         if len(spreadsheet_file) > 0 and self.CATALOG==True:

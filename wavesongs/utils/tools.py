@@ -118,7 +118,7 @@ def klicker_multiple(
                     labels, 
                     markers=markers,
                     colors=colors,
-                    legend_bbox=(1.15, 0.98)
+                    legend_bbox=(1.02, 1.0)
                     )
 
     klicker_data._pm = pm

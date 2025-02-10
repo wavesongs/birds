@@ -5,7 +5,13 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-from wavesongs.utils.tools import klicker_time
+from wavesongs.utils.tools import (
+    klicker_time,
+    klicker_multiple,
+    _LABELS,
+    _COLORS,
+    _MARKERS
+)
 from wavesongs.model.bird import mu1_curves, beta_bif
 
 from librosa.display import specshow as Specshow
@@ -14,7 +20,18 @@ from mpl_point_clicker import clicker
 from matplotlib.gridspec import GridSpec
 from matplotlib.ticker import FuncFormatter, NullFormatter
 
-from typing import Optional, Tuple, Union, List, AnyStr, Dict, Any
+from typing import (
+    Optional,
+    Tuple,
+    Union,
+    AnyStr,
+    Any,
+    TypeVar,
+    List
+)
+
+Syllable = TypeVar('Syllable')
+Song = TypeVar('Song')
 
 # --------------------------
 _COLORES = {
@@ -285,6 +302,105 @@ def phsyical_variables(
     else:
         plt.close()
 # %%
+def spectrogram_data(
+    syllable: Optional[Syllable] = None,
+    ff_on: bool = False,
+    tlim: Optional[Tuple[float]] = None,
+    figsize: Tuple[float] = (10, 6),
+    ms: int = 7,
+    labels: List[AnyStr] =_LABELS,
+    colors: List[AnyStr] =_COLORS,
+    markers: List[AnyStr] =_MARKERS,
+) -> clicker:
+    """
+
+
+    Parameters
+    ----------
+        obj : Syllabe|Song
+            Song or Syllable to be displayed
+        syllable: Syllable|None = None,
+
+        chunck: Any|None = None,
+
+        ff_on: bool =False,
+
+        select_time: bool = False,
+
+        tlim : tuple = (-0.05,.2)
+            Time range
+        figsize : tuple = (10,6)
+            Fogure size (width, height)
+        save : bool = True
+            Save plot
+        show : bool = True
+            Display plot
+        ms : int = 7
+            Marker size
+
+    Return
+    ------
+        klicker : cliker
+            Clicker object with the points selected
+
+    Example
+    -------
+        >>>
+    """
+    ticks = FuncFormatter(lambda x, pos: f"{x*1e-3:g}")
+    ticks_x = FuncFormatter(lambda x, pos: f"{x+syllable.t0_bs:.2f}")
+
+    if tlim is None:
+        tlim = (syllable.time[0], syllable.time[-1])
+    else:
+        tlim = (tlim[0] - syllable.t0_bs, tlim[1] - syllable.t0_bs)
+
+    plt.close()
+    fig, ax = plt.subplots(1, 1, figsize=figsize)
+
+    img = Specshow(
+        syllable.Sxx_dB,
+        x_axis="s",
+        y_axis="linear",
+        sr=syllable.sr,
+        hop_length=syllable.hop_length,
+        ax=ax,
+        cmap=_CMAP,
+    )
+    ax.yaxis.set_major_formatter(ticks)
+    ax.xaxis.set_major_formatter(ticks_x)
+
+    if ff_on:
+        if syllable.ff_method in ("yin", "pyin", "manual"):
+            ax.plot(
+                syllable.time, syllable.FF, "co", ms=ms, label=r"FF$_{yin}$"
+            )
+        elif syllable.ff_method == "both":
+            ax.plot(syllable.time, syllable.FF, "co", ms=ms, label=r"FF$_{pyin}$")
+            ax.plot(syllable.time, syllable.FF2, "b*", ms=ms, label=r"FF$_{yin}$")
+
+    ax.set_ylim(syllable.flim)
+    ax.set_xlim(tlim)
+    ax.set_ylabel("Frequency (kHz)")
+    ax.set_xlabel("Time (s)")
+    
+    fig.suptitle(
+        "Waveform and Spectrogram",
+        fontsize=_TITLE_FONTSIZE,
+        y=0.99,
+        fontweight="bold",
+    )
+    
+    fig.tight_layout()
+    plt.subplots_adjust(
+            top=0.9, bottom=0.075, left=0.075, right=0.825
+    )
+
+    return klicker_multiple(fig, ax, 
+                            labels=labels,
+                            colors=colors,
+                            markers=markers)
+# %%
 def spectrogram_waveform(
     obj: Any,  # Union[Syllable,Song],
     syllable: Any | None = None,  # Optional[Syllable] = None,
@@ -364,7 +480,7 @@ def spectrogram_waveform(
         ax[0].plot(obj.time_s, obj.s, "k", label="waveform")
         ax[0].plot(obj.time_s, syllables_array, "--", label="umbral")
         ax[0].plot(obj.time_s, obj.envelope, label="envelope")
-        ax[0].legend(bbox_to_anchor=(1.01, 0.5))
+        ax[0].legend(bbox_to_anchor=(1.01, 1.0))
         ax[0].xaxis.set_major_formatter(ticks_x)
         ax[0].set_ylabel("Amplitude (a.u)")
         ax[0].set_xlabel("")
@@ -466,8 +582,7 @@ def spectrogram_waveform(
     # ----------------------------- syllable -----------------------------
     else:
         fig, ax = plt.subplots(
-            2,
-            1,
+            2, 1,
             gridspec_kw={"height_ratios": [3, 8]},
             figsize=figsize,
             sharex=True,
@@ -475,7 +590,7 @@ def spectrogram_waveform(
 
         ax[0].plot(obj.time_s, obj.s, "k", label="waveform")
         ax[0].plot(obj.time_s, obj.envelope, label="envelope")
-        ax[0].legend(bbox_to_anchor=(1.01, 0.65))
+        ax[0].legend(bbox_to_anchor=(1.01, 1.0))
         ax[0].xaxis.set_major_formatter(ticks_x)
         ax[0].set_ylabel("Amplitude (a.u)")
 
@@ -537,10 +652,9 @@ def spectrogram_waveform(
     else: plt.close()
 
     if select_time:
-        klicker = klicker_time(fig, ax[1])
-        return klicker
-
+        return klicker_time(fig, ax[1])
         # return fig, ax# %%
+#%%
 def syllables(
     obj: Any,  # Union[Syllable,Song],
     obj_synth: Any,  # Union[Syllable,Song],

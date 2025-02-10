@@ -52,17 +52,14 @@ from typing import (
     AnyStr,
     Dict,
     Any,
-    Self,
-    Union
+    Union,
+    Literal,
+    TypeVar
 )
-from typing import TypeVar
 
 Syllable = TypeVar('Syllable')
 Song = TypeVar('Song')
 DataFrame = TypeVar('pandas.core.frame.DataFrame')
-
-import warnings
-# warnings.warn()
 
 #%%
 def read_MG(
@@ -179,8 +176,9 @@ class Syllable:
         no_syllable: int = 0,
         id: AnyStr = "syllable",
         metadata: Dict = {},
-        type: AnyStr = ""
-    ):        
+        type: AnyStr = "",
+        duration: Optional[int] = None
+    ):
         self.no_syllable = no_syllable
         self.proj_dirs = proj_dirs
         self.metadata = metadata
@@ -230,7 +228,18 @@ class Syllable:
             self.t0 = self.tlim[0]
             
             self.s = normalize(s, max_amp=1.0)
-
+        elif (obj is None) and (file_id is None) and (duration is not None):
+            self.file_name = "synthetic"
+            self.id = "synth_" +id
+            self.no_syllable = no_syllable
+            self.proj_dirs = proj_dirs
+            self.metadata = metadata
+        
+            self.sr = sr
+            self.type = type
+            self.T = duration
+            self.s = np.ones(self.T*sr)
+            self.t0 = self.t0_bs = 0            
         else:
             raise Exception("You have to enter a file_id with a"
                             + " project object or a song or syllable object")    
@@ -238,7 +247,7 @@ class Syllable:
     def acoustical_features(
         self,
         NN: int = 512,
-        ff_method: AnyStr = "yin",
+        ff_method: Literal["yin", "pyin"] = "yin",
         umbral_FF: int = 1,
         flim: Tuple[float] = (1e3, 2e4),
         Nt: int = 10,
@@ -471,7 +480,7 @@ class Syllable:
         z: List[ArrayLike] = _z,
         params: Dict = _params,
         order: int = 2,
-        method: AnyStr = "best"
+        method: Literal["best", "fast"] = "best"
     ) -> Syllable :
         """
         
@@ -533,6 +542,19 @@ class Syllable:
             synth : Syllable
 
         """
+        synth.envelope = envelope(synth.s, synth.sr, synth.Nt)
+        synth.acoustical_features(
+            stft_window = synth.stft_window,
+            umbral_FF = synth.umbral_FF,
+            ff_method = synth.ff_method,
+            overlap = synth.overlap,
+            llambda = synth.llambda,
+            center = synth.center,
+            n_mfcc = synth.n_mfcc,
+            n_mels = synth.n_mels,
+            NN = synth.NN,
+            Nt = synth.Nt
+        )
         # residual difference between real and synthetic samples
         synth.deltaCentroid = np.abs(synth.centroid - self.centroid)
         synth.deltaMfccs = np.abs(synth.mfccs - self.mfccs)

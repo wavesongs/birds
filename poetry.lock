@@ -1989,6 +1989,18 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=8.3.2)", "pytest-
 type = ["mypy (>=1.11.2)"]
 
 [[package]]
+name = "playsound"
+version = "1.2.2"
+description = "Pure Python, cross platform, single function module with no dependencies for playing sounds."
+optional = false
+python-versions = "*"
+groups = ["main"]
+markers = "python_version <= \"3.11\" or python_version >= \"3.12\""
+files = [
+    {file = "playsound-1.2.2-py2.py3-none-any.whl", hash = "sha256:1e83750a5325cbccee03d6e751ba3e78c037ac95b95a3ba1f38d0c5aca9e1a34"},
+]
+
+[[package]]
 name = "plotly"
 version = "6.0.0"
 description = "An open-source, interactive data visualization library for Python"
@@ -3115,4 +3127,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "16b7f022ece0b5bdcac264f38d85705ac4c707a753a01b1b1d33f7207e0c31b0"
+content-hash = "4048523b839b6ba21d72132297b7100d9130e451f8413fd424358e8d73a655a6"

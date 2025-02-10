@@ -17,7 +17,8 @@ from typing import (
     Any,
     Union,
     Tuple,
-    AnyStr
+    AnyStr,
+    Literal
 )
 
 # Defining motor gestures model constants, measured by Gabo Mindlin
@@ -45,9 +46,7 @@ beta_bif, mu1_curves, f1, f2 = bifurcation_ode(_F1, _F2)
 # ---------------- physical model constants -----------------
 _z = {
     "a0": 0.11,
-    # "a1": 
-    # "a2": 
-    "b0": -0.1, # khz
+    "b0": -0.1,
     "b1": 1, 
     "b2": 0,
 }
@@ -55,7 +54,7 @@ _z = {
 def alpha_beta(
     obj: Any,
     z: Dict = _z,
-    method: AnyStr="best"
+    method: Literal["best", "fast"] = "best"
 ) -> List[ArrayLike]:
     """
     
@@ -77,6 +76,7 @@ def alpha_beta(
         >>> 
     
     """
+    obj.z = z
     a = np.array([z["a0"]], dtype=float)
     b = np.array([z["b0"], z["b1"], z["b2"]], dtype=float)
     
@@ -86,16 +86,12 @@ def alpha_beta(
     if method=="fast":
         obj.beta = np.dot(b, t_parabole)
     elif method=="best":
-    # define beta curve using function composition
-    # if "syllable" in obj.id:
         poly = Polynomial.fit(obj.timeFF, obj.FF, deg=10)
         x, y = poly.linspace(np.size(obj.s))
         obj.beta  = b[0] + b[1]*(y/1e4) + b[2]*(y/1e4)**2   
-    # elif "chunck" in obj.id: 
-    #     obj.beta = np.dot(b, t_parabole)
     else:
-        raise Exception("THe method you enter is not implemented."
-                        + "There are two options: fast and best")
+        raise Exception("The method entered is not implemented."
+                        + "There are two possible options: fast and best")
 
     return obj.alpha, obj.beta
 #%%
@@ -177,30 +173,19 @@ def motor_gestures(
     # ------------------------------------------------------------
     synth = deepcopy(obj)
 
-    synth.file_name = "synth_" + obj.file_name
-    synth.params = params #obj.params
+    synth.params = params
     synth.alpha = obj.alpha
     synth.beta = obj.beta
-    synth.id = "synth-" + obj.id
     synth.z = obj.z
+    
+    if not "synth" in synth.file_name:
+        synth.file_name = "synth_" + obj.file_name
+        synth.id = "synth-" + obj.id
     
     synth.times_vs = np.linspace(0, len(obj.s)/obj.sr, len(obj.s)*_ovsr)
     synth.vs = np.array(vs)
+
     synth.s = normalize(out, max_amp=1.0)
-    synth.envelope = envelope(synth.s, synth.sr, synth.Nt)
-    
-    synth.acoustical_features(
-        stft_window = synth.stft_window,
-        umbral_FF = synth.umbral_FF,
-        ff_method = synth.ff_method,
-        overlap = synth.overlap,
-        llambda = synth.llambda,
-        center = synth.center,
-        n_mfcc = synth.n_mfcc,
-        n_mels = synth.n_mels,
-        NN = synth.NN,
-        Nt = synth.Nt
-    )
 
     return synth
 #%%

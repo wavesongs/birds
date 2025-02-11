@@ -564,7 +564,7 @@ def spectrogram_waveform(
 
             ax[1].legend(loc="upper right", title="FF")
 
-            img_text = _save_name(obj) + "SongAndSyllables.png"
+            img_text = f"{_save_name(obj)}SongAndSyllables.png"
             path_save = obj.proj_dirs.IMAGES / img_text
 
         else:

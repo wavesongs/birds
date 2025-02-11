@@ -7,14 +7,11 @@ _site/
 venv
 .conda
 
-assets/results/*
 package-lock.json
 
 package
 
 ebird_audios
-results
-imgs
 examples
 
 dist

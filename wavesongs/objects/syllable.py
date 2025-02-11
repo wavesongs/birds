@@ -730,7 +730,7 @@ class Syllable:
             >>>
         """
         audio_name = f'{self.file_name[:-4]}-{self.id}-{self.no_syllable}.wav'
-        path_name = self.proj_dirs.examples / audio_name
+        path_name = self.proj_dirs.examples / audio_name.replace(" ", "")
         write(filename=path_name, fs=self.sr, data=self.s, bit_depth=bit_depth)
         print(f"Audio saved at {path_name}.")
     # %%

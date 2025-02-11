@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """ """
 from wavesongs.utils.paths import ProjDirs
-from wavesongs.utils.tools import envelope
+from wavesongs.utils.tools import envelope, is_notebook
 
 import numpy as np
 import pandas as pd
@@ -236,7 +236,10 @@ class Song:
         -------
             >>>
         """
-        return Audio(data=self.s, rate=self.sr)
+        if is_notebook():
+            return Audio(data=self.s, rate=self.sr)
+        else:
+            raise Exception("Not implemented yet!")
     #%%    
     def write_audio(self, bit_depth: int = 16) -> None:
         """

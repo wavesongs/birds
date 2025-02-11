@@ -517,19 +517,6 @@ def spectrogram_waveform(
         ax[1].set_ylabel("Frequency (kHz)")
         ax[1].set_xlabel("Time (s)")
 
-        # -------------- chuck -------------------------
-        if chunck != None:
-            ax[1].plot(
-                chunck.time + chunck.t0, chunck.FF, "gv", label="Chunck", ms=10
-            )
-            ax[2].plot(
-                chunck.time + chunck.t0 - syllable.t0,
-                chunck.FF,
-                "gv",
-                label="Chunck",
-                ms=8,
-            )
-
         if syllable != None:
             ax[1].plot(
                 syllable.time + syllable.t0,
@@ -568,7 +555,8 @@ def spectrogram_waveform(
             path_save = obj.proj_dirs.IMAGES / img_text
 
         else:
-            path_save = obj.proj_dirs.IMAGES / f"{obj.file_name[:-4]}-Song.png"
+            name = f"{obj.file_name[:-4]}-Song.png".replace(" ", "")
+            path_save = obj.proj_dirs.IMAGES / name
 
         fig.suptitle(
             f"Waveform and Spectrogram\n{obj.file_name}",

@@ -185,7 +185,7 @@ def motor_gestures(
     synth.z = obj.z
     
     if not "synth" in synth.file_name:
-        synth.file_name = "synth_" + obj.file_name
+        synth.file_name = "synth-" + obj.file_name
         synth.id = "synth-" + obj.id
     
     synth.times_vs = np.linspace(0, len(obj.s)/obj.sr, len(obj.s)*_ovsr)

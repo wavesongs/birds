@@ -390,3 +390,16 @@ def rk4(f, v: ArrayLike, dt: float):
     k4 = f(v + dt*k3)
 
     return v + dt*(2.0*(k2+k3)+k1+k4)/6.0
+
+# %%
+def is_notebook() -> bool:
+    try:
+        shell = get_ipython().__class__.__name__
+        if shell == 'ZMQInteractiveShell':
+            return True   # Jupyter notebook or qtconsole
+        elif shell == 'TerminalInteractiveShell':
+            return False  # Terminal running IPython
+        else:
+            return False  # Other type (?)
+    except NameError:
+        return False 

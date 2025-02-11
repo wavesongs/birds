@@ -1,0 +1,26 @@
+,value
+t_ini,0.8811
+t_end,1.3019
+f_ini,1000.0
+f_end,20000.0
+id,synth-syllable
+no_syllable,0
+sr,44100
+NN,256
+umbral_FF,1
+ff_method,yin
+type,intro-down
+metadata,{}
+file_name,574179401 - Zonotrichia Capensis.wav
+audios_folder,assets/audio
+z,"{'a0': 0.00097, 'b0': -0.20988, 'b1': 1.0, 'b2': 1.26656}"
+duration,0.42081632653061224
+params,"{'gm': 40000.0, 'C': 343, 'L': 0.025, 'r': 0.65, 'Ch': 1.43e-10, 'MG': 20, 'MB': 10000.0, 'RB': 5000000.0, 'Rh': 24000.0}"
+Nt,10
+center,False
+overlap,0.5
+llambda,1.5
+n_mfcc,4
+n_mels,4
+stft_window,hann
+curves_csv,assets/results/mg_params/synth-574179401-ZonotrichiaCapensis-0-curves.csv

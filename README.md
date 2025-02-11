@@ -76,16 +76,19 @@ Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapacul
 
 Explore the [Tutorial 1 Notebook](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb) to generate synthetic birdsongs and explore the model plots. 
 
-Here is an example of simple code to generate and display a sythetic audio.
+Here is an example of simple code to generate and display a sythetic audio. First, start by loading the wavesongs package:
 
 ```python
-# select matplotlib backend for notebook, enable interactive plots
+# select matplotlib backend for notebook, enable interactive plots, just works on notebooks
 %matplotlib ipympl
 
-from wavesongs.utils.paths import ProjDirs       # project files manager
-from wavesongs.objects.syllable import Syllable  # syllable objects
-from wavesongs.utils import plots                # plotter
+from wavesongs.utils.paths import ProjDirs       # Project files manager
+from wavesongs.objects.syllable import Syllable  # Syllable objects
+from wavesongs.utils import plots                # Display plots
+```
 
+Then, create a project directory manager, select a region of interest, and define the song for study. You can display it with the plots functions.
+```python
 proj_dirs = ProjDirs(audios="./assets/audio", results="./assets/results")
 
 # Region of Interest
@@ -110,38 +113,27 @@ plots.spectrogram_waveform(copeton_syllable_0, ff_on=True, save=True)
 </figure>
 
 ```python
-copeton_syllable_0.play()
+copeton_syllable_0.play() # just work on notebooks
 ```
 
 https://github.com/user-attachments/assets/d15e7433-5f4c-451f-85aa-d4d53525029f
 
+Now, let's find the optimal values to generate a comparable syllable, with errors below 5 % or even 1%.
 
 ```python
 from wavesongs.model import optimizer
 
 optimal_z = optimizer.optimal_params(
-   syllable=copeton_syllable_0, Ns=10, full_output=True
+   syllable=copeton_syllable_0, Ns=10, full_output=False
 )
 print(f"\nOptimal z values:\n\t{optimal_z}")
 ```
 ```text
 Computing a0*...
-Optimization terminated successfully.
-         Current function value: 0.005480
-         Iterations: 1
-         Function evaluations: 2
 	 Optimal values: a_0=0.0010, t=0.51 min
 
 Computing b0*, b1*, and b2*...
-Optimization terminated successfully.
-         Current function value: 0.001943
-         Iterations: 38
-         Function evaluations: 75
 	 Optimal values: b_0=-0.2149, b_2=1.2980, t=13.77 min
-Optimization terminated successfully.
-         Current function value: 0.001943
-         Iterations: 13
-         Function evaluations: 28
 	 Optimal values: b_1=1.0000, t=5.69 min
 
 Time of execution: 19.97 min
@@ -150,6 +142,7 @@ Optimal z values:
 	{'a0': 0.00105, 'b0': -0.21491, 'b1': 1.0, 'b2': 1.29796}
 ```
 
+With the optimal values, define and dislpay the synthetic syllable:
 ```python
 # Define the synthetic syllable
 synth_copeton_syllable_0 = copeton_syllable_0.solve(z=optimal_z, method="best")
@@ -167,10 +160,9 @@ plots.scores(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 ```python
 plots.motor_gestures(synth_copeton_syllable_0, save=False)
 ```
-
 <a href="./assets/results/images/synth_574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png">
 <figure>
-    <img src='./assets/results/images/synth_574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
+    <img src='./assets/results/images/synth-574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
     <figcaption style="text-align: center;"><b><a id="figure3" style="color:#318bf8;">Figure 3</a></b>: Motor gesture, model parameters curves.</figcaption>
 </figure>
 </a>
@@ -186,7 +178,7 @@ plots.syllables(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 </a>
 
 ```python
-synth_copeton_syllable_0.play()
+synth_copeton_syllable_0.play() # just work on notebooks
 ```
 
 https://github.com/user-attachments/assets/66ca1630-0ad0-43fc-bb56-cb397064ecd3

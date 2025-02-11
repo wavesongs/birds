@@ -107,10 +107,12 @@ copeton_syllable_0.acoustical_features(
 plots.spectrogram_waveform(copeton_syllable_0, ff_on=True, save=True)
 ```
 
+<a href="https://github.com/wavesongs/wavesongs/blob/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down.png">
 <figure>
-    <img src='./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
+    <img src='https://github.com/wavesongs/wavesongs/blob/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
     <figcaption style="text-align: center;"><b><a id="figure1" style="color:#318bf8;">Figure 1</a></b>: Waveform and spectrogram of the audio with id 574179401.</figcaption>
 </figure>
+</a>
 
 ```python
 copeton_syllable_0.play() # just work on notebooks
@@ -150,9 +152,9 @@ plots.spectrogram_waveform(synth_copeton_syllable_0, ff_on=True, save=True)
 # Display the socre variables
 plots.scores(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 ```
-<a href="./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-ScoringVariables.png">
+<a href="https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-ScoringVariables.png">
 <figure>
-    <img src='./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-ScoringVariables.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
+    <img src='https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-ScoringVariables.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
     <figcaption style="text-align: center;"><b><a id="figure2" style="color:#318bf8;">Figure 2</a></b>: Scoring variables realtive errores.</figcaption>
 </figure>
 </a>
@@ -160,9 +162,9 @@ plots.scores(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 ```python
 plots.motor_gestures(synth_copeton_syllable_0, save=False)
 ```
-<a href="./assets/results/images/synth_574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png">
+<a href="https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/synth_574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png">
 <figure>
-    <img src='./assets/results/images/synth-574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
+    <img src='https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/synth-574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
     <figcaption style="text-align: center;"><b><a id="figure3" style="color:#318bf8;">Figure 3</a></b>: Motor gesture, model parameters curves.</figcaption>
 </figure>
 </a>
@@ -170,9 +172,9 @@ plots.motor_gestures(synth_copeton_syllable_0, save=False)
 ```python
 plots.syllables(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 ```
-<a href="./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png">
+<a href="https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png">
 <figure>
-    <img src='./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
+    <img src='https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
     <figcaption style="text-align: center;"><b><a id="figure4" style="color:#318bf8;">Figure 4</a></b>: Real and synthetic syllables.</figcaption>
 </figure>
 </a>

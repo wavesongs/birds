@@ -73,6 +73,7 @@ def _save_name(obj) -> AnyStr:
     img_text = f"{file_name}-{obj.no_syllable}-{obj.type}" \
                 if obj.type!="" else f"{file_name}-{obj.no_syllable}"
     return img_text.replace(" ","")
+
 #%%
 def alpha_beta(
     obj: Any,  # Union[Syllable,Song],
@@ -570,14 +571,16 @@ def spectrogram_waveform(
             path_save = obj.proj_dirs.IMAGES / f"{obj.file_name[:-4]}-Song.png"
 
         fig.suptitle(
-            f"Waveform and Spectrogram: {obj.file_name}",
+            f"Waveform and Spectrogram\n{obj.file_name}",
             fontsize=_TITLE_FONTSIZE,
             y=0.99,
             fontweight="bold",
         )
-        plt.subplots_adjust(wspace=0, hspace=0, top=0.9)
+        plt.subplots_adjust(
+            wspace=0.1, hspace=0.1, top=0.875, bottom=0.075, left=0.075, right=0.85
+        )
     # ----------------------------- syllable -----------------------------
-    else:
+    elif "syllable" in obj.id:
         fig, ax = plt.subplots(
             2, 1,
             gridspec_kw={"height_ratios": [3, 8]},
@@ -587,7 +590,7 @@ def spectrogram_waveform(
 
         ax[0].plot(obj.time_s, obj.s, "k", label="waveform")
         ax[0].plot(obj.time_s, obj.envelope, label="envelope")
-        ax[0].legend(bbox_to_anchor=(1.01, 1.0))
+        ax[0].legend(bbox_to_anchor=(1.18, 1.0))
         ax[0].xaxis.set_major_formatter(ticks_x)
         ax[0].set_ylabel("Amplitude (a.u)")
 
@@ -612,7 +615,7 @@ def spectrogram_waveform(
                 ax[1].plot(obj.time, obj.FF, "co", ms=ms, label=r"FF$_{pyin}$")
                 ax[1].plot(obj.time, obj.FF2, "b*", ms=ms, label=r"FF$_{yin}$")
             if select_time is False:
-                ax[1].legend(bbox_to_anchor=(1.135, 1.02))
+                ax[1].legend(bbox_to_anchor=(1.135, 1.))
 
         ax[1].set_ylim(obj.flim)
         ax[1].set_xlim(tlim)
@@ -620,11 +623,11 @@ def spectrogram_waveform(
         ax[1].set_xlabel("Time (s)")
 
         plt.subplots_adjust(
-            wspace=0.1, hspace=0.1, top=0.85, bottom=0.05, left=0.05, right=0.7
+            wspace=0.1, hspace=0.1, top=0.9, bottom=0.05, left=0.05, right=0.85
         )
 
         if obj.type!="":
-            plt.subplots_adjust(top=0.8)
+            plt.subplots_adjust(top=0.85)
             suptitle = f"Waveform and Spectrogram\n{_suptitle(obj)}"
         else:
             suptitle = f"Waveform and Spectrogram: {_suptitle(obj)}"
@@ -637,7 +640,9 @@ def spectrogram_waveform(
         )
         path_save = obj.proj_dirs.IMAGES / _save_name(obj)
 
-    fig.tight_layout()
+    else:
+        raise Exception("Wrong object.")
+    # fig.tight_layout()
 
     if save:
         fig.savefig(path_save,
@@ -650,8 +655,8 @@ def spectrogram_waveform(
 
     if select_time:
         return klicker_time(fig, ax[1])
-        # return fig, ax# %%
-#%%
+
+# %%
 def syllables(
     obj: Any,  # Union[Syllable,Song],
     obj_synth: Any,  # Union[Syllable,Song],
@@ -715,7 +720,7 @@ def syllables(
         cmap=_CMAP,
     )
 
-    cbar_ax = fig.add_axes([0.95, 0.47, 0.015, 0.36])
+    cbar_ax = fig.add_axes([0.95, 0.445, 0.015, 0.36])
     clb = fig.colorbar(img, cax=cbar_ax, format="%+2.f")
     clb.set_label("Power\n(dB)", labelpad=-25, y=1.2, rotation=0)
 
@@ -949,13 +954,13 @@ def scores(
     ax32.set_ylabel("SCI (dl)")
     ax32.set_ylim((0, 5))
 
-    cbar_ax = fig.add_axes([0.8, 0.332, 0.02, 0.315])
+    cbar_ax = fig.add_axes([0.8, 0.33, 0.02, 0.315])
     clb = fig.colorbar(img, cax=cbar_ax)
     clb.set_label("Power (dB)", labelpad=12, y=0.5, rotation=90)
 
     if obj.type!="":
-        plt.subplots_adjust(top=0.775)
         suptitle = f"Scoring Variables\n{_suptitle(obj)}"
+        gs.update(top=0.9)
     else:
         suptitle = f"Scoring Variables: {_suptitle(obj)}"
 
@@ -979,7 +984,7 @@ def scores(
         plt.show()
     else:
         plt.close()
-    # return fig, gs
+        
 # %%
 def spectrum_comparison(
     obj: Any,  # Union[Syllable,Song],

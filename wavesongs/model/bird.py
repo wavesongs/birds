@@ -1,14 +1,20 @@
 """Motor gesture implementation for birdsongs"""
 import numpy as np
+import pandas as pd
+
 from copy import deepcopy
 from maad.sound import normalize
 from numpy.polynomial import Polynomial
+from pathlib import Path
 
 from wavesongs.utils.tools import (
     bifurcation_ode,
     envelope,
     rk4
 )
+
+# from wavesongs.objects.syllable import Syllable
+# from wavesongs.utils.paths import ProjDirs
 
 from numpy.typing import ArrayLike
 from typing import (

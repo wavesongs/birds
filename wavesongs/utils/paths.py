@@ -13,10 +13,15 @@ from os.path import isdir, basename
 from pathlib import Path, PosixPath
 from typing import Union, List, AnyStr
 
+import wavesongs as ws
+# import wavesongs.objects.syllable
+# import wavesongs.model.bird #import motor_gestures, alpha_beta
+
 _CATALOG_LABEL = "ML Catalog Number"
 _AUDIO_FORMATS = (".mp3", ".wav")
 
 #%%
+
 class ProjDirs:
     """
 
@@ -174,105 +179,58 @@ class ProjDirs:
                 if id in self.files_names[i]
             ][0]
         return path
+    
+    # %%
+    def import_mg(self, id, no_syllable=0):
+        all_filles = Path(self.mg_param).glob("**/*")
+        path_mg = [a for a in all_filles
+                if f"-{no_syllable}-" in str(a) and id in str(a) and "mg." in str(a)][0]
+        
+        mg_df = pd.read_csv(path_mg, index_col=0)
+        mg_df = mg_df.to_dict()["value"]
 
-    # #%%
-    # def ImportParameters1(self, XC=None, no_file=None, no_syllable=None, name=None):
-    #     self.data_param = self.MG_Files()
+        t0 = float(mg_df["t_ini"])
+        sr = int(mg_df["sr"])
+        duration = float(mg_df["duration"])
+        self.AUDIOS = mg_df["audios_folder"]
+        params = eval(mg_df["params"])
+        
+        #self = ProjDirs(audios=audios_folder, results=self.RESULTS)
+        synth = ws.objects.syllable.Syllable(proj_dirs=self, duration=duration, sr=sr)
+        synth.id = mg_df["id"]
+        synth.type = mg_df["type"]
+        synth.no_syllable = int(mg_df["no_syllable"])
+        synth.metadata = mg_df["metadata"]
+        synth.file_name = mg_df["file_name"]
+        synth.z = eval(mg_df["z"])
+        synth.t0_bs = t0
+        
+        if "curves_csv" in mg_df.keys():
+            curves_df = pd.read_csv(mg_df["curves_csv"], index_col=0)
+            time_s = curves_df["time"].array
+            alpha = curves_df["alpha"].array
+            beta = curves_df["beta"].array
+            duration = time_s[-1]
+            curves = [alpha, beta]
+            synth.alpha = alpha
+            synth.beta = beta
+        else:
+            curves = ws.model.bird.alpha_beta(synth, synth.z, "fast")
 
-    #     if name is not None and XC is None and no_file is None :
-    #         df = self.data_param["name"].str.contains(name,case=False)
-
-    #     if XC is not None and no_file is None and name is None:
-    #         df = self.data_param[self.data_param['id_XC'] == XC]
-    #     if no_file is not None and XC is None and name is None:
-    #         df = self.data_param.iloc[no_file]
-    #     if no_file is None and XC is None:
-    #         df = self.data_param
-    #     if no_file is None and XC is None and name is None:
-    #         df = self.data_param
-
-    #     if no_syllable is not None:
-    #         df = df[df['no_syllable'] == str(no_syllable)]
-    #         coef = pd.read_csv(df["coef_path"].values[0]).rename(columns={"Unnamed: 0":"parameter"})
-    #         tlim = pd.Series({"t_ini":coef.iloc[-2].value, "t_end":coef.iloc[-1].value})
-    #         df = pd.concat([df, tlim]).reset_index()
-
-    #         return df#, coef#, motor_gesture
-    #     else:                               # if syllables is Nonex
-    #         coefs, type, out, tlim, NN, umbral_FF, country, state = [], [], [], [], [], [], [], []
-    #         for i in df.index:
-    #             coef = pd.read_csv(self.data_param.iloc[i]["coef_path"], index_col="Unnamed: 0", engine='python')#, encoding = "utf-8") #cp1252
-    #             tlim.append([float(coef.iloc[7].value), float(coef.iloc[8].value)])
-    #             NN.append(int(coef.iloc[9].value))
-    #             umbral_FF.append(float(coef.iloc[10].value))
-    #             type.append(coef.iloc[11].value)
-    #             country.append(coef.iloc[12].value)
-    #             state.append(coef.iloc[13].value)
-    #             coefs.append(coef.iloc[:7].astype('float64'))
-    #         tlim = np.array(tlim)
-
-    #         df = pd.DataFrame({'id_XC':df['id_XC'], 'no_syllable':df['no_syllable'],
-    #         'id':df['id'], 'name':df['name'], 'coef_path':df['coef_path'], 'param_path':df['param_path'],
-    #         'audio_path':df['audio_path'], 's':df['s'], 'fs':df['fs'], 'file_name':df['file_name'],
-    #         't_ini':tlim[:,0], 't_end':tlim[:,1], 'NN':NN, 'umbral_FF':umbral_FF, 'coef':coefs, 'type':type, 'country':country, 'state':state},
-    #         index=df.index)
-
-    #         out = [df.iloc[i] for i in range(len(df.index))]
-    #         self.df = df.reset_index(drop=True, inplace=False)
-
-    #         print("{} files were found.".format(len(df.index)))
-    #         return out, df
-    # #%%
-    # def ImportParameters(self, no_syllable=None, country_filter=None):
-    #     df = self.MG_Files()
-    #     coefs, type, out, tlim, NN, umbral_FF, country, state = [], [], [], [], [], [], [], []
-    #     for i in df.index:
-    #         coef = pd.read_csv(self.data_param.iloc[i]["coef_path"], index_col="Unnamed: 0", engine='python').T#, encoding = "utf-8") #cp1252
-    #         tlim.append([float(coef["t_ini"].value), float(coef["t_end"].value)])
-    #         NN.append(int(coef["NN"].value))
-    #         umbral_FF.append(float(coef["umbral_FF"].value))
-    #         type.append(coef["type"].value)
-    #         country.append(coef["country"].value)
-    #         state.append(coef["state"].value)
-    #         coefs.append(coef[["a0","a1","a2","b0","b1","b2","gm"]].values[0]) # coef.iloc[:7].astype('float64')
-    #     tlim = np.array(tlim)
-
-    #     df = pd.DataFrame({'id_XC':df['id_XC'], 'no_syllable':df['no_syllable'],
-    #     'id':df['id'], 'name':df['name'], 'coef_path':df['coef_path'],
-    #     # 'param_path':df['param_path'], 's':df['s'], 'fs':df['fs'],
-    #     'audio_path':df['audio_path'], 'file_name':df['file_name'],
-    #     't_ini':tlim[:,0], 't_end':tlim[:,1], 'NN':NN, 'umbral_FF':umbral_FF, 'coef':coefs, 'type':type, 'country':country, 'state':state},
-    #     index=df.index)
-
-    #     self.df = df.reset_index(drop=True, inplace=False)
-    #     print("{} files were found.".format(len(self.df.index)))
-
-    #     if country_filter is not None:
-    #         self.df = self.df[self.df["country"]==country_filter]
-    #     if no_syllable is not None:
-    #         self.df = self.df[self.df["no_syllable"]==str(no_syllable)]
-
-    #     return self.df
-    # #%%
-    # def MG_Files(self):
-    #     self.MG_coef = list(self.MG_param.glob("*MG.csv"))
-    #     MG_coef_splited  = [relpath(MG, self.MG_param) for MG in self.MG_coef]
-    #     MG_coef_splited  = [relpath(MG, self.MG_param).replace(" ","").split("-") for MG in self.MG_coef]
-
-    #     id_XC = [x[0] for x in MG_coef_splited]
-    #     no_syllables = [x[-2] for x in MG_coef_splited]
-    #     id = [x[-3] for x in MG_coef_splited]
-    #     name = [x[1]+"-"+x[2] for x in MG_coef_splited]
-    #     audios = [list(self.AUDIOS.glob(id+"*"))[0]  for id  in id_XC]
-    #     file_name = [relpath(audio, self.AUDIOS) for audio in audios]
-
-    #     self.data_param = pd.DataFrame({'id_XC':id_XC,
-    #                                     'no_syllable': no_syllables,
-    #                                     'id': id,
-    #                                     'name':name,
-    #                                     "coef_path":self.MG_coef,
-    #                                     "audio_path":audios,
-    #                                     "file_name":file_name})
-    #                                             #"coef_path":self.MG_coef, "s":ss, "fs":fss,
-
-    #     return self.data_param
+        
+        synth = ws.model.bird.motor_gestures(synth, curves, params)
+        synth.acoustical_features(
+            NN = int(mg_df["NN"]),
+            ff_method = mg_df["ff_method"],
+            umbral_FF = float(mg_df["umbral_FF"]),
+            flim = [float(mg_df["f_ini"]), float(mg_df["f_end"])],
+            Nt = int(mg_df["Nt"]),
+            center = mg_df["center"],
+            overlap = float(mg_df["overlap"]),
+            llambda = float(mg_df["llambda"]),
+            n_mfcc = int(mg_df["n_mfcc"]),
+            n_mels = int(mg_df["n_mels"]),
+            stft_window = mg_df["stft_window"]
+        )
+        
+        return synth

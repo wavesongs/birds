@@ -49,25 +49,6 @@ _b0_range = (-1, 0.5)
 _b1_range = (0, 2)
 _b2_range = (0, 2)
 
-# def _y(x, *params):
-#   return params[0] + params[1]*x + params[2]**x**2
-
-
-# def _beta_ranges(synth_syllable, params: Dict):
-#     bmax = synth_syllable.beta.max()
-#     bmin = synth_syllable.beta.min()
-
-
-#     # mayor a la raíz encontrada
-#     sol1 = root(_y, [-10,10], args=(params["b0"]-_beta_min, params["b1"], params["b2"]),
-#                         method='hybr', jac=None, tol=0.0001, callback=None, options=None)
-#     beta_min_roots = sol1.x
-#     # menor a la raíz encontrada
-#     sol2 = root(_y, [-10,10], args=(params["b0"]-_beta_max, params["b1"], params["b2"]),
-#                         method='hybr', jac=None, tol=0.0001, callback=None, options=None)
-#     beta_max_roots = sol1.x
-# return sol1
-
 # ==========================================================================
 # --------------------------- Residual Functions ---------------------------
 # ==========================================================================

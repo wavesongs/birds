@@ -84,7 +84,7 @@ def read_mg(
     -------
         >>>
     """
-    folder = proj_dirs.mg_param # f"{results}/MG_param"
+    folder = proj_dirs.mg_param # f"{results}/mg_param"
     file_name = f"{folder}/{file_name}-{no_syllable}-mg.csv" \
                     if type=="" \
                     else f"{folder}/{file_name}-{no_syllable}-{type}-mg.csv"
@@ -231,7 +231,7 @@ class Syllable:
             self.s = normalize(s, max_amp=1.0)
         elif (obj is None) and (file_id is None) and (duration is not None):
             self.file_name = "synthetic"
-            self.id = "synth_" +id
+            self.id = "synth-" +id
             self.no_syllable = no_syllable
             self.proj_dirs = proj_dirs
             self.metadata = metadata
@@ -239,7 +239,7 @@ class Syllable:
             self.sr = sr
             self.type = type
             self.T = duration
-            self.s = np.ones(self.T*sr)
+            self.s = np.ones(int(self.T*sr))
             self.t0 = self.t0_bs = 0            
         else:
             raise Exception("You have to enter a file_id with a"
@@ -506,10 +506,8 @@ class Syllable:
         self.params = _params
         self.z = _z
         # update parameters if given
-        # if self.params!=_params:
         for k in params.keys():
             self.params[k] = params[k]
-        # if self.z!=_z:
         for k in z.keys():
             self.z[k] = z[k]
         # define alpha and beta parameters
@@ -637,7 +635,7 @@ class Syllable:
 
         return synth
     #%%
-    def export_mg(self, dataframe: bool=False) -> DataFrame|None:
+    def export_mg(self, dataframe: bool=False, export_curves: bool=True) -> DataFrame|None:
         """
         
         
@@ -658,8 +656,8 @@ class Syllable:
             raise Exception("You only can export motor gestures"
                             + " parameters from synthetic objects")
         # ------------ export p values and alpha-beta arrays ------------
-        file_name = self.file_name.replace("synth_","")
-        type = self.type if type!="" else ""
+        file_name = self.file_name.replace("synth-","")
+        type = self.type if self.type!="" else ""
         info = {
             "t_ini": round(self.t_interval[0], 4),
             "t_end": round(self.t_interval[1], 4),
@@ -674,15 +672,26 @@ class Syllable:
             "type": type,
             "metadata": str(self.metadata),
             "file_name": file_name,
-            "root_folder": self.proj_dirs.ROOT,
             "audios_folder": self.proj_dirs.AUDIOS,
-            "z": str(self.z)
+            "z": str(self.z),
+            "duration": self.T,
+            "params": str(self.params),
+            "Nt": self.Nt,
+            "center": self.center,
+            "overlap": self.overlap,
+            "llambda": self.llambda,
+            "n_mfcc": self.n_mfcc,
+            "n_mels": self.n_mels,
+            "stft_window": self.stft_window
         }
+        if export_curves:
+            path = self.export_curves()
+            info = info | {"curves_csv": path} 
 
-        name = f"{file_name[:-4]}-{self.no_syllable}-MG.csv"\
+        name = f"{file_name[:-4]}-{self.no_syllable}-mg.csv"\
                 if type!="" \
-                else f"{file_name[:-4]}-{self.no_syllable}-{self.type}-MG.csv"
-        path = self.proj_dirs.MG_param / name
+                else f"{file_name[:-4]}-{self.no_syllable}-{self.type}-mg.csv"
+        path = self.proj_dirs.mg_param / name.replace(" ", "")
         df_mg = pd.DataFrame.from_dict(info, orient="index", columns=["value"])
         df_mg.to_csv(path, index=True)
         print(f"Motor gesture parameters saved at {path}.")
@@ -724,3 +733,34 @@ class Syllable:
         path_name = self.proj_dirs.examples / audio_name
         write(filename=path_name, fs=self.sr, data=self.s, bit_depth=bit_depth)
         print(f"Audio saved at {path_name}.")
+    # %%
+    def export_curves(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """        
+        curves_array = np.array([self.time_s, self.alpha, self.beta]).T
+        curves_df = pd.DataFrame(curves_array, columns=["time","alpha","beta"])
+        name = f"{self.file_name[:-4]}-{self.no_syllable}-curves.csv"\
+                if type!="" \
+                else f"{self.file_name[:-4]}-{self.no_syllable}-{self.type}-curves.csv"
+        path = self.proj_dirs.mg_param / name.replace(" ", "")
+        curves_df.to_csv(path, index=True)
+        print(f"Curves arrays saved at {path}")
+        return path
+
+    # %%
+    def import_curves(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """        
+        curves_array = np.array([self.time_s, self.alpha, self.beta])
+        curves_df = pd.DataFrame(curves_array)
+        name = f"{self.file_name[:-4]}-{self.no_syllable}-curves.csv"\
+                if type!="" \
+                else f"{self.file_name[:-4]}-{self.no_syllable}-{self.type}-curves.csv"
+        path = self.proj_dirs.mg_param / name
+        return pd.read_csv(path)

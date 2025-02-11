@@ -14,9 +14,9 @@
 ![Python 3.10+](https://img.shields.io/badge/python->=3.10-blue.svg)
 ![Open Source](https://img.shields.io/badge/open%20source-♡-lightgrey)
 
-[Overview](#overview) •
-[Installation](#installation) •
-[Quick Start](#quick-start) •
+[Overview](#-overview) •
+[Installation](#️-installation) •
+[Quick Start](#-gettint-started) •
 [Contribute](#-contribute) •
 [References](#-references)
 
@@ -74,7 +74,9 @@ Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapacul
 
 ## 🚀 Gettint Started
 
-Explore the [Tutorial 1 Notebook](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb) to generate synthetic birdsongs and explore the model plots. Here is an example of simple code to import and display an audio.
+Explore the [Tutorial 1 Notebook](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb) to generate synthetic birdsongs and explore the model plots. 
+
+Here is an example of simple code to generate and display a sythetic audio.
 
 ```python
 # select matplotlib backend for notebook, enable interactive plots
@@ -179,7 +181,7 @@ plots.syllables(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 <a href="./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png">
 <figure>
     <img src='./assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png' alt='Sample motor gesture output' width=70% style="display: block; margin: 0 auto 0 auto;"/>
-    <figcaption style="text-align: center;"><b><a id="figure4" style="color:#318bf8;">Figure 4</a></b>: Motor gesture, model parameters curves.</figcaption>
+    <figcaption style="text-align: center;"><b><a id="figure4" style="color:#318bf8;">Figure 4</a></b>: Real and synthetic syllables.</figcaption>
 </figure>
 </a>
 

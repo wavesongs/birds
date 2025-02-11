@@ -113,7 +113,7 @@ plots.spectrogram_waveform(copeton_syllable_0, ff_on=True, save=True)
 copeton_syllable_0.play()
 ```
 
-![audio](./assets/results/audios/574179401-ZonotrichiaCapensis-syllable-0.mp4)
+https://github.com/user-attachments/assets/d15e7433-5f4c-451f-85aa-d4d53525029f
 
 
 ```python
@@ -189,7 +189,7 @@ plots.syllables(copeton_syllable_0, synth_copeton_syllable_0, save=False)
 synth_copeton_syllable_0.play()
 ```
 
-![audio_synth](./assets/results/audios/574179401-ZonotrichiaCapensis-synth-syllable-0.mp4)
+https://github.com/user-attachments/assets/66ca1630-0ad0-43fc-bb56-cb397064ecd3
 
 For advanced usage (e.g., custom gestures, parameter tuning, data measures, etc), check the other tutorials: [Spectrum Measures](https://github.com/wavesongs/wavesongs/blob/main/Tutorial2_SpectrumMeasures.ipynb) or [Synthetic Songs](https://github.com/wavesongs/wavesongs/blob/main/Tutorial3_SyntheticSongs.ipynb). More details can be found in the [Documentation](https://wavesongs.github.io/doc).
 

@@ -1,0 +1,255 @@
+.. image:: ./assets/logo.png
+   :alt: WaveSongs logo
+   :width: 100%
+   :align: center
+
+.. centered:: WaveSongs
+.. centered:: A Python package for birdsong synthesis and bioacoustic analysis
+
+.. image:: https://img.shields.io/badge/version-1.0.1-008000
+  :alt: version
+.. image:: https://img.shields.io/badge/license-GPLv3-blue.svg
+  :alt: License: GPL v3
+.. image:: https://img.shields.io/badge/python->=3.10-blue.svg
+  :alt: Python 3.10+
+.. image:: https://img.shields.io/badge/open%20source-♡-lightgrey
+  :alt: Open Source
+
+.. centered:: Overview_ • Installation_ • Quick Start_ • Contribute_ • References_
+
+----
+
+Overview
+========
+
+WaveSongs implements the `motor gestures model for birdsong <http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf>`_ developed by `Gabo Mindlin <https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&hl=en>`_ to generate synthetic birdsongs through numerical optimization [1]_, [2]_. By leveraging **fundamental frequency (FF)** and **spectral content index (SCI)** as key parameters, the package solves a minimization problem using `SciPy <https://docs.scipy.org/doc/scipy/tutorial/optimize.html>`_ and performs audio analysis with `librosa <https://librosa.org/>`_.
+
+Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapaculo*, and *Mimus Gilvus*, the model achieves **<5% relative error in FF reconstruction** compared to empirical data.
+
+Installation
+============
+
+Prerequisites
+-------------
+
+- `Python <https://www.python.org/>`_ ≥ 3.10
+- `Git <https://git-scm.com/>`_
+
+Steps
+-----
+
+1. **Clone the repository**:
+
+   .. code-block:: bash
+
+      git clone https://github.com/wavesongs/wavesongs
+      cd wavesongs
+
+2. **Set up a virtual environment** (choose one method):
+
+   **Using `venv`**:
+
+   .. code-block:: bash
+
+      python -m venv venv
+      # Activate on Linux/macOS
+      source venv/bin/activate
+      # Activate on Windows
+      .\venv\Scripts\activate
+
+   **Using Conda**:
+
+   .. code-block:: bash
+
+      conda create -n wavesongs python=3.12
+      conda activate wavesongs
+
+3. **Install dependencies**:
+
+   .. code-block:: bash
+
+      pip install -r requirements.txt
+
+4. **Install WaveSongs** in editable mode:
+
+   .. code-block:: bash
+
+      pip install -e .
+
+Quick Start
+===========
+
+Explore the `Tutorial 1 Notebook <https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb>`_ to generate synthetic birdsongs and explore the model plots.
+
+Here is an example of simple code to generate and display a synthetic audio. First, start by loading the wavesongs package:
+
+.. code-block:: python
+
+   # select matplotlib backend for notebook, enable interactive plots, just works on notebooks
+   %matplotlib ipympl
+
+   from wavesongs.utils.paths import ProjDirs       # Project files manager
+   from wavesongs.objects.syllable import Syllable  # Syllable objects
+   from wavesongs.utils import plots                # Display plots
+
+Then, create a project directory manager, select a region of interest, and define the song for study. You can display it with the plots functions.
+
+.. code-block:: python
+
+   proj_dirs = ProjDirs(audios="./assets/audio", results="./assets/results")
+
+   # Region of Interest
+   tlim = (0.8798, 1.3009)
+
+   # Define the syllable
+   copeton_syllable_0 = Syllable(
+      proj_dirs=proj_dirs, file_id="574179401", obj=copeton_syllable,
+      tlim=tlim, type="intro-down", no_syllable="0", sr=44100
+   )
+   copeton_syllable_0.acoustical_features(
+      umbral_FF=1.4, NN=256, ff_method="yin", flim=(1e2, 2e4)
+   )
+
+   # Display the syllable's spectrogram
+   plots.spectrogram_waveform(copeton_syllable_0, ff_on=True, save=True)
+
+.. figure:: https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down.png
+   :alt: Sample motor gesture output
+   :width: 70%
+   :align: center
+
+   **Figure 1**: Waveform and spectrogram of the audio with id 574179401.
+
+.. code-block:: python
+
+   copeton_syllable_0.play() # just work on notebooks
+
+Now, let's find the optimal values to generate a comparable syllable, with errors below 5% or even 1%.
+
+.. code-block:: python
+
+   from wavesongs.model import optimizer
+
+   optimal_z = optimizer.optimal_params(
+      syllable=copeton_syllable_0, Ns=10, full_output=False
+   )
+   print(f"\nOptimal z values:\n\t{optimal_z}")
+
+.. code-block:: text
+
+   Computing a0*...
+      Optimal values: a_0=0.0010, t=0.51 min
+
+   Computing b0*, b1*, and b2*...
+      Optimal values: b_0=-0.2149, b_2=1.2980, t=13.77 min
+      Optimal values: b_1=1.0000, t=5.69 min
+
+   Time of execution: 19.97 min
+
+   Optimal z values:
+      {'a0': 0.00105, 'b0': -0.21491, 'b1': 1.0, 'b2': 1.29796}
+
+With the optimal values, define and display the synthetic syllable:
+
+.. code-block:: python
+
+   # Define the synthetic syllable
+   synth_copeton_syllable_0 = copeton_syllable_0.solve(z=optimal_z, method="best")
+   plots.spectrogram_waveform(synth_copeton_syllable_0, ff_on=True, save=True)
+   # Display the score variables
+   plots.scores(copeton_syllable_0, synth_copeton_syllable_0, save=False)
+
+.. figure:: https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-ScoringVariables.png
+   :alt: Sample motor gesture output
+   :width: 70%
+   :align: center
+
+   **Figure 2**: Scoring variables relative errors.
+
+.. code-block:: python
+
+   plots.motor_gestures(synth_copeton_syllable_0, save=False)
+
+.. figure:: https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/synth_574179401-ZonotrichiaCapensis-0-intro-down-mg_params.png
+   :alt: Sample motor gesture output
+   :width: 70%
+   :align: center
+
+   **Figure 3**: Motor gesture, model parameters curves.
+
+.. code-block:: python
+
+   plots.syllables(copeton_syllable_0, synth_copeton_syllable_0, save=False)
+
+.. figure:: https://raw.githubusercontent.com/wavesongs/wavesongs/refs/heads/main/assets/results/images/574179401-ZonotrichiaCapensis-0-intro-down-SoundAndSpectros.png
+   :alt: Sample motor gesture output
+   :width: 70%
+   :align: center
+
+   **Figure 4**: Real and synthetic syllables.
+
+.. code-block:: python
+
+   synth_copeton_syllable_0.play() # just work on notebooks
+
+For advanced usage (e.g., custom gestures, parameter tuning, data measures, etc), check the other tutorials: `Spectrum Measures <https://github.com/wavesongs/wavesongs/blob/main/Tutorial2_SpectrumMeasures.ipynb>`_ or `Synthetic Songs <https://github.com/wavesongs/wavesongs/blob/main/Tutorial3_SyntheticSongs.ipynb>`_. More details can be found in the `Documentation <https://wavesongs.github.io/doc>`_.
+
+Data Integration
+================
+
+Pre-processed field recordings from `Xeno Canto <https://xeno-canto.org/>`_ and `eBird <https://ebird.org/home>`_ are included in `./assets/audio`. To use custom recordings place `.wav` or `.mp3` files in `./assets/audio/` or define the audios path with the `ProjDirs` class.
+
+License
+=======
+
+WaveSongs is licensed under the `GNU General Public License v3.0 <./LICENSE>`_.
+
+Citation
+========
+
+If this work contributes to your research, please cite:
+
+.. code-block:: bibtex
+
+   @software{aguilera_wavesongs_2025,
+       author = {Aguilera Novoa, Sebastián},
+       title = {WaveSongs: Computational Birdsong Synthesis},
+       year = {2025},
+       publisher = {GitHub},
+       journal = {GitHub Repository},
+       url = {https://github.com/wavesongs/wavesongs}
+   }
+
+Contribute
+==========
+
+We welcome contributions! See our roadmap:
+
+- [ ] **Integrate Xeno Canto API** for direct dataset downloads.
+- [ ] **Add ROIs analysis** using `scikit-maad`. This will allow automatic syllables detection and generation.
+- [ ] **Improve FF parametrization** for small motor gestures, chunks.
+
+To report issues or suggest features, open a `GitHub Issue <https://github.com/wavesongs/wavesongs/issues>`_.
+
+References
+==========
+
+Core Methodology
+----------------
+
+.. [1] Mindlin, G. B., & Laje, R. (2005). *The Physics of Birdsong*. Springer. `DOI <https://doi.org/10.1007/3-540-28249-1>`_
+
+.. [2] Amador, A., et al. (2013). Elemental gesture dynamics in song premotor neurons. *Nature*. `DOI <https://doi.org/10.1038/nature11967>`_
+
+Software
+--------
+
+- `Librosa <https://librosa.org/>`_ • Audio analysis
+- `SciPy <https://scipy.org/>`_ • Optimization routines
+- `scikit-maad <https://github.com/scikit-maad/scikit-maad>`_ • Soundscape metrics
+
+Data Sources
+------------
+
+- `Xeno-Canto <https://xeno-canto.org/>`_
+- `eBird <https://ebird.org/>`_

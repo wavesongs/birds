@@ -34,7 +34,7 @@ WaveSongs implements the [motor gestures model for birdsong](http://www.lsd.df.u
 
 Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapaculo*, and *Mimus Gilvus*, the model achieves **<5% relative error in FF reconstruction** compared to empirical data.
 
-(installation)=
+(️installation)=
 ## ⚒️ Installation
 
 ### Prerequisites

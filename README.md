@@ -31,14 +31,15 @@ WaveSongs implements the [motor gestures model for birdsong](http://www.lsd.df.u
 
 Validated against field recordings of *Zonotrichia Capensis*, *Ocellated Tapaculo*, and *Mimus Gilvus*, the model achieves **<5% relative error in FF reconstruction** compared to empirical data.
 
-
 ## ⚒️ Installation
 
 ### Prerequisites
+
 - [Python](https://www.python.org/) ≥ 3.10
 - [Git](https://git-scm.com/)
 
 ### Steps
+
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/wavesongs/wavesongs
@@ -228,9 +229,9 @@ If this work contributes to your research, please cite:
 
 We welcome contributions! See our roadmap:
 
-- [ ] **Integrate Xeno Canto API** for direct dataset downloads
-- [ ] **Add ROIs analysis** using `scikit-maad`
-- [ ] **Improve FF parametrization** for small motor gestures
+- [ ] **Integrate Xeno Canto API** for direct dataset downloads.
+- [ ] **Add ROIs analysis** using `scikit-maad`. This will allo automatic syllables detection and gerenration.
+- [ ] **Improve FF parametrization** for small motor gestures, chunks.
 
 To report issues or suggest features, open a [GitHub Issue](https://github.com/wavesongs/wavesongs/issues).
 

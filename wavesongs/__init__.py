@@ -1,4 +1,4 @@
-""" """
+""" Wavesongs package"""
 from warnings import filterwarnings
 # warnings.simplefilter('once')
 filterwarnings('ignore')

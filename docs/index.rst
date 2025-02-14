@@ -10,12 +10,12 @@ WaveSongs
 .. container:: badges
    :name: badges
 
-   |Version Package| |Python Version| |Open Source Love svg2| |GPLv3 license| |made-with-sphinx-doc| 
+   |Version Package| |Python Version| |Open Source Love svg2| |GPLv3 license| |made-with-sphinx-doc| |Documentation Status|
 
 .. |Version Package| image:: https://img.shields.io/badge/Version-0.0.3b-darkgreen.svg
    :target: .
 
-.. |Python Version| image:: https://img.shields.io/badge/Python-3.10+-blue.svg
+.. |Python Version| image:: https://img.shields.io/badge/Python->=3.10-blue?logo=python&logoColor=white
    :target: https://www.python.org/
 
 .. |GPLv3 license| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
@@ -30,6 +30,8 @@ WaveSongs
 .. |GitHub release| image:: https://img.shields.io/github/release/Naereen/StrapDown.js.svg
    :target: https://GitHub.com/wavesongs/wavesongs/releases/
 
+.. |Documentation Status| image:: https://readthedocs.org/projects/ansicolortags/badge/?version=latest
+   :target: http://ansicolortags.readthedocs.io/?badge=latest
 .. raw:: html
 
    <hr style="margin: -2px 0 20px 0;">

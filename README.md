@@ -9,16 +9,18 @@
 
 <div align='center' style="margin: 20px 0 50px 0">
 
-![version](https://img.shields.io/badge/version-1.0.1-008000)
-[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![Python 3.10+](https://img.shields.io/badge/python->=3.10-blue.svg)
-![Open Source](https://img.shields.io/badge/open%20source-♡-lightgrey)
+![version](https://img.shields.io/badge/Version-0.0.4b1-darkgreen.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Made with Python](https://img.shields.io/badge/Python->=3.10-blue?logo=python&logoColor=white)](https://python.org "Go to Python homepage")
+![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
+[![Documentation](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://wavesongs.github.io/wavesongs/)
 
-[Docs](https://wavesongs.github.io/wavesongs/) •
+
 [Installation](#️-installation) •
 [Quick Start](#-gettint-started) •
 [Contribute](#-contribute) •
 [References](#-references)
+
 
 </div>
 

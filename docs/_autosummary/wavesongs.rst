@@ -11,6 +11,8 @@
    :recursive:
 
    data
-   model
-   objects
+   models
+   obj
+   optimizer
+   plot
    utils

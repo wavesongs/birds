@@ -1,0 +1,16 @@
+h1 {
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+
+p {
+  text-align: justify;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0 0 0;
+}

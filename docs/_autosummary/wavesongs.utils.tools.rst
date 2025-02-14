@@ -1,4 +1,4 @@
-﻿wavesongs.utils.tools
+wavesongs.utils.tools
 =====================
 
 .. automodule:: wavesongs.utils.tools

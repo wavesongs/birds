@@ -46,7 +46,7 @@ classifiers = [
 [project.urls]
 homepage = "https://wavesongs.github.io/"
 repository = "https://github.com/wavesongs/wavesongs/"
-documentation = "https://wavesongs.github.io/"
+documentation = "https://wavesongs.github.io/wavesongs/"
 
 [project.optional-dependencies]
 dev = [

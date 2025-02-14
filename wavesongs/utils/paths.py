@@ -13,9 +13,8 @@ from os.path import isdir, basename
 from pathlib import Path, PosixPath
 from typing import Union, List, AnyStr
 
+from wavesongs.models.bird import alpha_beta, motor_gestures
 import wavesongs as ws
-# import wavesongs.objects.syllable
-# import wavesongs.model.bird #import motor_gestures, alpha_beta
 
 _CATALOG_LABEL = "ML Catalog Number"
 _AUDIO_FORMATS = (".mp3", ".wav")
@@ -196,7 +195,7 @@ class ProjDirs:
         params = eval(mg_df["params"])
         
         #self = ProjDirs(audios=audios_folder, results=self.RESULTS)
-        synth = ws.objects.syllable.Syllable(proj_dirs=self, duration=duration, sr=sr)
+        synth = ws.obj.Syllable(proj_dirs=self, duration=duration, sr=sr)
         synth.id = mg_df["id"]
         synth.type = mg_df["type"]
         synth.no_syllable = int(mg_df["no_syllable"])
@@ -215,10 +214,10 @@ class ProjDirs:
             synth.alpha = alpha
             synth.beta = beta
         else:
-            curves = ws.model.bird.alpha_beta(synth, synth.z, "fast")
+            curves = alpha_beta(synth, synth.z, "fast")
 
         
-        synth = ws.model.bird.motor_gestures(synth, curves, params)
+        synth = motor_gestures(synth, curves, params)
         synth.acoustical_features(
             NN = int(mg_df["NN"]),
             ff_method = mg_df["ff_method"],

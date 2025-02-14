@@ -4,6 +4,6 @@ from warnings import filterwarnings
 filterwarnings('ignore')
 # warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
-from .objects.syllable import Syllable
-from .objects.song import Song
-from .model.bird import motor_gestures, alpha_beta
+# from obj import Syllable
+# from obj import Song
+# from models.bird import motor_gestures, alpha_beta

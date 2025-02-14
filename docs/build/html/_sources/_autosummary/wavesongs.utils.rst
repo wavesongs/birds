@@ -11,5 +11,4 @@ wavesongs.utils
    :recursive:
 
    paths
-   plots
    tools

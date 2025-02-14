@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.abspath('../'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'WaveSongs'
-copyright = '2025, Sebastian Aguilera Novoa'
+copyright = 'SAN, 2025-present'
 author = 'Sebastian Aguilera Novoa'
 release = '0.0.3b1'
 
@@ -32,15 +32,17 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
     "sphinx_copybutton",
-    # 'sphinxcontrib.bibtex',
+    'sphinxcontrib.bibtex',
     "IPython.sphinxext.ipython_console_highlighting",
 ]
 
-# bibtex_bibfiles = ['references.bib']
+bibtex_bibfiles = ['references.bib']
+bibtex_default_style = 'unsrt'
+# bibtex_encoding = 'latin'
 
 # MyST-NB settings
-nb_execution_mode = "auto"
-nb_execution_timeout = 90
+nb_execution_mode = "off"
+nb_execution_timeout = 1200
 
 myst_enable_extensions = [
     "amsmath",
@@ -86,7 +88,7 @@ copybutton_prompt_is_regexp = True
 
 html_theme = 'sphinx_book_theme'
 html_static_path = ['_static']
-
+html_css_files = ["custom.css"]
 
 html_theme_options = {
     "repository_url": "https://github.com/wavesongs/wavesongs",
@@ -95,8 +97,11 @@ html_theme_options = {
     "use_repository_button": True,
     "use_download_button": True,
     "use_fullscreen_button": True,
-    "home_page_in_toc": True,
+    "home_page_in_toc": False,
     "use_issues_button": True,
+    "show_navbar_depth": 1,
+    "max_navbar_depth": 2,
+    "collapse_navbar": False,
     "launch_buttons": {
         "colab_url": "https://colab.research.google.com"
     },

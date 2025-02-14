@@ -4,8 +4,6 @@ wavesongs.data package
 Submodules
 ----------
 
-wavesongs.data.download module
-------------------------------
 
 .. automodule:: wavesongs.data.download
    :members:

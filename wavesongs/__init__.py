@@ -1,9 +1,7 @@
-""" Wavesongs package"""
-from warnings import filterwarnings
-# warnings.simplefilter('once')
-filterwarnings('ignore')
-# warnings.filterwarnings("ignore", category=DeprecationWarning) 
+"""
+A python package to generate synthetic songs with
+physical models and numerical optimization
+"""
 
-# from obj import Syllable
-# from obj import Song
-# from models.bird import motor_gestures, alpha_beta
+from warnings import filterwarnings
+filterwarnings('ignore')

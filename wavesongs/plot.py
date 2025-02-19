@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Plots"""
+"""
+A collection of functions to dsplay songs and results.
+"""
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -12,7 +14,7 @@ from wavesongs.utils.tools import (
     _COLORS,
     _MARKERS
 )
-from wavesongs.models.bird import mu1_curves, beta_bif
+from wavesongs.models.bird import bifurcation_ode, _F1, _F2
 
 from librosa.display import specshow as Specshow
 
@@ -32,6 +34,9 @@ from typing import (
 
 Syllable = TypeVar('Syllable')
 Song = TypeVar('Song')
+
+## ------------- Bogdanov–Takens bifurcation ------------------
+beta_bif, mu1_curves, f1, f2 = bifurcation_ode(_F1, _F2)
 
 # --------------------------
 _COLORES = {

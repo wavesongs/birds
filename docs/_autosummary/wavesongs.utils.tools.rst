@@ -8,7 +8,6 @@ wavesongs.utils.tools
 
    .. autosummary::
    
-      bifurcation_ode
       envelope
       get_measures
       get_roi

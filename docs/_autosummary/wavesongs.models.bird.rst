@@ -9,6 +9,7 @@ wavesongs.models.bird
    .. autosummary::
    
       alpha_beta
+      bifurcation_ode
       motor_gestures
       set_params
       set_z

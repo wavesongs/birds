@@ -1,16 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Optimizer"""
+"""
+A collection of functions to solve the minimization problem.
+"""
 # from model.song import Song
 # from model.syllable import Syllable
 
 import numpy as np
 from time import time
 from multiprocessing import Pool
-from wavesongs.models.bird import set_params, set_z, _params
+from wavesongs.models.bird import set_params, set_z, _PARAMS
 from IPython.display import display as Display
 
-from numpy.typing import ArrayLike
+# from numpy.typing import np.ndarray
 from typing import (
     Any,
     AnyStr,
@@ -53,7 +55,7 @@ _b2_range = (0, 2)
 # --------------------------- Residual Functions ---------------------------
 # ==========================================================================
 # %%
-def residual(z: List[float], *params: Tuple) -> ArrayLike:
+def residual(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -65,7 +67,7 @@ def residual(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -82,7 +84,7 @@ def residual(z: List[float], *params: Tuple) -> ArrayLike:
     # scoreSCI +  syllable_synth.scoreFF
 
 # %%
-def residual_sci(z: List[float], *params: Tuple) -> ArrayLike:
+def residual_sci(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -94,7 +96,7 @@ def residual_sci(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -111,7 +113,7 @@ def residual_sci(z: List[float], *params: Tuple) -> ArrayLike:
 
 
 # %%
-def residual_sci_a0(z: List[float], *params: Tuple) -> ArrayLike:
+def residual_sci_a0(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -123,7 +125,7 @@ def residual_sci_a0(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -140,7 +142,7 @@ def residual_sci_a0(z: List[float], *params: Tuple) -> ArrayLike:
 
 
 # %%
-def residual_ff(z: List[float], *params: Tuple) -> ArrayLike:
+def residual_ff(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -152,7 +154,7 @@ def residual_ff(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -169,7 +171,7 @@ def residual_ff(z: List[float], *params: Tuple) -> ArrayLike:
 
 
 # %%
-def residual_ff_b02(z: List[float], *params: Tuple) -> ArrayLike:
+def residual_ff_b02(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -181,7 +183,7 @@ def residual_ff_b02(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -198,7 +200,7 @@ def residual_ff_b02(z: List[float], *params: Tuple) -> ArrayLike:
 
 
 # %%
-def residual_ff_b1(z: List[float], *params: Tuple) -> ArrayLike:
+def residual_ff_b1(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -210,7 +212,7 @@ def residual_ff_b1(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -227,7 +229,7 @@ def residual_ff_b1(z: List[float], *params: Tuple) -> ArrayLike:
 
 
 # %%
-def residual_correlation(z: List[float], *params: Tuple) -> ArrayLike:
+def residual_correlation(z: List[float], *params: Tuple) -> np.ndarray:
     """
 
 
@@ -239,7 +241,7 @@ def residual_correlation(z: List[float], *params: Tuple) -> ArrayLike:
 
     Return
     ------
-        SCIFF: ArrayLike
+        SCIFF: np.ndarray
             Fundamental Frequency and Spectral Content Index scores
 
     Examples
@@ -262,7 +264,7 @@ def residual_correlation(z: List[float], *params: Tuple) -> ArrayLike:
 # %%
 def optimal(
     syllable,
-    params: Dict = _params,
+    params: Dict = _PARAMS,
     method: AnyStr = "brute",
     Ns: int = 20,
     full_output: bool = True,
@@ -328,7 +330,7 @@ def optimal(
 # %%
 def optimal_bs(
     syllable,
-    params: Dict = _params,
+    params: Dict = _PARAMS,
     method: AnyStr = "brute",
     Ns: int = 20,
     full_output: bool = True,
@@ -414,7 +416,7 @@ def optimal_bs(
 # %%
 def optimal_a(
     syllable,
-    params: Dict = _params,
+    params: Dict = _PARAMS,
     method: AnyStr = "brute",
     Ns: int = 20,
     full_output: bool = True,
@@ -475,7 +477,7 @@ def optimal_a(
 # %%
 def optimal_gamma(
     syllable,
-    params: Dict = _params,
+    params: Dict = _PARAMS,
     method: AnyStr = "brute",
     Ns: int = 20,
     full_output: bool = True,
@@ -539,7 +541,7 @@ def optimal_gamma(
 # %%
 def optimal_params(
     syllable,
-    params: Dict = _params,
+    params: Dict = _PARAMS,
     method: AnyStr = "brute",
     Ns: int = 20,
     full_output: bool = True,
@@ -610,7 +612,7 @@ def optimal_params(
 # %%
 def optimal_params_general(
     syllable,
-    params: Dict = _params,
+    params: Dict = _PARAMS,
     method: AnyStr = "brute",
     Ns: int = 20,
     full_output: bool = True,

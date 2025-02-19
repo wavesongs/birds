@@ -4,20 +4,25 @@
 ## Prerequisites
 
 - [Python](https://www.python.org/) 3.10+
-- [Git](https://git-scm.com/)
+- [Git](https://git-scm.com/) (optional)
+- [Conda](https://anaconda.org/anaconda/conda) (optional)
 
-## Steps
+## Basic Installation
 
-### 1. Clone the repository:
+**WaveSongs** is available at [Pypi](https://pypi.org/). To install, run:
 
-   ```bash
-   git clone https://github.com/wavesongs/wavesongs
-   cd wavesongs
-   ```
+```bash
+pip install wavesongs
+```
 
-### 2. Set up a virtual environment (choose one method):
+:::::{admonition} Tip: create a Python environment
+:class: tip
 
-- **Using `venv`**
+It is possible to use `pip` to install `wavesongs` outside of a virtual environment, but this is not recommended. Virtual environments create an isolated Python environment that does not interfere with your system's existing Python installation. They can be easily removed and contain only the specific package versions your application requires. Additionally, they help avoid a common issue known as "[dependency hell](https://en.wikipedia.org/wiki/Dependency_hell)", where conflicting package versions cause problems and unexpected behaviors.
+
+It is highly recommended that you create a new virtual environment. This can be done in two ways, but you only need to choose one:
+
+- **Python virtual environments**
 
    ::::{tab-set}
    :sync-group: category
@@ -43,34 +48,36 @@
 
    ::::
 
-
-- **Using Conda**
-
-   ```bash
-   conda create -n wavesongs python=3.12
-   conda activate wavesongs
-   ```
-
-### 3. Install dependencies:
+- **Conda environments**
 
    ```bash
-   pip install -r requirements.txt
+   conda create -n wavesongs-env python=3.12
+   conda activate wavesongs-env
    ```
 
-### 4. Install WaveSongs in editable mode:
+:::::
 
-   ```bash
-   pip install -e .
-   ```
+## Developer Installation 
 
-(gettint-started)=
-## 🚀 Gettint Started
+To install the latest deveopment version from source clone the main repository from GitHub
 
-Explore the [Tutorial 1 Notebook](https://github.com/wavesongs/wavesongs/blob/main/Tutorial1_Introduction.ipynb) to generate synthetic birdsongs and explore the model plots. 
+```bash
+git clone https://github.com/wavesongs/wavesongs
+cd wavesongs # enter the cloned directory
+```
 
-For advanced usage (e.g., custom gestures, parameter tuning, data measures, etc), check the other tutorials: [Spectrum Measures](https://github.com/wavesongs/wavesongs/blob/main/Tutorial2_SpectrumMeasures.ipynb) or [Synthetic Songs](https://github.com/wavesongs/wavesongs/blob/main/Tutorial3_SyntheticSongs.ipynb). More details can be found in the [Documentation](https://wavesongs.github.io/doc).
+Install the required dependencies
 
+```bash
+pip install -r requirements.txt
+```
 
-## 🎶 Data Integration
+Install WaveSongs in editable mode:
 
-Pre-processed field recordings from [Xeno Canto](https://xeno-canto.org/) and [eBird](https://ebird.org/home) are included in `./assets/audio`. To use custom recordings place `.wav` or `.mp3` files in `./assets/audio/` or define the audios path with the `ProjDirs` class.
+```bash
+pip install -e .
+```
+
+## OS Support
+
+**WaveSongs** is developed and tested on Linux. It should also work on macOS and Windows. If you encounter a prooblem, please let me know by opening an issue or a pull request.ss

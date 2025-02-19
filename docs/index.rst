@@ -3,9 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/styling.html
 
-WaveSongs
-=========
+.. raw:: html
+   
+   <h1 class="h1-title">WaveSongs</h1>
+   
 
 .. container:: badges
    :name: badges
@@ -32,25 +35,12 @@ WaveSongs
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/ansicolortags/badge/?version=latest
    :target: http://ansicolortags.readthedocs.io/?badge=latest
+
 .. raw:: html
 
    <hr style="margin: -2px 0 20px 0;">
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
-**WaveSongs** implements the `motor gestures model for birdsong <http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf>`_ developed by `Gabo Mindlin <https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&hl=en>`_ to generate synthetic birdsongs through numerical optimization. By leveraging **fundamental frequency (FF)** and **spectral content index (SCI)** as key parameters :cite:p:`Amador2013,article`. The package solves a minimization problem using `SciPy <https://docs.scipy.org/doc/scipy/tutorial/optimize.html>`_ and performs audio analysis with `librosa <https://librosa.org/>`_. 
-
-.. .. <div id="main-page">
-.. .. container:: main-page
-..    :name: my-id
-   
-..    asdasds
-
-
-.. User Guide
-.. ----------
+**WaveSongs** implements the `motor gestures model for birdsong <http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf>`_ developed by `Gabo Mindlin <https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&hl=en>`_ to generate synthetic birdsongs through numerical optimization :cite:p:`b-birdsongs_book,a-Amador2013`. By leveraging **fundamental frequency (FF)** and **spectral content index (SCI)** as key parameters. The package solves a minimization problem using `SciPy <https://docs.scipy.org/doc/scipy/tutorial/optimize.html>`_ and performs audio analysis with `librosa <https://librosa.org/>`_. 
 
 .. toctree::
    :maxdepth: 1
@@ -58,34 +48,23 @@ documentation for details.
    :hidden: 
 
    contents/Installation.md
+   contents/PhysicalModel.md
+   contents/DownloadSamples.ipynb
    contents/Introduction.ipynb
    contents/SpectrumMeasures.ipynb
    contents/SyntheticSongs.ipynb
 
-🗂️ Modules
-----------
+🗂️ Documentation
+----------------
 
 .. autosummary::
    :caption: API reference
    :toctree: _autosummary
    :recursive:
 
-   wavesongs.obj
-   wavesongs.models
-   wavesongs.plot
-   wavesongs.optimizer
-   wavesongs.utils
-   wavesongs.data
+   wavesongs
 
 .. </div>
-
-
-
-.. .. toctree::
-..    :caption: API reference 1
-..    :maxdepth: 1
-
-..    modules.rst
 
 🔐 License
 ----------
@@ -125,4 +104,22 @@ To report issues or suggest features, open a `GitHub Issue <https://github.com/w
 📚 References
 -------------
 
-.. bibliography::
+.. rubric:: Articles
+
+.. bibliography:: references/articles.bib
+   :keyprefix: a-
+   :labelprefix: A
+
+
+.. rubric:: Books
+
+.. bibliography:: references/references.bib
+   :keyprefix: b-
+   :labelprefix: B
+
+.. rubric:: Software
+   
+.. bibliography:: references/software.bib
+   :all:
+   :keyprefix: s-
+   :labelprefix: S

@@ -12,7 +12,7 @@
 
    data
    models
-   obj
+   objs
    optimizer
    plot
    utils

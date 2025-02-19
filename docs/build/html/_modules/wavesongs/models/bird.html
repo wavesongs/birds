@@ -15,32 +15,29 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=6d2b66f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=452e63f8" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=905f06ed"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
@@ -54,7 +51,6 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -70,8 +66,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -79,6 +86,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,8 +94,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -105,8 +113,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -151,36 +158,49 @@
 </ul></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/Installation.html">⚒️ Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/DownloadSamples.html">📥 Downloading Samples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/Introduction.html">🚀 Introduction to WaveSongs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/SyntheticSongs.html">🎵 Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/wavesongs.obj.html">wavesongs.obj</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.models.html">wavesongs.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.models.bird.html">wavesongs.models.bird</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.html">wavesongs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.data.html">wavesongs.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.data.xc.html">wavesongs.data.xc</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/wavesongs.plot.html">wavesongs.plot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/wavesongs.optimizer.html">wavesongs.optimizer</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.html">wavesongs.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.paths.html">wavesongs.utils.paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.tools.html">wavesongs.utils.tools</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.models.html">wavesongs.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.models.bird.html">wavesongs.models.bird</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.data.html">wavesongs.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.data.download.html">wavesongs.data.download</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.objs.html">wavesongs.objs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.objs.song.html">wavesongs.objs.song</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.objs.syllable.html">wavesongs.objs.syllable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.optimizer.html">wavesongs.optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.plot.html">wavesongs.plot</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.html">wavesongs.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.paths.html">wavesongs.utils.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.tools.html">wavesongs.utils.tools</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -191,14 +211,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -294,16 +309,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -330,9 +353,17 @@
                 <article class="bd-article">
                   
   <h1>Source code for wavesongs.models.bird</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Motor gesture implementation for birdsongs&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Methods to implement the motor gesture model for birdsongs.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">symbols</span><span class="p">,</span>
+    <span class="n">lambdify</span><span class="p">,</span>
+    <span class="n">solveset</span>
+<span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">maad.sound</span><span class="w"> </span><span class="kn">import</span> <span class="n">normalize</span>
@@ -340,13 +371,9 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.tools</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">bifurcation_ode</span><span class="p">,</span>
     <span class="n">envelope</span><span class="p">,</span>
     <span class="n">rk4</span>
 <span class="p">)</span>
-
-<span class="c1"># from wavesongs.objects.syllable import Syllable</span>
-<span class="c1"># from wavesongs.utils.paths import ProjDirs</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">DTypeLike</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
@@ -360,7 +387,7 @@
 <span class="p">)</span>
 
 <span class="c1"># Defining motor gestures model constants, measured by Gabo Mindlin</span>
-<span class="n">_params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;gm&quot;</span><span class="p">:</span> <span class="mf">4e4</span><span class="p">,</span>       <span class="c1"># time scaling constant</span>
     <span class="c1"># -------------------------------- Trachea --------------------------------</span>
     <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">343</span><span class="p">,</span>        <span class="c1"># speed of sound in media [m/s]</span>
@@ -373,54 +400,178 @@
     <span class="s2">&quot;RB&quot;</span><span class="p">:</span> <span class="mf">5E6</span><span class="p">,</span>       <span class="c1"># Beak Resistance [Pa s/m^3 = kg/m^4 s]</span>
     <span class="s2">&quot;Rh&quot;</span><span class="p">:</span> <span class="mf">24E3</span>       <span class="c1"># OEC Resistence [Pa s/m^3 = kg/m^4 s]</span>
 <span class="p">}</span>
-<span class="c1"># General nonlinear equation model of second order </span>
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;dict : Model parameters</span>
+
+<span class="sd">.. table:: Birdsongs model parameters :cite:p:`a-Amador2013`.</span>
+<span class="sd">    :width: 80%</span>
+<span class="sd">    :widths: 3 6 3 3</span>
+
+<span class="sd">    ==============  ========================  =======  ====================</span>
+<span class="sd">    Constant        Description               Value     Unit     </span>
+<span class="sd">    ==============  ========================  =======  ====================  </span>
+<span class="sd">    :math:`\gamma`  Time scaling constant     40000    :math:`adm`</span>
+<span class="sd">    :math:`C`       Speed of sound in media   343      :math:`m / s`</span>
+<span class="sd">    :math:`L`       Trachea length            0.025    :math:`m`</span>
+<span class="sd">    :math:`r`       Reflection coeficient     0.65     :math:`adm`</span>
+<span class="sd">    :math:`Ch`      OEC Compliance            1.43     :math:`m^3 / Pa`</span>
+<span class="sd">    :math:`MG`      Beak Inertance            20       :math:`kg / m^4`</span>
+<span class="sd">    :math:`MB`      Glottis Inertance         10000    :math:`kg / m^4`</span>
+<span class="sd">    :math:`RB`      Beak Resistance           5000000  :math:`s\; kg / m^4`</span>
+<span class="sd">    :math:`Rh`      OEC Resistence            24000    :math:`s\;kg / m^4`</span>
+<span class="sd">    ==============  ========================  =======  ====================</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># bifurcation saddle nodes and array length</span>
+<span class="n">_N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">_mu2_beta</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span>
+<span class="n">_mu1_alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+<span class="c1"># General nonlinear equation model of second order</span>
 <span class="n">_F1</span> <span class="o">=</span> <span class="s2">&quot;ys&quot;</span>
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;str : First linear equation.</span>
+<span class="sd">Where :math:`x` is the labial position and :math:`y` the labial wall velocity. </span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">    \frac{dx}{dt} = y</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="n">_F2</span> <span class="o">=</span> <span class="s2">&quot;(-alpha-beta*xs-xs**3+xs**2)*gamma**2 - (xs+1)*gamma*xs*ys&quot;</span>
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;str: Second linear equation.</span>
+<span class="sd">Where :math:`x` is the labial position and :math:`y` the labial wall velocity.</span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">    \frac{dy}{dt} = \gamma^2(-\alpha-\beta x-x^3+x^2) - \gamma(x+1)x y</span>
+
+<span class="sd">This equation is obtained using the Bogdanov–Takens bifurcation :cite:p:`a-Amador2013`. </span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="n">_V_MAX_LABIA</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5e6</span> <span class="c1"># model constraint</span>
+<span class="sd">&quot;&quot;&quot;float : Maximum labia walls velocity.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="n">_ovsr</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c1"># over sample rate</span>
 <span class="n">_prct_noise</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="c1">## ------------- Bogdanov–Takens bifurcation ------------------</span>
-<span class="n">beta_bif</span><span class="p">,</span> <span class="n">mu1_curves</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">bifurcation_ode</span><span class="p">(</span><span class="n">_F1</span><span class="p">,</span> <span class="n">_F2</span><span class="p">)</span>
 <span class="c1"># ---------------- physical model constants -----------------</span>
-<span class="n">_z</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">_Z</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;a0&quot;</span><span class="p">:</span> <span class="mf">0.11</span><span class="p">,</span>
     <span class="s2">&quot;b0&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;b1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+    <span class="s2">&quot;b1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;b2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">}</span>
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;dict : Motor gesture curves, air-sac pressure (:math:`\alpha`)</span>
+<span class="sd">and labial wall tension (:math:`\beta`). This function has two approaches:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    :label: beta</span>
+
+<span class="sd">    \begin{equation}</span>
+<span class="sd">    \begin{aligned}[c]</span>
+<span class="sd">        &amp; \text{Interpretability}\\ \\</span>
+<span class="sd">        &amp; \alpha(t) = a_0 \\</span>
+<span class="sd">        &amp; \beta(t) = b_0 + b_1 \tilde{FF} + b_2 \tilde{FF}^2</span>
+<span class="sd">    \end{aligned}</span>
+<span class="sd">    \qquad\qquad\qquad</span>
+<span class="sd">    \begin{aligned}[c]</span>
+<span class="sd">        &amp; \text{Performance}\\ \\</span>
+<span class="sd">        &amp; \alpha(t) = a_0 \\</span>
+<span class="sd">        &amp; \beta(t) = b_0 + b_1 t + b_2 t^2</span>
+<span class="sd">    \end{aligned}</span>
+<span class="sd">    \end{equation}</span>
+
+
+<span class="sd">The best performance, lowest relative errors, are obtained when the rescaled {eq}`My label</span>
+<span class="sd">fundamental frequency is used as Anzarts, with :math:`\tilde{FF}=FF/10^4`. </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1">#%%</span>
+<div class="viewcode-block" id="bifurcation_ode">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.models.bird.html#wavesongs.models.bird.bifurcation_ode">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bifurcation_ode</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        f1 : str</span>
+
+<span class="sd">        f2 : str</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        beta_bif : np.array</span>
+
+<span class="sd">        mu1_curves : np.array</span>
+
+<span class="sd">        f1 : lambda functions</span>
+
+<span class="sd">        f2 : lambda functions</span>
+
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">beta_bif</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">_mu2_beta</span><span class="p">,</span> <span class="n">_mu1_alpha</span><span class="p">,</span> <span class="n">_N</span><span class="p">)</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y alpha beta gamma&#39;</span><span class="p">)</span>
+    <span class="c1"># ---------------- Labia EDO&#39;s Bifurcation -----------------------</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+
+    <span class="n">x01</span> <span class="o">=</span> <span class="n">solveset</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span> <span class="o">+</span> <span class="n">solveset</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+    <span class="n">f2_x01</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">x01</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="n">solveset</span><span class="p">(</span><span class="n">f2_x01</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">alpha</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">dg</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+    <span class="n">roots_bif</span> <span class="o">=</span> <span class="n">solveset</span><span class="p">(</span><span class="n">df</span><span class="o">-</span><span class="n">dg</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+
+    <span class="n">mu1_curves</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ff</span> <span class="ow">in</span> <span class="n">roots_bif</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+        <span class="c1"># root evaluatings beta</span>
+        <span class="n">mu1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">_N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">x_root</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">_N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">_N</span><span class="p">):</span>
+            <span class="n">x_root</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="n">beta_bif</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">mu1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">beta</span><span class="p">,</span><span class="n">beta_bif</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">x_root</span><span class="p">[</span><span class="n">i</span><span class="p">])])</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">mu1_curves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+    <span class="n">mu1_curves</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu1_curves</span><span class="p">)</span>
+
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">],</span> <span class="n">f1</span><span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">],</span> <span class="n">f2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">beta_bif</span><span class="p">,</span> <span class="n">mu1_curves</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span></div>
+
 <span class="c1">#%%</span>
 <div class="viewcode-block" id="alpha_beta">
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.models.bird.html#wavesongs.models.bird.alpha_beta">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">alpha_beta</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">z</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_z</span><span class="p">,</span>
+    <span class="n">z</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_Z</span><span class="p">,</span>
     <span class="n">method</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="s2">&quot;fast&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    </span>
-<span class="sd">    </span>
+
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">        obj : Song | Syllable</span>
 
 <span class="sd">        z : dict</span>
-<span class="sd">    </span>
+
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
 <span class="sd">        alpha : np.array([1,2...N])</span>
 <span class="sd">            Bronchis pressure</span>
-<span class="sd">        beta : np.array()</span>
-<span class="sd">    </span>
+<span class="sd">        beta : np.array</span>
+
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">        &gt;&gt;&gt; </span>
-<span class="sd">    </span>
+<span class="sd">        &gt;&gt;&gt;</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">obj</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;a0&quot;</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;b0&quot;</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="s2">&quot;b1&quot;</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="s2">&quot;b2&quot;</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>   
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
     <span class="n">t_parabole</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
     <span class="n">obj</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_parabole</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># horizontal lines (or parabolas)</span>
     <span class="k">if</span> <span class="n">method</span><span class="o">==</span><span class="s2">&quot;fast&quot;</span><span class="p">:</span>
@@ -428,7 +579,7 @@
     <span class="k">elif</span> <span class="n">method</span><span class="o">==</span><span class="s2">&quot;best&quot;</span><span class="p">:</span>
         <span class="n">poly</span> <span class="o">=</span> <span class="n">Polynomial</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">timeFF</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">FF</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
-        <span class="n">obj</span><span class="o">.</span><span class="n">beta</span>  <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mf">1e4</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mf">1e4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>   
+        <span class="n">obj</span><span class="o">.</span><span class="n">beta</span>  <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mf">1e4</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mf">1e4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;The method entered is not implemented.&quot;</span>
                         <span class="o">+</span> <span class="s2">&quot;There are two possible options: fast and best&quot;</span><span class="p">)</span>
@@ -440,16 +591,16 @@
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.models.bird.html#wavesongs.models.bird.motor_gestures">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">motor_gestures</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="n">curves</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">],</span>
-    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_params</span>
+    <span class="n">curves</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">],</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    </span>
-<span class="sd">    </span>
+
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">        pramams : Dict</span>
-<span class="sd">    </span>
+
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
 <span class="sd">        synth : Syllable</span>
@@ -458,8 +609,8 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">        &gt;&gt;&gt; </span>
-<span class="sd">    </span>
+<span class="sd">        &gt;&gt;&gt;</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># rk4 constans</span>
     <span class="n">tmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">*</span><span class="n">_ovsr</span><span class="o">-</span><span class="mi">1</span>   <span class="c1"># maximum time</span>
@@ -484,10 +635,12 @@
     <span class="n">Rh</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;Rh&#39;</span><span class="p">]</span>
     <span class="c1"># ----------------------------------------------------</span>
     <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">curves</span>
+    <span class="c1">## ------------- Bogdanov–Takens bifurcation ------------------</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">bifurcation_ode</span><span class="p">(</span><span class="n">_F1</span><span class="p">,</span> <span class="n">_F2</span><span class="p">)</span>
     <span class="c1"># ------------------------------ Physical Model -----------------------------</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ODEs</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
         <span class="n">dv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pout</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span> <span class="o">=</span> <span class="n">v</span>  
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pout</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span> <span class="o">=</span> <span class="n">v</span>
         <span class="c1"># ----------------- direct implementation of the EDOs -----------</span>
         <span class="n">dv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">[</span><span class="n">t</span><span class="o">//</span><span class="n">_ovsr</span><span class="p">],</span> <span class="n">beta</span><span class="p">[</span><span class="n">t</span><span class="o">//</span><span class="n">_ovsr</span><span class="p">],</span> <span class="n">gamma</span><span class="p">)</span>
         <span class="n">dv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">[</span><span class="n">t</span><span class="o">//</span><span class="n">_ovsr</span><span class="p">],</span> <span class="n">beta</span><span class="p">[</span><span class="n">t</span><span class="o">//</span><span class="n">_ovsr</span><span class="p">],</span> <span class="n">gamma</span><span class="p">)</span>
@@ -506,12 +659,12 @@
                 <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">MG</span><span class="o">/</span><span class="n">Ch</span><span class="o">+</span><span class="n">Rh</span><span class="o">*</span><span class="n">RB</span><span class="o">/</span><span class="n">MG</span><span class="o">/</span><span class="n">MB</span><span class="p">)</span><span class="o">*</span><span class="n">i3</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">MG</span><span class="p">)</span><span class="o">*</span><span class="n">dv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> \
                 <span class="o">+</span> <span class="p">(</span><span class="n">Rh</span><span class="o">*</span><span class="n">RB</span><span class="o">/</span><span class="n">MG</span><span class="o">/</span><span class="n">MB</span><span class="p">)</span><span class="o">*</span><span class="n">pout</span>
         <span class="n">dv</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">MG</span><span class="o">/</span><span class="n">MB</span><span class="p">)</span><span class="o">*</span><span class="n">i2</span> <span class="o">-</span> <span class="p">(</span><span class="n">Rh</span><span class="o">/</span><span class="n">MB</span><span class="p">)</span><span class="o">*</span><span class="n">i3</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">MB</span><span class="p">)</span><span class="o">*</span><span class="n">pout</span>
-        <span class="k">return</span> <span class="n">dv</span>        
+        <span class="k">return</span> <span class="n">dv</span>
     <span class="c1"># ----------------------- Update EDOs Variables ----------------------</span>
     <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tmax</span> <span class="ow">and</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">_V_MAX_LABIA</span><span class="p">:</span>  <span class="c1"># NP.ABS()</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">ODEs</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>        <span class="c1"># RK4 step</span>
         <span class="n">vs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>                <span class="c1"># save step</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">t</span><span class="o">//</span><span class="n">_ovsr</span><span class="p">]</span> <span class="o">=</span> <span class="n">RB</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># update output signal (synthetic) </span>
+        <span class="n">out</span><span class="p">[</span><span class="n">t</span><span class="o">//</span><span class="n">_ovsr</span><span class="p">]</span> <span class="o">=</span> <span class="n">RB</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># update output signal (synthetic)</span>
         <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="c1"># ------------------------------------------------------------</span>
     <span class="n">synth</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
@@ -520,11 +673,11 @@
     <span class="n">synth</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">alpha</span>
     <span class="n">synth</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">beta</span>
     <span class="n">synth</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">z</span>
-    
+
     <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;synth&quot;</span> <span class="ow">in</span> <span class="n">synth</span><span class="o">.</span><span class="n">file_name</span><span class="p">:</span>
         <span class="n">synth</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;synth-&quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">file_name</span>
         <span class="n">synth</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;synth-&quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span>
-    
+
     <span class="n">synth</span><span class="o">.</span><span class="n">times_vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="n">obj</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="n">_ovsr</span><span class="p">)</span>
     <span class="n">synth</span><span class="o">.</span><span class="n">vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vs</span><span class="p">)</span>
 
@@ -537,16 +690,16 @@
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.models.bird.html#wavesongs.models.bird.set_z">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">set_z</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">,</span>
-    <span class="n">z</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">_z</span>
+    <span class="n">z</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">_Z</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    </span>
+
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">        z : list[float] | dict</span>
 <span class="sd">            [a0,a1,a2_,b,b1,b2,gamma]</span>
-<span class="sd">    </span>
+
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
 <span class="sd">        z : dict</span>
@@ -575,16 +728,16 @@
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.models.bird.html#wavesongs.models.bird.set_params">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">set_params</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">,</span>
-    <span class="n">params</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">_params</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">_PARAMS</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    </span>
+
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">        params : list[float] | dict</span>
 <span class="sd">            [a0,a1,a2_,b,b1,b2,gamma]</span>
-<span class="sd">    </span>
+
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
 <span class="sd">        params : dict</span>
@@ -593,7 +746,7 @@
 <span class="sd">    -------</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">params0</span> <span class="o">=</span> <span class="n">_params</span>
+    <span class="n">params0</span> <span class="o">=</span> <span class="n">_PARAMS</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)):</span>
             <span class="n">params0</span><span class="p">[</span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -642,7 +795,7 @@ By Sebastian Aguilera Novoa
 
   <p class="copyright">
     
-      © Copyright 2025, Sebastian Aguilera Novoa.
+      © Copyright SAN, 2025-present.
       <br/>
     
   </p>
@@ -666,8 +819,8 @@ By Sebastian Aguilera Novoa
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

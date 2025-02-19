@@ -10,4 +10,4 @@ wavesongs.data
    :toctree:
    :recursive:
 
-   download
+   xc

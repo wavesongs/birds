@@ -32,11 +32,17 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
     "sphinx_copybutton",
+    'sphinx.ext.mathjax',
     'sphinxcontrib.bibtex',
     "IPython.sphinxext.ipython_console_highlighting",
 ]
 
-bibtex_bibfiles = ['references.bib']
+bibtex_bibfiles = [
+    'references/references.bib',
+    "references/articles.bib",
+    "references/software.bib",
+    "references/others.bib"
+]
 bibtex_default_style = 'unsrt'
 # bibtex_encoding = 'latin'
 
@@ -56,8 +62,8 @@ myst_url_schemes = ("http", "https", "mailto")
 # Napoleon settings
 napoleon_google_docstring = True
 napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = False
+napoleon_include_init_with_doc = True
+napoleon_include_private_with_doc = True
 napoleon_include_special_with_doc = True
 napoleon_use_admonition_for_examples = False
 napoleon_use_admonition_for_notes = False
@@ -88,7 +94,7 @@ copybutton_prompt_is_regexp = True
 
 html_theme = 'sphinx_book_theme'
 html_static_path = ['_static']
-html_css_files = ["custom.css"]
+html_css_files = ["css/custom.css"]
 
 html_theme_options = {
     "repository_url": "https://github.com/wavesongs/wavesongs",
@@ -99,8 +105,10 @@ html_theme_options = {
     "use_fullscreen_button": True,
     "home_page_in_toc": False,
     "use_issues_button": True,
-    "show_navbar_depth": 1,
-    "max_navbar_depth": 2,
+    "show_navbar_depth": 2,
+    "max_navbar_depth": 3,
+    "show_toc_level": 3, 
+    "sidebarwidth": "50px",
     "collapse_navbar": False,
     "launch_buttons": {
         "colab_url": "https://colab.research.google.com"
@@ -127,7 +135,7 @@ html_title = "WaveSongs"
 
 autodoc_default_options = {
     "members": True,
-    "undoc-members": True,
-    # "special-members": "__init__",
-    # "member-order": "bysource",
+    "undoc-members": False,
+    "special-members": "__init__",
+    "member-order": "bysource",
 }

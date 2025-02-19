@@ -16,32 +16,29 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6d2b66f6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=452e63f8" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=905f06ed"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -50,14 +47,15 @@
     <script src="../_static/copybutton.js?v=cb1a7266"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/wavesongs.models.bird';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="wavesongs.plot" href="wavesongs.plot.html" />
+    <link rel="next" title="wavesongs.objs" href="wavesongs.objs.html" />
     <link rel="prev" title="wavesongs.models" href="wavesongs.models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -73,8 +71,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -82,6 +91,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -89,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -106,8 +116,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -152,36 +161,49 @@
 </ul></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../contents/Installation.html">⚒️ Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/DownloadSamples.html">📥 Downloading Samples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/Introduction.html">🚀 Introduction to WaveSongs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/SyntheticSongs.html">🎵 Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="wavesongs.obj.html">wavesongs.obj</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="wavesongs.models.html">wavesongs.models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">wavesongs.models.bird</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="wavesongs.html">wavesongs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="wavesongs.data.html">wavesongs.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="wavesongs.data.xc.html">wavesongs.data.xc</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="wavesongs.plot.html">wavesongs.plot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wavesongs.optimizer.html">wavesongs.optimizer</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="wavesongs.utils.html">wavesongs.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="wavesongs.utils.paths.html">wavesongs.utils.paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wavesongs.utils.tools.html">wavesongs.utils.tools</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="wavesongs.models.html">wavesongs.models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">wavesongs.models.bird</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="wavesongs.data.html">wavesongs.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="wavesongs.data.download.html">wavesongs.data.download</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="wavesongs.objs.html">wavesongs.objs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="wavesongs.objs.song.html">wavesongs.objs.song</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wavesongs.objs.syllable.html">wavesongs.objs.syllable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="wavesongs.optimizer.html">wavesongs.optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wavesongs.plot.html">wavesongs.plot</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="wavesongs.utils.html">wavesongs.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="wavesongs.utils.paths.html">wavesongs.utils.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wavesongs.utils.tools.html">wavesongs.utils.tools</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -192,14 +214,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -343,16 +360,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -376,12 +401,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._PARAMS"><code class="docutils literal notranslate"><span class="pre">_PARAMS</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._F1"><code class="docutils literal notranslate"><span class="pre">_F1</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._F2"><code class="docutils literal notranslate"><span class="pre">_F2</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._V_MAX_LABIA"><code class="docutils literal notranslate"><span class="pre">_V_MAX_LABIA</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._Z"><code class="docutils literal notranslate"><span class="pre">_Z</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.bifurcation_ode"><code class="docutils literal notranslate"><span class="pre">bifurcation_ode()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.alpha_beta"><code class="docutils literal notranslate"><span class="pre">alpha_beta()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.f1"><code class="docutils literal notranslate"><span class="pre">f1()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.f2"><code class="docutils literal notranslate"><span class="pre">f2()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.motor_gestures"><code class="docutils literal notranslate"><span class="pre">motor_gestures()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.set_params"><code class="docutils literal notranslate"><span class="pre">set_params()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.set_z"><code class="docutils literal notranslate"><span class="pre">set_z()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.set_params"><code class="docutils literal notranslate"><span class="pre">set_params()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -395,39 +424,187 @@
                   
   <section id="module-wavesongs.models.bird">
 <span id="wavesongs-models-bird"></span><h1>wavesongs.models.bird<a class="headerlink" href="#module-wavesongs.models.bird" title="Link to this heading">#</a></h1>
-<p>Motor gesture implementation for birdsongs</p>
+<p>Methods to implement the motor gesture model for birdsongs.</p>
 <p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../wavesongs.models.html#wavesongs.models.bird.alpha_beta" title="wavesongs.models.bird.alpha_beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_beta</span></code></a>(obj[, z, method])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wavesongs.models.bird.alpha_beta" title="wavesongs.models.bird.alpha_beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_beta</span></code></a>(obj[, z, method])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../wavesongs.models.html#wavesongs.models.bird.motor_gestures" title="wavesongs.models.bird.motor_gestures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">motor_gestures</span></code></a>(obj, curves[, params])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#wavesongs.models.bird.bifurcation_ode" title="wavesongs.models.bird.bifurcation_ode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bifurcation_ode</span></code></a>(f1, f2)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../wavesongs.models.html#wavesongs.models.bird.set_params" title="wavesongs.models.bird.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(obj[, params])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wavesongs.models.bird.motor_gestures" title="wavesongs.models.bird.motor_gestures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">motor_gestures</span></code></a>(obj, curves[, params])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../wavesongs.models.html#wavesongs.models.bird.set_z" title="wavesongs.models.bird.set_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_z</span></code></a>(obj[, z])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#wavesongs.models.bird.set_params" title="wavesongs.models.bird.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(obj[, params])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#wavesongs.models.bird.set_z" title="wavesongs.models.bird.set_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_z</span></code></a>(obj[, z])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<dl class="py data">
+<dt class="sig sig-object py" id="wavesongs.models.bird._PARAMS">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></em><a class="headerlink" href="#wavesongs.models.bird._PARAMS" title="Link to this definition">#</a></dt>
+<dd><p>Model parameters</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4" style="width: 80%">
+<caption><span class="caption-text">Birdsongs model parameters <span id="id1">[<a class="reference internal" href="../index.html#id9" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></td>
+<td><p>Time scaling constant</p></td>
+<td><p>40000</p></td>
+<td><p><span class="math notranslate nohighlight">\(adm\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(C\)</span></p></td>
+<td><p>Speed of sound in media</p></td>
+<td><p>343</p></td>
+<td><p><span class="math notranslate nohighlight">\(m / s\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(L\)</span></p></td>
+<td><p>Trachea length</p></td>
+<td><p>0.025</p></td>
+<td><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td><p>Reflection coeficient</p></td>
+<td><p>0.65</p></td>
+<td><p><span class="math notranslate nohighlight">\(adm\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Ch\)</span></p></td>
+<td><p>OEC Compliance</p></td>
+<td><p>1.43</p></td>
+<td><p><span class="math notranslate nohighlight">\(m^3 / Pa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(MG\)</span></p></td>
+<td><p>Beak Inertance</p></td>
+<td><p>20</p></td>
+<td><p><span class="math notranslate nohighlight">\(kg / m^4\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(MB\)</span></p></td>
+<td><p>Glottis Inertance</p></td>
+<td><p>10000</p></td>
+<td><p><span class="math notranslate nohighlight">\(kg / m^4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(RB\)</span></p></td>
+<td><p>Beak Resistance</p></td>
+<td><p>5000000</p></td>
+<td><p><span class="math notranslate nohighlight">\(s\; kg / m^4\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Rh\)</span></p></td>
+<td><p>OEC Resistence</p></td>
+<td><p>24000</p></td>
+<td><p><span class="math notranslate nohighlight">\(s\;kg / m^4\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="wavesongs.models.bird._F1">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_F1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ys'</span></em><a class="headerlink" href="#wavesongs.models.bird._F1" title="Link to this definition">#</a></dt>
+<dd><p>First linear equation.
+Where <span class="math notranslate nohighlight">\(x\)</span> is the labial position and <span class="math notranslate nohighlight">\(y\)</span> the labial wall velocity.</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = y\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="wavesongs.models.bird._F2">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_F2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'(-alpha-beta*xs-xs**3+xs**2)*gamma**2</span> <span class="pre">-</span> <span class="pre">(xs+1)*gamma*xs*ys'</span></em><a class="headerlink" href="#wavesongs.models.bird._F2" title="Link to this definition">#</a></dt>
+<dd><p>Second linear equation.
+Where <span class="math notranslate nohighlight">\(x\)</span> is the labial position and <span class="math notranslate nohighlight">\(y\)</span> the labial wall velocity.</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dt} = \gamma^2(-\alpha-\beta x-x^3+x^2) - \gamma(x+1)x y\]</div>
+<p>This equation is obtained using the Bogdanov–Takens bifurcation <span id="id2">[<a class="reference internal" href="../index.html#id9" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="wavesongs.models.bird._V_MAX_LABIA">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_V_MAX_LABIA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-5000000.0</span></em><a class="headerlink" href="#wavesongs.models.bird._V_MAX_LABIA" title="Link to this definition">#</a></dt>
+<dd><p>Maximum labia walls velocity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="wavesongs.models.bird._Z">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_Z</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'a0':</span> <span class="pre">0.11,</span> <span class="pre">'b0':</span> <span class="pre">-0.1,</span> <span class="pre">'b1':</span> <span class="pre">1,</span> <span class="pre">'b2':</span> <span class="pre">0}</span></em><a class="headerlink" href="#wavesongs.models.bird._Z" title="Link to this definition">#</a></dt>
+<dd><p>Motor gesture curves, air-sac pressure (<span class="math notranslate nohighlight">\(\alpha\)</span>)
+and labial wall tension (<span class="math notranslate nohighlight">\(\beta\)</span>). This function has two approaches:</p>
+<div class="math notranslate nohighlight" id="equation-beta">
+<span class="eqno">(1)<a class="headerlink" href="#equation-beta" title="Link to this equation">#</a></span>\[\begin{split}\begin{equation}
+\begin{aligned}[c]
+    &amp; \text{Interpretability}\\ \\
+    &amp; \alpha(t) = a_0 \\
+    &amp; \beta(t) = b_0 + b_1 \tilde{FF} + b_2 \tilde{FF}^2
+\end{aligned}
+\qquad\qquad\qquad
+\begin{aligned}[c]
+    &amp; \text{Performance}\\ \\
+    &amp; \alpha(t) = a_0 \\
+    &amp; \beta(t) = b_0 + b_1 t + b_2 t^2
+\end{aligned}
+\end{equation}\end{split}\]</div>
+<p>The best performance, lowest relative errors, are obtained when the rescaled {eq}`My label
+fundamental frequency is used as Anzarts, with <span class="math notranslate nohighlight">\(\tilde{FF}=FF/10^4\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
-<dt class="sig sig-object py" id="wavesongs.models.bird.alpha_beta">
-<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">alpha_beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'a0':</span> <span class="pre">0.11,</span> <span class="pre">'b0':</span> <span class="pre">-0.1,</span> <span class="pre">'b1':</span> <span class="pre">1,</span> <span class="pre">'b2':</span> <span class="pre">0}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'best'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'fast'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'best'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Buffer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">_SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">_NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">_SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">complex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">_NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">complex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#alpha_beta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.alpha_beta" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="wavesongs.models.bird.bifurcation_ode">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">bifurcation_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#bifurcation_ode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.bifurcation_ode" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<a class="reference internal" href="../wavesongs.html#wavesongs.obj.Song" title="wavesongs.obj.Song"><em>Song</em></a><em> | </em><a class="reference internal" href="../wavesongs.html#wavesongs.obj.Syllable" title="wavesongs.obj.Syllable"><em>Syllable</em></a>)</p></li>
-<li><p><strong>z</strong> (<em>dict</em>)</p></li>
+<li><p><strong>f1</strong> (<em>str</em>)</p></li>
+<li><p><strong>f2</strong> (<em>str</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>alpha</strong> (<em>np.array([1,2…N])</em>) – Bronchis pressure</p></li>
-<li><p><strong>beta</strong> (<em>np.array()</em>)</p></li>
+<li><p><strong>beta_bif</strong> (<em>np.array</em>)</p></li>
+<li><p><strong>mu1_curves</strong> (<em>np.array</em>)</p></li>
+<li><p><strong>f1</strong> (<em>lambda functions</em>)</p></li>
+<li><p><strong>f2</strong> (<em>lambda functions</em>)</p></li>
 </ul>
 </p>
 </dd>
@@ -439,48 +616,21 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="wavesongs.models.bird.f1">
-<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wavesongs.models.bird.f1" title="Link to this definition">#</a></dt>
-<dd><p>Created with lambdify. Signature:</p>
-<p>func(x, y, alpha, beta, gamma)</p>
-<p>Expression:</p>
-<p>y</p>
-<p>Source code:</p>
-<dl class="simple">
-<dt>def _lambdifygenerated(x, y, alpha, beta, gamma):</dt><dd><p>return y</p>
-</dd>
-</dl>
-<p>Imported modules:</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="wavesongs.models.bird.f2">
-<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">f2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wavesongs.models.bird.f2" title="Link to this definition">#</a></dt>
-<dd><p>Created with lambdify. Signature:</p>
-<p>func(x, y, alpha, beta, gamma)</p>
-<p>Expression:</p>
-<p>gamma**2*(-alpha - beta*x - x**3 + x**2) - gamma*x*y*(x + 1)</p>
-<p>Source code:</p>
-<dl class="simple">
-<dt>def _lambdifygenerated(x, y, alpha, beta, gamma):</dt><dd><p>return gamma**2*(-alpha - beta*x - x**3 + x**2) - gamma*x*y*(x + 1)</p>
-</dd>
-</dl>
-<p>Imported modules:</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="wavesongs.models.bird.motor_gestures">
-<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">motor_gestures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Buffer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">_SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">_NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">_SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">complex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">_NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">complex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#motor_gestures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.motor_gestures" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="wavesongs.models.bird.alpha_beta">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">alpha_beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'a0':</span> <span class="pre">0.11,</span> <span class="pre">'b0':</span> <span class="pre">-0.1,</span> <span class="pre">'b1':</span> <span class="pre">1,</span> <span class="pre">'b2':</span> <span class="pre">0}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'best'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'fast'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'best'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#alpha_beta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.alpha_beta" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>pramams</strong> (<em>Dict</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<a class="reference internal" href="wavesongs.objs.song.html#wavesongs.objs.song.Song" title="wavesongs.objs.song.Song"><em>Song</em></a><em> | </em><a class="reference internal" href="wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable" title="wavesongs.objs.syllable.Syllable"><em>Syllable</em></a>)</p></li>
+<li><p><strong>z</strong> (<em>dict</em>)</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>synth</strong> – Synthethic syllable with same parameters except
-for s and vs</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../wavesongs.html#wavesongs.obj.Syllable" title="wavesongs.obj.Syllable">Syllable</a></p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>alpha</strong> (<em>np.array([1,2…N])</em>) – Bronchis pressure</p></li>
+<li><p><strong>beta</strong> (<em>np.array</em>)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -490,25 +640,24 @@ for s and vs</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="wavesongs.models.bird.set_params">
-<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#set_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.set_params" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="wavesongs.models.bird.motor_gestures">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">motor_gestures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#motor_gestures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.motor_gestures" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>list</em><em>[</em><em>float</em><em>] </em><em>| </em><em>dict</em>) – [a0,a1,a2_,b,b1,b2,gamma]</p>
+<dd class="field-odd"><p><strong>pramams</strong> (<em>Dict</em>)</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>params</strong></p>
+<dd class="field-even"><p><strong>synth</strong> – Synthethic syllable with same parameters except
+for s and vs</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
+<dd class="field-odd"><p><a class="reference internal" href="wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable" title="wavesongs.objs.syllable.Syllable">Syllable</a></p>
 </dd>
 </dl>
-<section id="exmaple">
-<h2>Exmaple<a class="headerlink" href="#exmaple" title="Link to this heading">#</a></h2>
+<p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
-</section>
 </dd></dl>
 
 <dl class="py function">
@@ -525,8 +674,30 @@ for s and vs</p>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<section id="id1">
-<h2>Exmaple<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="exmaple">
+<h2>Exmaple<a class="headerlink" href="#exmaple" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wavesongs.models.bird.set_params">
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#set_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.set_params" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>list</em><em>[</em><em>float</em><em>] </em><em>| </em><em>dict</em>) – [a0,a1,a2_,b,b1,b2,gamma]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>params</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<section id="id3">
+<h2>Exmaple<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
@@ -556,11 +727,11 @@ for s and vs</p>
       </div>
     </a>
     <a class="right-next"
-       href="wavesongs.plot.html"
+       href="wavesongs.objs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">wavesongs.plot</p>
+        <p class="prev-next-title">wavesongs.objs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -571,8 +742,7 @@ for s and vs</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -581,12 +751,16 @@ for s and vs</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._PARAMS"><code class="docutils literal notranslate"><span class="pre">_PARAMS</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._F1"><code class="docutils literal notranslate"><span class="pre">_F1</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._F2"><code class="docutils literal notranslate"><span class="pre">_F2</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._V_MAX_LABIA"><code class="docutils literal notranslate"><span class="pre">_V_MAX_LABIA</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird._Z"><code class="docutils literal notranslate"><span class="pre">_Z</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.bifurcation_ode"><code class="docutils literal notranslate"><span class="pre">bifurcation_ode()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.alpha_beta"><code class="docutils literal notranslate"><span class="pre">alpha_beta()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.f1"><code class="docutils literal notranslate"><span class="pre">f1()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.f2"><code class="docutils literal notranslate"><span class="pre">f2()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.motor_gestures"><code class="docutils literal notranslate"><span class="pre">motor_gestures()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.set_params"><code class="docutils literal notranslate"><span class="pre">set_params()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.set_z"><code class="docutils literal notranslate"><span class="pre">set_z()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavesongs.models.bird.set_params"><code class="docutils literal notranslate"><span class="pre">set_params()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -635,8 +809,8 @@ By Sebastian Aguilera Novoa
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

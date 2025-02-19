@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-""" """
+"""
+Some tools for interactive plots, math computing, and sound processing.
+"""
 import numpy as np
 import pandas as pd
 
@@ -11,19 +13,12 @@ from matplotlib.figure import Figure
 from mpl_point_clicker import clicker
 from scipy.interpolate import interp1d
 
-from sympy import (
-    symbols,
-    lambdify,
-    solveset
-)
-
 from mpl_pan_zoom import (
     zoom_factory,
     PanManager,
     MouseButton
 )
 
-from numpy.typing import ArrayLike
 from typing import (
     Tuple,
     Union,
@@ -45,10 +40,6 @@ _COLORS = [
 _MARKERS = [
     "p", "*", "*", "o", "o"
 ]
-# bifurcation saddle nodes and array length
-_N = 1000
-_mu2_beta = -2.5
-_mu1_alpha = 1/3
 
 def _shift_time(array, obj):
     for point in array:
@@ -56,7 +47,7 @@ def _shift_time(array, obj):
     return array
 
 #%%
-def envelope(s: ArrayLike, sr: int, Nt: int) -> ArrayLike:
+def envelope(s: np.ndarray, sr: int, Nt: int) -> np.ndarray:
     """
     
     Parameters
@@ -305,64 +296,7 @@ def get_measures(klicker, obj, save=False, labels=_LABELS):
     return data_df
 
 #%%
-def bifurcation_ode(f1, f2):
-    """
-    
-    Parameters
-    ----------
-        f1 : function
-
-        f2 : function
-    
-    Return
-    ------
-        beta_bif : np.array
-
-        mu1_curves : np.array
-
-        f1 :
-
-        f2 :
-
-    
-    Example
-    -------
-        >>>
-    """
-    beta_bif = np.linspace(_mu2_beta, _mu1_alpha, _N)
-    xs, ys, alpha, beta, gamma = symbols('x y alpha beta gamma')
-    # ---------------- Labia EDO's Bifurcation -----------------------
-    f1 = eval(f1)
-    f2 = eval(f2)
-
-    x01 = solveset(f1, ys) + solveset(f1, xs)
-    f2_x01 = f2.subs(ys, x01.args[0])
-    
-    f = solveset(f2_x01, alpha)
-    g = alpha
-    
-    df = f.args[0].diff(xs)
-    dg = g.diff(xs)
-    
-    roots_bif = solveset(df-dg, xs)
-    
-    mu1_curves = [] 
-    for ff in roots_bif.args:
-        # root evaluatings beta
-        mu1 = np.zeros(_N, dtype=float)
-        x_root = np.zeros(_N, dtype=float)
-        for i in range(_N):
-            x_root[i] = ff.subs(beta, beta_bif[i])
-            mu1[i] = f.subs([(beta,beta_bif[i]), (xs,x_root[i])]).args[0]
-        mu1_curves.append(np.array(mu1, dtype=float))
-    mu1_curves = np.array(mu1_curves)
-
-    f1 = lambdify([xs, ys, alpha, beta, gamma], f1)
-    f2 = lambdify([xs, ys, alpha, beta, gamma], f2)
-
-    return beta_bif, mu1_curves, f1, f2
-#%%
-def rk4(f, v: ArrayLike, dt: float):
+def rk4(f, v: np.ndarray, dt: float):
     """
     Implentation of Runge-Kuta 4th order
     

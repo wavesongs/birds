@@ -40,7 +40,7 @@
 
    <hr style="margin: -2px 0 20px 0;">
 
-**WaveSongs** implements the `motor gestures model for birdsong <http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf>`_ developed by `Gabo Mindlin <https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&hl=en>`_ to generate synthetic birdsongs through numerical optimization :cite:p:`b-birdsongs_book,a-Amador2013`. By leveraging **fundamental frequency (FF)** and **spectral content index (SCI)** as key parameters. The package solves a minimization problem using `SciPy <https://docs.scipy.org/doc/scipy/tutorial/optimize.html>`_ and performs audio analysis with `librosa <https://librosa.org/>`_. 
+**WaveSongs** implements the `motor gestures model for birdsong <http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf>`_ developed by `Gabo Mindlin <https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&hl=en>`_ to generate synthetic birdsongs through numerical optimization :cite:p:`b-birdsongs_book,a-Amador2013`. By leveraging **fundamental frequency (FF)** and **spectral content index (SCI)** as key parameters. The package solves a minimization problem using `SciPy <https://docs.scipy.org/doc/scipy/tutorial/optimize.html>`_ :cite:p:`s-2020SciPy` and performs audio analysis with `librosa <https://librosa.org/>`_  :cite:p:`s-McFee2015librosa` and `scikit-maad <https://scikit-maad.github.io/>`_ :cite:p:`s-maad`.
 
 .. toctree::
    :maxdepth: 1
@@ -48,11 +48,18 @@
    :hidden: 
 
    contents/Installation.md
-   contents/PhysicalModel.md
    contents/DownloadSamples.ipynb
-   contents/Introduction.ipynb
+   contents/GettingStarted.ipynb
    contents/SpectrumMeasures.ipynb
    contents/SyntheticSongs.ipynb
+   contents/PhysicalModel.md
+
+⚒️ Installation
+---------------
+
+There are two ways to install wavesongs: a single line code installation via pypi or a manual installation to get the latest  developer version. Check the :ref:`️installation` guide for more details.  
+
+Now, let’s dive into the package! Check out the :ref:`getting_started` guide to learn how to analyze recordings and create synthetic syllables.
 
 🗂️ Documentation
 ----------------
@@ -76,9 +83,9 @@ WaveSongs is licensed under the `GNU General Public License v3.0 <https://github
 
 If this work contributes to your research, please cite:
 
-.. code-block:: python
+.. code-block:: bibtex
    
-   @software{aguilera_wavesongs_2025,
+   @software{san_wavesongs_2025,
       author = {Aguilera Novoa, Sebastián},
       title = {WaveSongs: Computational Birdsong Synthesis},
       year = {2025},

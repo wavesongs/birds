@@ -106,7 +106,7 @@ def klicker_multiple(
     -------
         >>>
     """
-    zoom_factory(ax)
+    # zoom_factory(ax)
     pm = PanManager(fig, button=MouseButton.MIDDLE)
     klicker_data = clicker(
                     ax, 
@@ -138,7 +138,7 @@ def klicker_time(fig: Figure, ax: Axes):
     -------
         >>>
     """
-    zoom_factory(ax)
+    # zoom_factory(ax)
     pm = PanManager(fig, button=MouseButton.MIDDLE)
     klicker_time = clicker(
                     ax,

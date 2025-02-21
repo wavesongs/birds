@@ -172,11 +172,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/Installation.html">⚒️ Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
@@ -399,9 +399,9 @@ document.write(`
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">        audios : str =&#39;./assets/audio&#39;</span>
-<span class="sd">            Folder path where the audio records samples are saved.</span>
+<span class="sd">            Folder path where the audio records samples are stored.</span>
 <span class="sd">        results: str = &quot;./assets/results&quot;</span>
-<span class="sd">            Folder path for the generated files and data.</span>
+<span class="sd">            Folder path to store the files and data generated.</span>
 <span class="sd">        metadata: str = &quot;spreadsheet.csv&quot;</span>
 <span class="sd">            Name of the csv file with the metadata of the audios. </span>
 <span class="sd">            Usually given by the data provider.</span>
@@ -454,7 +454,7 @@ document.write(`
     <span class="c1"># %%</span>
 <div class="viewcode-block" id="ProjDirs.find_audios">
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.utils.paths.html#wavesongs.utils.paths.ProjDirs.find_audios">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">find_audios</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_audios</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Search for all audios, mp3 and wav types, in the audios folder. </span>
 <span class="sd">        </span>
@@ -477,30 +477,43 @@ document.write(`
 <span class="sd">        -------</span>
 <span class="sd">            &gt;&gt;&gt;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">all_filles</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">all_filles</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="n">_AUDIO_FORMATS</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">files_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">no_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files_names</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">all_filles</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">all_filles</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="n">_AUDIO_FORMATS</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">files_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files_names</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">CATALOG</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SPREADSHEET</span><span class="p">,</span> <span class="n">encoding_errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="c1"># self.data = data.convert_dtypes()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">CATALOG_LABEL</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">})</span>
-            <span class="n">found_files</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="p">(</span>
-                    <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">.mp3&quot;</span>
-                    <span class="k">if</span> <span class="n">file</span> <span class="o">+</span> <span class="s2">&quot;.mp3&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_names</span>
-                    <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">.wav&quot;</span>
-                <span class="p">)</span>
-                <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">CATALOG_LABEL</span><span class="p">]</span>
-            <span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;File Path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">found_files</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">no_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">CATALOG</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SPREADSHEET</span><span class="p">,</span> <span class="n">encoding_errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="c1"># self.data = data.convert_dtypes()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">CATALOG_LABEL</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">})</span>
+                <span class="n">found_files</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">(</span>
+                        <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">.mp3&quot;</span>
+                        <span class="k">if</span> <span class="n">file</span> <span class="o">+</span> <span class="s2">&quot;.mp3&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_names</span>
+                        <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">.wav&quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">CATALOG_LABEL</span><span class="p">]</span>
+                <span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;File Path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">found_files</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">no_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+                <span class="k">if</span> <span class="n">pretty</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_names</span></div>
+            <span class="k">if</span> <span class="n">pretty</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Audios found:&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files_names</span><span class="p">)):</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">- </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">files_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_names</span>
+        
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The path </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">AUDIOS</span><span class="si">}</span><span class="s2"> does not contain any &quot;</span><span class="o">+</span>
+                            <span class="s2">&quot;samples. Change the audios path and try again.&quot;</span><span class="p">)</span></div>
 
     <span class="c1"># %%</span>
 <div class="viewcode-block" id="ProjDirs.audios_info">

@@ -1,6 +1,6 @@
 ,value
-t_ini,0.8807
-t_end,1.3034
+t_ini,0.8781
+t_end,1.3006
 f_ini,1000.0
 f_end,20000.0
 id,synth-syllable
@@ -13,8 +13,8 @@ type,intro-down
 metadata,{}
 file_name,574179401 - Zonotrichia Capensis.wav
 audios_folder,../../assets/audio
-z,"{'a0': 0.00105, 'b0': -0.21438, 'b1': 1.0, 'b2': 1.29729}"
-duration,0.4226984126984127
+z,"{'a0': 0.00105, 'b0': -0.19726, 'b1': 0.99924, 'b2': 1.20333}"
+duration,0.4224716553287982
 params,"{'gm': 40000.0, 'C': 343, 'L': 0.025, 'r': 0.65, 'Ch': 1.43e-10, 'MG': 20, 'MB': 10000.0, 'RB': 5000000.0, 'Rh': 24000.0}"
 Nt,10
 center,False

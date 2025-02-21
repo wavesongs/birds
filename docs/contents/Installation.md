@@ -9,13 +9,14 @@
 
 ## Basic Installation
 
-**WaveSongs** is available at [Pypi](https://pypi.org/). To install, run:
+**WaveSongs** is available at [Pypi](https://pypi.org/). To install the latest stable version, run:
 
 ```bash
 pip install wavesongs
 ```
 
-:::::{admonition} Tip: create a Python environment
+(python_env)=
+:::::{admonition} Tip: create a dedicated Python environment
 :class: tip
 
 It is possible to use `pip` to install `wavesongs` outside of a virtual environment, but this is not recommended. Virtual environments create an isolated Python environment that does not interfere with your system's existing Python installation. They can be easily removed and contain only the specific package versions your application requires. Additionally, they help avoid a common issue known as "[dependency hell](https://en.wikipedia.org/wiki/Dependency_hell)", where conflicting package versions cause problems and unexpected behaviors.
@@ -24,6 +25,8 @@ It is highly recommended that you create a new virtual environment. This can be 
 
 - **Python virtual environments**
 
+   You can set the name you prefer, however, a good practice is to name the environment as `env` or `.env`.
+
    ::::{tab-set}
    :sync-group: category
 
@@ -31,8 +34,8 @@ It is highly recommended that you create a new virtual environment. This can be 
    :sync: linux
 
    ```bash
-   python -m venv venv
-   source venv/bin/activate
+   python -m venv .venv
+   source .venv/bin/activate
    ```
 
    :::
@@ -41,8 +44,8 @@ It is highly recommended that you create a new virtual environment. This can be 
    :sync: windows
 
    ```bash
-   python -m venv venv
-   .\venv\Scripts\activate
+   python -m venv .venv
+   .\.venv\Scripts\activate
    ```
    :::
 
@@ -51,7 +54,7 @@ It is highly recommended that you create a new virtual environment. This can be 
 - **Conda environments**
 
    ```bash
-   conda create -n wavesongs-env python=3.12
+   conda create -n wavesongs-env python=3.12 pip
    conda activate wavesongs-env
    ```
 
@@ -59,7 +62,7 @@ It is highly recommended that you create a new virtual environment. This can be 
 
 ## Developer Installation 
 
-To install the latest deveopment version from source clone the main repository from GitHub
+First, create a Python environment as mentioned in [tip](#python_env). Then, to install the latest deveopment version from source clone the main repository from GitHub
 
 ```bash
 git clone https://github.com/wavesongs/wavesongs
@@ -77,6 +80,10 @@ Install WaveSongs in editable mode:
 ```bash
 pip install -e .
 ```
+
+:::{note}
+It is highly recommended to use Python notebooks, however, Python and ipython terminals also work.  
+:::
 
 ## OS Support
 

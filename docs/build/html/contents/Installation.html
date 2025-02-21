@@ -50,8 +50,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/Installation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="⚙️ Physical Model" href="PhysicalModel.html" />
-    <link rel="prev" title="🗂️ Documentation" href="../index.html" />
+    <link rel="next" title="📥 Download Samples" href="DownloadSamples.html" />
+    <link rel="prev" title="⚒️ Installation" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,11 +173,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">⚒️ Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PhysicalModel.html">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SpectrumMeasures.html">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PhysicalModel.html">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
@@ -426,37 +426,38 @@ document.write(`
 </section>
 <section id="basic-installation">
 <h2>Basic Installation<a class="headerlink" href="#basic-installation" title="Link to this heading">#</a></h2>
-<p><strong>WaveSongs</strong> is available at <a class="reference external" href="https://pypi.org/">Pypi</a>. To install, run:</p>
+<p><strong>WaveSongs</strong> is available at <a class="reference external" href="https://pypi.org/">Pypi</a>. To install the latest stable version, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>wavesongs
 </pre></div>
 </div>
-<div class="tip admonition">
-<p class="admonition-title">Tip: create a Python environment</p>
+<div class="tip admonition" id="python-env">
+<p class="admonition-title">Tip: create a dedicated Python environment</p>
 <p>It is possible to use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install <code class="docutils literal notranslate"><span class="pre">wavesongs</span></code> outside of a virtual environment, but this is not recommended. Virtual environments create an isolated Python environment that does not interfere with your system’s existing Python installation. They can be easily removed and contain only the specific package versions your application requires. Additionally, they help avoid a common issue known as “<a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_hell">dependency hell</a>”, where conflicting package versions cause problems and unexpected behaviors.</p>
 <p>It is highly recommended that you create a new virtual environment. This can be done in two ways, but you only need to choose one:</p>
 <ul>
 <li><p><strong>Python virtual environments</strong></p>
+<p>You can set the name you prefer, however, a good practice is to name the environment as <code class="docutils literal notranslate"><span class="pre">env</span></code> or <code class="docutils literal notranslate"><span class="pre">.env</span></code>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="category" data-sync-id="linux" for="sd-tab-item-0">
 Linux</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="category" data-sync-id="windows" for="sd-tab-item-1">
 Windows</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-.<span class="se">\v</span>env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+.<span class="se">\.</span>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
 </div>
 </div>
 </li>
 <li><p><strong>Conda environments</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>wavesongs-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>wavesongs-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>pip
 conda<span class="w"> </span>activate<span class="w"> </span>wavesongs-env
 </pre></div>
 </div>
@@ -466,7 +467,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>wavesongs-env
 </section>
 <section id="developer-installation">
 <h2>Developer Installation<a class="headerlink" href="#developer-installation" title="Link to this heading">#</a></h2>
-<p>To install the latest deveopment version from source clone the main repository from GitHub</p>
+<p>First, create a Python environment as mentioned in <a class="reference internal" href="#python-env">tip</a>. Then, to install the latest deveopment version from source clone the main repository from GitHub</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/wavesongs/wavesongs
 <span class="nb">cd</span><span class="w"> </span>wavesongs<span class="w"> </span><span class="c1"># enter the cloned directory</span>
 </pre></div>
@@ -478,6 +479,10 @@ conda<span class="w"> </span>activate<span class="w"> </span>wavesongs-env
 <p>Install WaveSongs in editable mode:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is highly recommended to use Python notebooks, however, Python and ipython terminals also work.</p>
 </div>
 </section>
 <section id="os-support">
@@ -503,15 +508,15 @@ conda<span class="w"> </span>activate<span class="w"> </span>wavesongs-env
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">🗂️ Documentation</p>
+        <p class="prev-next-title">⚒️ Installation</p>
       </div>
     </a>
     <a class="right-next"
-       href="PhysicalModel.html"
+       href="DownloadSamples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">⚙️ Physical Model</p>
+        <p class="prev-next-title">📥 Download Samples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

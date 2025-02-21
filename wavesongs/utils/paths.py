@@ -42,9 +42,9 @@ class ProjDirs:
     Parameters
     ----------
         audios : str ='./assets/audio'
-            Folder path where the audio records samples are saved.
+            Folder path where the audio records samples are stored.
         results: str = "./assets/results"
-            Folder path for the generated files and data.
+            Folder path to store the files and data generated.
         metadata: str = "spreadsheet.csv"
             Name of the csv file with the metadata of the audios. 
             Usually given by the data provider.
@@ -92,7 +92,7 @@ class ProjDirs:
         self.find_audios()
     
     # %%
-    def find_audios(self) -> Union[List, pd.DataFrame]:
+    def find_audios(self, pretty=False) -> Union[List, pd.DataFrame]:
         """
         Search for all audios, mp3 and wav types, in the audios folder. 
         
@@ -115,30 +115,43 @@ class ProjDirs:
         -------
             >>>
         """
-        all_filles = Path(self.AUDIOS).glob("**/*")
-        self.files = [a for a in all_filles if a.suffix in _AUDIO_FORMATS]
-        self.files_names = [basename(f) for f in self.files]
-        self.no_files = len(self.files_names)
+        try:
+            all_filles = Path(self.AUDIOS).glob("**/*")
+            self.files = [a for a in all_filles if a.suffix in _AUDIO_FORMATS]
+            self.files_names = [basename(f) for f in self.files]
+            self.no_files = len(self.files_names)
 
-        if self.CATALOG is True:
-            self.data = pd.read_csv(self.SPREADSHEET, encoding_errors="ignore")
-            self.data.dropna(axis=0, how="all", inplace=True)
-            # self.data = data.convert_dtypes()
-            self.data = self.data.astype({self.CATALOG_LABEL: "str"})
-            found_files = [
-                (
-                    str(self.AUDIOS) + f"/{file}.mp3"
-                    if file + ".mp3" in self.files_names
-                    else str(self.AUDIOS) + f"/{file}.wav"
-                )
-                for file in self.data[self.CATALOG_LABEL]
-            ]
-            self.data["File Path"] = found_files
-            self.no_files = len(self.data)
+            if self.CATALOG is True:
+                self.data = pd.read_csv(self.SPREADSHEET, encoding_errors="ignore")
+                self.data.dropna(axis=0, how="all", inplace=True)
+                # self.data = data.convert_dtypes()
+                self.data = self.data.astype({self.CATALOG_LABEL: "str"})
+                found_files = [
+                    (
+                        str(self.AUDIOS) + f"/{file}.mp3"
+                        if file + ".mp3" in self.files_names
+                        else str(self.AUDIOS) + f"/{file}.wav"
+                    )
+                    for file in self.data[self.CATALOG_LABEL]
+                ]
+                self.data["File Path"] = found_files
+                self.no_files = len(self.data)
 
-            return self.data
+                if pretty:
+                    print(self.data)
+                return self.data
 
-        return self.files_names
+            if pretty:
+                print("Audios found:")
+                for i in range(len(self.files_names)):
+                    print(f"\t- {self.files_names[i]}")
+                print(self.data)
+        
+            return self.files_names
+        
+        except:
+            raise Exception(f"The path {self.AUDIOS} does not contain any "+
+                            "samples. Change the audios path and try again.")
     # %%
     def audios_info(self) -> None:
         """

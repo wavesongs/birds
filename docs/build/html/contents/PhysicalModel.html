@@ -52,8 +52,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/PhysicalModel';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="📥 Downloading Samples" href="DownloadSamples.html" />
-    <link rel="prev" title="⚒️ Installation" href="Installation.html" />
+    <link rel="next" title="wavesongs" href="../_autosummary/wavesongs.html" />
+    <link rel="prev" title="🎵 Pure Synthetic Songs" href="SyntheticSongs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,11 +175,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">⚒️ Installation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SpectrumMeasures.html">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
@@ -431,6 +431,7 @@ document.write(`
     &amp; \frac{dx}{dt} = y\nonumber\\
     &amp; \frac{dy}{dt} = \gamma^2[-\alpha (t)-\beta (t) x  + x^2 - x^3] - \gamma (1+ x )xy 
 \end{align}\end{split}\]</div>
+<p><span id="id1">[<a class="reference internal" href="#id2" title="Rodrigo Laje, Timothy J. Gardner, and Gabriel B. Mindlin. Neuromuscular control of vocalizations in birdsong: a model. Phys. Rev. E, 65:051921, May 2002. URL: https://link.aps.org/doi/10.1103/PhysRevE.65.051921, doi:10.1103/PhysRevE.65.051921.">1</a>, <a class="reference internal" href="#id3" title="Franz Goller and Roderick A. Suthers. Role of syringeal muscles in controlling the phonology of bird song. https://doi.org/10.1152/jn.1996.76.1.287, 76:287-300, 1996. URL: https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287, doi:10.1152/JN.1996.76.1.287.">2</a>, <a class="reference internal" href="#id6" title="Ole Næsbye Larsen and Franz Goller. Direct observation of syringeal muscle function in songbirds and a parrot. Journal of Experimental Biology, 205:25-35, 1 2002. URL: https://journals.biologists.com/jeb/article/205/1/25/33066/Direct-observation-of-syringeal-muscle-function-in, doi:10.1242/JEB.205.1.25.">3</a>, <a class="reference internal" href="#id8" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">4</a>, <a class="reference internal" href="#id9" title="Tim Gardner, G. Cecchi, M. Magnasco, R. Laje, and Gabriel B. Mindlin. Simple motor gestures for birdsongs. Physical Review Letters, 87:208101, 10 2001. URL: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.87.208101, doi:10.1103/PhysRevLett.87.208101.">5</a>]</span></p>
 </section>
 <section id="trache">
 <h2>Trache<a class="headerlink" href="#trache" title="Link to this heading">#</a></h2>
@@ -441,6 +442,7 @@ p_{back} (t) = -r p_i\left( t - \frac{L}{c} \right)\\
 p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 \frac{d p_{out}}{dt} (t) = \frac{p_{out}(t)- p_{out}(t-dt)}{dt}
 \end{gather}\end{split}\]</div>
+<p>{cite:p}``</p>
 </section>
 <section id="oec">
 <h2>OEC<a class="headerlink" href="#oec" title="Link to this heading">#</a></h2>
@@ -452,6 +454,7 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
    \frac{d}{dt} p_b &amp;= p_b' = -  \frac{M_g}{M_b}  p_g' - \frac{R_b}{M_b} p_b + \frac{1}{M_b} p_{out}
    %\\  &amp; \color{myblue} \frac{d\vec{p}}{dt} = \vec{h}(\vec{p},  p_{out}, p_{out}'), \quad \vec{p} = (p_g, p_g', p_b)
 \end{align}\end{split}\]</div>
+<p><span id="id2">[<a class="reference internal" href="#id4" title="Yonatan Sanz Perl, Ezequiel M. Arneodo, Ana Amador, Franz Goller, and Gabriel B. Mindlin. Reconstruction of physiological instructions from zebra finch song. Physical Review E - Statistical, Nonlinear, and Soft Matter Physics, 84:051909, 11 2011. URL: https://journals.aps.org/pre/abstract/10.1103/PhysRevE.84.051909, doi:10.1103/PHYSREVE.84.051909/FIGURES/8/MEDIUM.">6</a>, <a class="reference internal" href="#id5" title="Neville H. Fletcher, Tobias Riede, and Roderick A. Suthers. Model for vocalization by a bird with distensible vocal cavity and open beak. The Journal of the Acoustical Society of America, 119:1005, 1 2006. URL: https://asa.scitation.org/doi/abs/10.1121/1.2159434, doi:10.1121/1.2159434.">7</a>]</span></p>
 </section>
 <section id="minimization-problem">
 <h2>Minimization Problem<a class="headerlink" href="#minimization-problem" title="Link to this heading">#</a></h2>
@@ -468,43 +471,42 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 <h2>Numerial Solution<a class="headerlink" href="#numerial-solution" title="Link to this heading">#</a></h2>
 <a class="reference internal image-reference" href="../_images/methodology.png"><img alt="Physical model" class="align-center" src="../_images/methodology.png" style="width: 70%;" />
 </a>
-<p><span id="id1">[<a class="reference internal" href="#id3" title="Franz Goller and Roderick A. Suthers. Role of syringeal muscles in controlling the phonology of bird song. https://doi.org/10.1152/jn.1996.76.1.287, 76:287-300, 1996. URL: https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287, doi:10.1152/JN.1996.76.1.287.">1</a>]</span></p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
 <div role="list" class="citation-list">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Franz Goller and Roderick A. Suthers. Role of syringeal muscles in controlling the phonology of bird song. <em>https://doi.org/10.1152/jn.1996.76.1.287</em>, 76:287–300, 1996. URL: <a class="reference external" href="https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287">https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287</a>, <a class="reference external" href="https://doi.org/10.1152/JN.1996.76.1.287">doi:10.1152/JN.1996.76.1.287</a>.</p>
-</div>
 <div class="citation" id="id2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Rodrigo Laje, Timothy J. Gardner, and Gabriel B. Mindlin. Neuromuscular control of vocalizations in birdsong: a model. <em>Phys. Rev. E</em>, 65:051921, May 2002. URL: <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevE.65.051921">https://link.aps.org/doi/10.1103/PhysRevE.65.051921</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevE.65.051921">doi:10.1103/PhysRevE.65.051921</a>.</p>
 </div>
-<div class="citation" id="id4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
-<p>Yonatan Sanz Perl, Ezequiel M. Arneodo, Ana Amador, Franz Goller, and Gabriel B. Mindlin. Reconstruction of physiological instructions from zebra finch song. <em>Physical Review E - Statistical, Nonlinear, and Soft Matter Physics</em>, 84:051909, 11 2011. URL: <a class="reference external" href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.84.051909">https://journals.aps.org/pre/abstract/10.1103/PhysRevE.84.051909</a>, <a class="reference external" href="https://doi.org/10.1103/PHYSREVE.84.051909/FIGURES/8/MEDIUM">doi:10.1103/PHYSREVE.84.051909/FIGURES/8/MEDIUM</a>.</p>
-</div>
-<div class="citation" id="id5" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
-<p>Neville H. Fletcher, Tobias Riede, and Roderick A. Suthers. Model for vocalization by a bird with distensible vocal cavity and open beak. <em>The Journal of the Acoustical Society of America</em>, 119:1005, 1 2006. URL: <a class="reference external" href="https://asa.scitation.org/doi/abs/10.1121/1.2159434">https://asa.scitation.org/doi/abs/10.1121/1.2159434</a>, <a class="reference external" href="https://doi.org/10.1121/1.2159434">doi:10.1121/1.2159434</a>.</p>
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>Franz Goller and Roderick A. Suthers. Role of syringeal muscles in controlling the phonology of bird song. <em>https://doi.org/10.1152/jn.1996.76.1.287</em>, 76:287–300, 1996. URL: <a class="reference external" href="https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287">https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287</a>, <a class="reference external" href="https://doi.org/10.1152/JN.1996.76.1.287">doi:10.1152/JN.1996.76.1.287</a>.</p>
 </div>
 <div class="citation" id="id6" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
 <p>Ole Næsbye Larsen and Franz Goller. Direct observation of syringeal muscle function in songbirds and a parrot. <em>Journal of Experimental Biology</em>, 205:25–35, 1 2002. URL: <a class="reference external" href="https://journals.biologists.com/jeb/article/205/1/25/33066/Direct-observation-of-syringeal-muscle-function-in">https://journals.biologists.com/jeb/article/205/1/25/33066/Direct-observation-of-syringeal-muscle-function-in</a>, <a class="reference external" href="https://doi.org/10.1242/JEB.205.1.25">doi:10.1242/JEB.205.1.25</a>.</p>
 </div>
-<div class="citation" id="id7" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
-<p>Roberto Bistel, Alejandro Martinez, and Gabriel B. Mindlin. An analysis of the persistence of zonotrichia capensis themes using dynamical systems and machine learning tools. <em>Chaos, Solitons and Fractals</em>, 12 2022. <a class="reference external" href="https://doi.org/10.1016/J.CHAOS.2022.112803">doi:10.1016/J.CHAOS.2022.112803</a>.</p>
-</div>
 <div class="citation" id="id8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">4</a><span class="fn-bracket">]</span></span>
 <p>Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. <em>Nature</em>, 495(7439):59–64, Mar 2013. URL: <a class="reference external" href="https://doi.org/10.1038/nature11967">https://doi.org/10.1038/nature11967</a>, <a class="reference external" href="https://doi.org/10.1038/nature11967">doi:10.1038/nature11967</a>.</p>
 </div>
 <div class="citation" id="id9" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">5</a><span class="fn-bracket">]</span></span>
 <p>Tim Gardner, G. Cecchi, M. Magnasco, R. Laje, and Gabriel B. Mindlin. Simple motor gestures for birdsongs. <em>Physical Review Letters</em>, 87:208101, 10 2001. URL: <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.87.208101">https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.87.208101</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.87.208101">doi:10.1103/PhysRevLett.87.208101</a>.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">6</a><span class="fn-bracket">]</span></span>
+<p>Yonatan Sanz Perl, Ezequiel M. Arneodo, Ana Amador, Franz Goller, and Gabriel B. Mindlin. Reconstruction of physiological instructions from zebra finch song. <em>Physical Review E - Statistical, Nonlinear, and Soft Matter Physics</em>, 84:051909, 11 2011. URL: <a class="reference external" href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.84.051909">https://journals.aps.org/pre/abstract/10.1103/PhysRevE.84.051909</a>, <a class="reference external" href="https://doi.org/10.1103/PHYSREVE.84.051909/FIGURES/8/MEDIUM">doi:10.1103/PHYSREVE.84.051909/FIGURES/8/MEDIUM</a>.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">7</a><span class="fn-bracket">]</span></span>
+<p>Neville H. Fletcher, Tobias Riede, and Roderick A. Suthers. Model for vocalization by a bird with distensible vocal cavity and open beak. <em>The Journal of the Acoustical Society of America</em>, 119:1005, 1 2006. URL: <a class="reference external" href="https://asa.scitation.org/doi/abs/10.1121/1.2159434">https://asa.scitation.org/doi/abs/10.1121/1.2159434</a>, <a class="reference external" href="https://doi.org/10.1121/1.2159434">doi:10.1121/1.2159434</a>.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<p>Roberto Bistel, Alejandro Martinez, and Gabriel B. Mindlin. An analysis of the persistence of zonotrichia capensis themes using dynamical systems and machine learning tools. <em>Chaos, Solitons and Fractals</em>, 12 2022. <a class="reference external" href="https://doi.org/10.1016/J.CHAOS.2022.112803">doi:10.1016/J.CHAOS.2022.112803</a>.</p>
 </div>
 <div class="citation" id="id10" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
@@ -527,20 +529,20 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Installation.html"
+       href="SyntheticSongs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">⚒️ Installation</p>
+        <p class="prev-next-title">🎵 Pure Synthetic Songs</p>
       </div>
     </a>
     <a class="right-next"
-       href="DownloadSamples.html"
+       href="../_autosummary/wavesongs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">📥 Downloading Samples</p>
+        <p class="prev-next-title">wavesongs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

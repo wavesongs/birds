@@ -1,6 +1,6 @@
 """
-A python package to generate synthetic songs with
-physical models and numerical optimization
+A Python package for generating synthetic bird songs through
+physical modeling and numerical optimization techniques.
 """
 
 from warnings import filterwarnings

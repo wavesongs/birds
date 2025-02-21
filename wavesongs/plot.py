@@ -6,6 +6,8 @@ A collection of functions to dsplay songs and results.
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from mpl_point_clicker import clicker
+
 
 from wavesongs.utils.tools import (
     klicker_time,
@@ -636,6 +638,7 @@ def spectrogram_waveform(
     else:
         raise Exception("Wrong object.")
     # fig.tight_layout()
+    
 
     if save:
         fig.savefig(path_save,
@@ -643,12 +646,17 @@ def spectrogram_waveform(
                     bbox_inches="tight")
         print(f"Image save at {path_save}")
 
-    if show: plt.show()
-    else: plt.close()
-
     if select_time:
-        return klicker_time(fig, ax[1])
+        clicker = klicker_time(fig, ax[1])
+    
+    if show:
+        plt.show()
+        if select_time:
+            return clicker
+    else:
+        plt.close()
 
+        
 # %%
 def syllables(
     obj: Any,  # Union[Syllable,Song],

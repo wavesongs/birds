@@ -172,11 +172,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../contents/Installation.html">⚒️ Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contents/DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contents/Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
@@ -361,6 +361,8 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_point_clicker</span><span class="w"> </span><span class="kn">import</span> <span class="n">clicker</span>
+
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.tools</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">klicker_time</span><span class="p">,</span>
@@ -1005,6 +1007,7 @@ document.write(`
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Wrong object.&quot;</span><span class="p">)</span>
     <span class="c1"># fig.tight_layout()</span>
+    
 
     <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_save</span><span class="p">,</span>
@@ -1012,13 +1015,18 @@ document.write(`
                     <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Image save at </span><span class="si">{</span><span class="n">path_save</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">show</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
     <span class="k">if</span> <span class="n">select_time</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">klicker_time</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+        <span class="n">clicker</span> <span class="o">=</span> <span class="n">klicker_time</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">select_time</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">clicker</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 
+        
 <span class="c1"># %%</span>
 <div class="viewcode-block" id="syllables">
 <a class="viewcode-back" href="../../_autosummary/wavesongs.plot.html#wavesongs.plot.syllables">[docs]</a>

@@ -5,7 +5,7 @@ from pathlib import Path
 import shutil
 import pandas as pd
 from maad import util
-from typing import Optional
+from typing import List, Optional, Union
 
 # %%
 def download_audios(
@@ -73,8 +73,8 @@ def download_audios(
 
 # %%
 def query_audios(
-    english_name: str,
-    scientific_name: str,
+    english_name: Union[str, List[str]],
+    scientific_name: Union[str, List[str]],
     max_nb_files: Optional[int] = None,
     random_seed: int = 2025,
     info: dict = {},
@@ -99,7 +99,10 @@ def query_audios(
     Returns:
         df_query (pd.DataFrame) : Data Frame
     """
-    data = [[english_name, scientific_name]]
+    if type(english_name) == str and type(scientific_name)==str:
+        data = [[english_name, scientific_name]]
+    elif type(english_name) == list and type(scientific_name)==list:
+        data = list(zip(english_name, scientific_name))
 
     df_species = pd.DataFrame(
         data=data,

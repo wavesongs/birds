@@ -22,7 +22,7 @@
 \end{align}
 ```
 
-
+{cite:p}`neuromuscular,muscles_role,Syrinx_muscles,Amador2013,syrinx_first_model`
 
 
 ## Trache
@@ -37,6 +37,8 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 \end{gather}
 ```
 
+{cite:p}``
+
 ## OEC
 
 ```{math}
@@ -49,6 +51,8 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
    %\\  & \color{myblue} \frac{d\vec{p}}{dt} = \vec{h}(\vec{p},  p_{out}, p_{out}'), \quad \vec{p} = (p_g, p_g', p_b)
 \end{align}
 ```
+
+{cite:p}`OEC_circuit,OEC_units`
 
 ## Minimization Problem
 
@@ -72,7 +76,6 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 :::
 
 
-{cite:p}`muscles_role`
 
 ## References
 

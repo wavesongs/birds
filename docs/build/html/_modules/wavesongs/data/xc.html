@@ -29,7 +29,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=452e63f8" />
@@ -172,11 +172,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/Installation.html">⚒️ Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../contents/Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
@@ -360,7 +360,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">maad</span><span class="w"> </span><span class="kn">import</span> <span class="n">util</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="c1"># %%</span>
 <div class="viewcode-block" id="download_audios">
@@ -433,8 +433,8 @@ document.write(`
 <div class="viewcode-block" id="query_audios">
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.data.xc.html#wavesongs.data.xc.query_audios">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">query_audios</span><span class="p">(</span>
-    <span class="n">english_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">scientific_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">english_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+    <span class="n">scientific_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
     <span class="n">max_nb_files</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2025</span><span class="p">,</span>
     <span class="n">info</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
@@ -459,7 +459,10 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">        df_query (pd.DataFrame) : Data Frame</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">english_name</span><span class="p">,</span> <span class="n">scientific_name</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">english_name</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">scientific_name</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">english_name</span><span class="p">,</span> <span class="n">scientific_name</span><span class="p">]]</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">english_name</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">scientific_name</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">english_name</span><span class="p">,</span> <span class="n">scientific_name</span><span class="p">))</span>
 
     <span class="n">df_species</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>

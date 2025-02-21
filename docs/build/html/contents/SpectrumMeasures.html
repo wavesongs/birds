@@ -51,7 +51,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="🎵 Pure Synthetic Songs" href="SyntheticSongs.html" />
-    <link rel="prev" title="🚀 Introduction to WaveSongs" href="Introduction.html" />
+    <link rel="prev" title="🚀 Getting Started" href="GettingStarted.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,11 +173,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">⚒️ Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PhysicalModel.html">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PhysicalModel.html">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="nav bd-sidenav">
@@ -445,7 +445,10 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="spectrum-measures">
 <h1>📏 Spectrum Measures<a class="headerlink" href="#spectrum-measures" title="Link to this heading">#</a></h1>
 <br>
-<p>This tutorial guides users through analyzing, visualizing, and generating synthetic birdsongs using the <code class="docutils literal notranslate"><span class="pre">wavesongs</span></code> Python package, which is based on the motor gestures for birdsongs model developed by <a class="reference external" href="https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&amp;amp;hl=en">Prof. G. Mindlin</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example shows the interactive capabilities of Matplotlib backends, and this will not appear in the static documentation. Please run this code on your machine to see the interactivity.</p>
+</div>
 <p>If you are using Google Colab uncomment and execute the following cell:</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -469,11 +472,10 @@ document.write(`
 </div>
 </details>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition caution" id="warning">
+<p class="admonition-title">Caution</p>
 <p>If you encounter an error message, reset the kernel and run the above cell again. After that, everything should work successfully.</p>
 </div>
-<p>Then, follow the <a class="reference external" href="https://github.com/wavesongs/wavesongs#%EF%B8%8F-installation">installation guide</a> to set up the evironment and install the required libraries.</p>
 <section id="libraries">
 <h2>Libraries<a class="headerlink" href="#libraries" title="Link to this heading">#</a></h2>
 <p>Import the required classes and functions from <code class="docutils literal notranslate"><span class="pre">wavesongs</span></code>:</p>
@@ -481,9 +483,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %matplotlib ipympl</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.objs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Song</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.paths</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjDirs</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_measures</span>
 </pre></div>
 </div>
@@ -491,7 +493,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">ProjDirs</span><span class="p">(</span><span class="n">audios</span><span class="o">=</span><span class="s2">&quot;../../assets/audio&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="s2">&quot;../../assets/results&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">ProjDirs</span><span class="p">(</span><span class="n">audios</span><span class="o">=</span><span class="s2">&quot;./assets/audio&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="s2">&quot;./assets/results&quot;</span><span class="p">)</span>
 
 <span class="n">tlim_roi</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">)</span>
 
@@ -532,7 +534,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_measures</span><span class="p">(</span><span class="n">klicker_data</span><span class="p">,</span> <span class="n">copeton_song</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_measures</span> <span class="o">=</span> <span class="n">get_measures</span><span class="p">(</span><span class="n">klicker_data</span><span class="p">,</span> <span class="n">copeton_song</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_measures</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -623,12 +626,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Introduction.html"
+       href="GettingStarted.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">🚀 Introduction to WaveSongs</p>
+        <p class="prev-next-title">🚀 Getting Started</p>
       </div>
     </a>
     <a class="right-next"

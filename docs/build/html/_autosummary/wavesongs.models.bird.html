@@ -175,11 +175,11 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../contents/Installation.html">⚒️ Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/DownloadSamples.html">📥 Downloading Samples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/Introduction.html">🚀 Introduction to WaveSongs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/GettingStarted.html">🚀 Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -426,7 +426,7 @@ document.write(`
 <span id="wavesongs-models-bird"></span><h1>wavesongs.models.bird<a class="headerlink" href="#module-wavesongs.models.bird" title="Link to this heading">#</a></h1>
 <p>Methods to implement the motor gesture model for birdsongs.</p>
 <p class="rubric">Functions</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#wavesongs.models.bird.alpha_beta" title="wavesongs.models.bird.alpha_beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_beta</span></code></a>(obj[, z, method])</p></td>
 <td><p></p></td>
@@ -451,7 +451,7 @@ document.write(`
 <span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></em><a class="headerlink" href="#wavesongs.models.bird._PARAMS" title="Link to this definition">#</a></dt>
 <dd><p>Model parameters</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4" style="width: 80%">
-<caption><span class="caption-text">Birdsongs model parameters <span id="id1">[<a class="reference internal" href="../index.html#id9" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Birdsongs model parameters <span id="id1">[<a class="reference internal" href="../index.html#id12" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 40.0%" />
@@ -542,7 +542,7 @@ Where <span class="math notranslate nohighlight">\(x\)</span> is the labial posi
 Where <span class="math notranslate nohighlight">\(x\)</span> is the labial position and <span class="math notranslate nohighlight">\(y\)</span> the labial wall velocity.</p>
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dt} = \gamma^2(-\alpha-\beta x-x^3+x^2) - \gamma(x+1)x y\]</div>
-<p>This equation is obtained using the Bogdanov–Takens bifurcation <span id="id2">[<a class="reference internal" href="../index.html#id9" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</p>
+<p>This equation is obtained using the Bogdanov–Takens bifurcation <span id="id2">[<a class="reference internal" href="../index.html#id12" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>

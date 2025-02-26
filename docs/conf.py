@@ -34,6 +34,7 @@ extensions = [
     "sphinx_copybutton",
     'sphinx.ext.mathjax',
     'sphinxcontrib.bibtex',
+    "sphinx_togglebutton",
     "IPython.sphinxext.ipython_console_highlighting",
 ]
 
@@ -111,7 +112,9 @@ html_theme_options = {
     "sidebarwidth": "50px",
     "collapse_navbar": False,
     "launch_buttons": {
-        "colab_url": "https://colab.research.google.com"
+        "colab_url": "https://colab.research.google.com",
+        # "binderhub_url": " https://mybinder.org/",
+        # "deepnote_url": "https://deepnote.com"
     },
     "icon_links": [
         {

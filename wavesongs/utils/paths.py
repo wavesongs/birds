@@ -61,7 +61,7 @@ class ProjDirs:
     # %%
     def __init__(
         self,
-        audios: AnyStr = "./assets/audio",
+        audios: AnyStr = "./assets/audios",
         results: AnyStr = "./assets/results",
         metadata: AnyStr = "spreadsheet.csv",
         catalog: bool = False

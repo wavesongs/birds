@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=452e63f8" />
   
@@ -45,8 +46,14 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/wavesongs.models.bird';</script>
@@ -451,12 +458,12 @@ document.write(`
 <span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></em><a class="headerlink" href="#wavesongs.models.bird._PARAMS" title="Link to this definition">#</a></dt>
 <dd><p>Model parameters</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4" style="width: 80%">
-<caption><span class="caption-text">Birdsongs model parameters <span id="id1">[<a class="reference internal" href="../index.html#id12" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Birdsongs model parameters <span id="id1">[<a class="reference internal" href="../index.html#id13" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 40.0%" />
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
+<col style="width: 14.3%" />
+<col style="width: 42.9%" />
+<col style="width: 21.4%" />
+<col style="width: 21.4%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
@@ -469,7 +476,7 @@ document.write(`
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></td>
 <td><p>Time scaling constant</p></td>
 <td><p>40000</p></td>
-<td><p><span class="math notranslate nohighlight">\(adm\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(dms\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(C\)</span></p></td>
 <td><p>Speed of sound in media</p></td>
@@ -484,7 +491,7 @@ document.write(`
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
 <td><p>Reflection coeficient</p></td>
 <td><p>0.65</p></td>
-<td><p><span class="math notranslate nohighlight">\(adm\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(dms\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Ch\)</span></p></td>
 <td><p>OEC Compliance</p></td>
@@ -514,6 +521,7 @@ document.write(`
 </tbody>
 </table>
 </div>
+<p>Where <span class="math notranslate nohighlight">\(dms\)</span> means dimensionless.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -542,7 +550,7 @@ Where <span class="math notranslate nohighlight">\(x\)</span> is the labial posi
 Where <span class="math notranslate nohighlight">\(x\)</span> is the labial position and <span class="math notranslate nohighlight">\(y\)</span> the labial wall velocity.</p>
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dt} = \gamma^2(-\alpha-\beta x-x^3+x^2) - \gamma(x+1)x y\]</div>
-<p>This equation is obtained using the Bogdanov–Takens bifurcation <span id="id2">[<a class="reference internal" href="../index.html#id12" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</p>
+<p>This equation is obtained using the Bogdanov–Takens bifurcation <span id="id2">[<a class="reference internal" href="../index.html#id13" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>]</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
@@ -569,19 +577,19 @@ and labial wall tension (<span class="math notranslate nohighlight">\(\beta\)</s
 <div class="math notranslate nohighlight" id="equation-beta">
 <span class="eqno">(1)<a class="headerlink" href="#equation-beta" title="Link to this equation">#</a></span>\[\begin{split}\begin{equation}
 \begin{aligned}[c]
-    &amp; \text{Interpretability}\\ \\
+    &amp; \text{Performance}\\ \\
     &amp; \alpha(t) = a_0 \\
     &amp; \beta(t) = b_0 + b_1 \tilde{FF} + b_2 \tilde{FF}^2
 \end{aligned}
 \qquad\qquad\qquad
 \begin{aligned}[c]
-    &amp; \text{Performance}\\ \\
+    &amp; \text{Interpretability}\\ \\
     &amp; \alpha(t) = a_0 \\
     &amp; \beta(t) = b_0 + b_1 t + b_2 t^2
 \end{aligned}
 \end{equation}\end{split}\]</div>
-<p>The best performance, lowest relative errors, are obtained when the rescaled {eq}`My label
-fundamental frequency is used as Anzarts, with <span class="math notranslate nohighlight">\(\tilde{FF}=FF/10^4\)</span>.</p>
+<p>The best performance, with the lowest relative errors, is obtained when the rescaled
+fundamental frequency is used as input through a quadratic composition, with <span class="math notranslate nohighlight">\(\tilde{FF}=FF/10^4\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -627,8 +635,8 @@ fundamental frequency is used as Anzarts, with <span class="math notranslate noh
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>alpha</strong> (<em>np.array([1,2…N])</em>) – Bronchis pressure</p></li>
-<li><p><strong>beta</strong> (<em>np.array</em>)</p></li>
+<li><p><strong>alpha</strong> (<em>np.array([1,2…N])</em>) – Bronchis pressure, also known as air-sac pressure.</p></li>
+<li><p><strong>beta</strong> (<em>np.array</em>) – Labial tension.</p></li>
 </ul>
 </p>
 </dd>
@@ -641,7 +649,7 @@ fundamental frequency is used as Anzarts, with <span class="math notranslate noh
 
 <dl class="py function">
 <dt class="sig sig-object py" id="wavesongs.models.bird.motor_gestures">
-<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">motor_gestures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#motor_gestures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.motor_gestures" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">wavesongs.models.bird.</span></span><span class="sig-name descname"><span class="pre">motor_gestures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'C':</span> <span class="pre">343,</span> <span class="pre">'Ch':</span> <span class="pre">1.43e-10,</span> <span class="pre">'L':</span> <span class="pre">0.025,</span> <span class="pre">'MB':</span> <span class="pre">10000.0,</span> <span class="pre">'MG':</span> <span class="pre">20,</span> <span class="pre">'RB':</span> <span class="pre">5000000.0,</span> <span class="pre">'Rh':</span> <span class="pre">24000.0,</span> <span class="pre">'gm':</span> <span class="pre">40000.0,</span> <span class="pre">'r':</span> <span class="pre">0.65}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Syllable</span></span></span><a class="reference internal" href="../_modules/wavesongs/models/bird.html#motor_gestures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wavesongs.models.bird.motor_gestures" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>pramams</strong> (<em>Dict</em>)</p>

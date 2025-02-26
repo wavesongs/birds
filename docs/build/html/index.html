@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=452e63f8" />
   
@@ -45,8 +46,14 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -402,9 +409,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">⚒️ Installation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">🗂️ Documentation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contribute">🌱 Contribute</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license">🔐 License</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">📒 Citation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contribute">🌱 Contribute</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">📚 References</a></li>
 </ul>
 
@@ -419,15 +426,16 @@ document.write(`
                 <article class="bd-article">
                   
   <h1 class="h1-title">WaveSongs</h1><div class="badges docutils container" id="badges">
-<p><a class="reference external" href="."><img alt="Version Package" src="https://img.shields.io/badge/Version-0.0.3b-darkgreen.svg" /></a> <a class="reference external" href="https://www.python.org/"><img alt="Python Version" src="https://img.shields.io/badge/Python-&gt;=3.10-blue?logo=python&amp;logoColor=white" /></a> <a class="reference external" href="https://github.com/ellerbrock/open-source-badges/"><img alt="Open Source Love svg2" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103" /></a> <a class="reference external" href="http://perso.crans.org/besson/LICENSE.html"><img alt="GPLv3 license" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://www.sphinx-doc.org/"><img alt="made-with-sphinx-doc" src="https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg" /></a> <a class="reference external" href="http://ansicolortags.readthedocs.io/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/ansicolortags/badge/?version=latest" /></a></p>
+<p><a class="reference external" href="."><img alt="Version Package" src="https://img.shields.io/badge/Version-0.0.6b-darkgreen.svg" /></a> <a class="reference external" href="https://www.python.org/"><img alt="Python Version" src="https://img.shields.io/badge/Python-≥3.10-blue?logo=python&amp;logoColor=white" /></a> <a class="reference external" href="https://github.com/ellerbrock/open-source-badges/"><img alt="Open Source Love svg2" src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103" /></a> <a class="reference external" href="http://perso.crans.org/besson/LICENSE.html"><img alt="GPLv3 license" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://www.sphinx-doc.org/"><img alt="made-with-sphinx-doc" src="https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg" /></a> <a class="reference external" href="http://ansicolortags.readthedocs.io/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/ansicolortags/badge/?version=latest" /></a></p>
 </div>
-<hr style="margin: -2px 0 20px 0;"><p><strong>WaveSongs</strong> implements the <a class="reference external" href="http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf">motor gestures model for birdsong</a> developed by <a class="reference external" href="https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&amp;hl=en">Gabo Mindlin</a> to generate synthetic birdsongs through numerical optimization <span id="id1">[<a class="reference internal" href="#id12" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>, <a class="reference internal" href="#id16" title="Gabriel Mindlin and Rodrigo Laje. The physics of birdsong. The Physics of Birdsong: , Biological and Medical Physics, Biomedical Engineering. ISBN 978-3-540-25399-0. Springer-Verlag Berlin Heidelberg, 2005, pages, 01 2005. doi:10.1007/3-540-28249-1.">B1</a>]</span>. By leveraging <strong>fundamental frequency (FF)</strong> and <strong>spectral content index (SCI)</strong> as key parameters. The package solves a minimization problem using <a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/optimize.html">SciPy</a> <span id="id2">[<a class="reference internal" href="#id24" title="Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and SciPy 1.0 Contributors. SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17:261–272, 2020. doi:10.1038/s41592-019-0686-2.">S1</a>]</span> and performs audio analysis with <a class="reference external" href="https://librosa.org/">librosa</a>  <span id="id3">[<a class="reference internal" href="#id22" title="Brian McFee, Colin Raffel, Dawen Liang, Daniel PW Ellis, Matt McVicar, Eric Battenberg, and Oriol Nieto. Librosa: audio and music signal analysis in python. In Proceedings of the 14th Python in Science Conference, 18–25. 2015.">S2</a>]</span> and <a class="reference external" href="https://scikit-maad.github.io/">scikit-maad</a> <span id="id4">[<a class="reference internal" href="#id23" title="Juan Sebastián Ulloa, Sylvain Haupert, Juan Felipe Latorre, Thierry Aubin, and Jérôme Sueur. Scikit‐maad: An open‐source and modular toolbox for quantitative soundscape analysis in Python. Methods in Ecology and Evolution, pages 2041–210X.13711, September 2021. URL: https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13711, doi:10.1111/2041-210X.13711.">S3</a>]</span>.</p>
+<hr style="margin: -2px 0 20px 0;"><p><strong>WaveSongs</strong>  is a Python package designed to generate synthetic songs (currently focused on birdsongs) from audio recordings.</p>
+<p>The package utilizes the <a class="reference external" href="http://www.lsd.df.uba.ar/papers/simplemotorgestures.pdf">motor gestures model for birdsong</a> developed by <a class="reference external" href="https://scholar.google.com.ar/citations?user=gMzZPngAAAAJ&amp;hl=en">Gabo Mindlin</a> to generate synthetic birdsongs through numerical optimization <span id="id1">[<a class="reference internal" href="#id13" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">A1</a>, <a class="reference internal" href="#id17" title="Gabriel Mindlin and Rodrigo Laje. The physics of birdsong. The Physics of Birdsong: , Biological and Medical Physics, Biomedical Engineering. ISBN 978-3-540-25399-0. Springer-Verlag Berlin Heidelberg, 2005, pages, 01 2005. doi:10.1007/3-540-28249-1.">B1</a>]</span>. By leveraging <strong>fundamental frequency (FF)</strong> and <strong>spectral content index (SCI)</strong> as key parameters. The package solves a minimization problem using <a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/optimize.html">SciPy</a> <span id="id2">[<a class="reference internal" href="#id25" title="Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and SciPy 1.0 Contributors. SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17:261–272, 2020. doi:10.1038/s41592-019-0686-2.">S1</a>]</span> and performs audio analysis with <a class="reference external" href="https://librosa.org/">librosa</a>  <span id="id3">[<a class="reference internal" href="#id23" title="Brian McFee, Colin Raffel, Dawen Liang, Daniel PW Ellis, Matt McVicar, Eric Battenberg, and Oriol Nieto. Librosa: audio and music signal analysis in python. In Proceedings of the 14th Python in Science Conference, 18–25. 2015.">S2</a>]</span> and <a class="reference external" href="https://scikit-maad.github.io/">scikit-maad</a> <span id="id4">[<a class="reference internal" href="#id24" title="Juan Sebastián Ulloa, Sylvain Haupert, Juan Felipe Latorre, Thierry Aubin, and Jérôme Sueur. Scikit‐maad: An open‐source and modular toolbox for quantitative soundscape analysis in Python. Methods in Ecology and Evolution, pages 2041–210X.13711, September 2021. URL: https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13711, doi:10.1111/2041-210X.13711.">S3</a>]</span>.  This combination of tools enables the precise and realistic synthesis of birdsongs, achieving relative errors in fundamental frequency (FF) of less than 1%. <a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="installation">
 <h1>⚒️ Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
-<p>There are two ways to install wavesongs: a single line code installation via pypi or a manual installation to get the latest  developer version. Check the <a class="reference internal" href="contents/Installation.html#installation"><span class="std std-ref">⚒️ Installation</span></a> guide for more details.</p>
-<p>Now, let’s dive into the package! Check out the <a class="reference internal" href="build/jupyter_execute/contents/GettingStarted.html#getting-started"><span class="std std-ref">🚀 Getting Started</span></a> guide to learn how to analyze recordings and create synthetic syllables.</p>
+<p>There are two ways to install wavesongs: a single line code installation via pypi, or a manual installation to get the latest  developer version. Check the <a class="reference internal" href="contents/Installation.html#installation"><span class="std std-ref">⚒️ Installation</span></a> guide for more details.</p>
+<p>Now, let’s dive into the package! Check out the <a class="reference internal" href="contents/GettingStarted.html#getting-started"><span class="std std-ref">🚀 Getting Started</span></a> guide to learn how to analyze recordings and create synthetic syllables. You can download recording samples from the <a class="reference internal" href="contents/DownloadSamples.html#download-samples"><span class="std std-ref">📥 Download Samples</span></a> guide.</p>
 </section>
 <section id="documentation">
 <h1>🗂️ Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h1>
@@ -440,15 +448,29 @@ document.write(`
 </table>
 </div>
 </section>
+<section id="contribute">
+<h1>🌱 Contribute<a class="headerlink" href="#contribute" title="Link to this heading">#</a></h1>
+<p>We welcome contributions! See our roadmap:</p>
+<ul class="simple">
+<li><p><input disabled="" type="checkbox"> <strong>Add ROIs analysis</strong> using <cite>scikit-maad</cite>. This will allow automatic syllables detection and generation.</p></li>
+<li><p><input disabled="" type="checkbox"> <strong>Improve FF parametrization</strong> for small motor gestures, chunks.</p></li>
+<li><p><input disabled="" type="checkbox"> <strong>Create a Machine Learning module</strong> for data augmentation for synthetic songs.</p></li>
+<li><p><input disabled="" type="checkbox"> <strong>Add more physical models</strong> for songs generation. Explore the sounds production in other animals as fish, frogs, frogs, etc. Animals who uses waves to geenrate song.</p></li>
+<li><p><input disabled="" type="checkbox"> <strong>Explore music concepts</strong> (notes, acords, etc) and how to generate them with wavesongs.</p></li>
+<li><p><input disabled="" type="checkbox"> <strong>Smooth songs</strong> at the extremes of the syllables to make the sound more natural.</p></li>
+</ul>
+<p>To report issues or suggest features, open a <a class="reference external" href="https://github.com/wavesongs/wavesongs/issues">GitHub Issue</a>.</p>
+<p>Do you need some other functionality? Let us know!</p>
+</section>
 <section id="license">
 <h1>🔐 License<a class="headerlink" href="#license" title="Link to this heading">#</a></h1>
-<p>WaveSongs is licensed under the <a class="reference external" href="https://github.com/wavesongs/wavesongs/blob/main/LICENSE">GNU General Public License v3.0</a>.</p>
+<p><strong>WaveSongs</strong> is licensed under the <a class="reference external" href="https://github.com/wavesongs/wavesongs/blob/main/LICENSE">GNU General Public License v3.0</a>.</p>
 </section>
 <section id="citation">
 <h1>📒 Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h1>
 <p>If this work contributes to your research, please cite:</p>
 <div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@software</span><span class="p">{</span><span class="nl">san_wavesongs_2025</span><span class="p">,</span>
-<span class="w">   </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Aguilera Novoa, Sebastián}</span><span class="p">,</span>
+<span class="w">   </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Aguilera Novoa, Sebastian}</span><span class="p">,</span>
 <span class="w">   </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{WaveSongs: Computational Birdsong Synthesis}</span><span class="p">,</span>
 <span class="w">   </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2025}</span><span class="p">,</span>
 <span class="w">   </span><span class="na">publisher</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{GitHub}</span><span class="p">,</span>
@@ -458,53 +480,50 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="contribute">
-<h1>🌱 Contribute<a class="headerlink" href="#contribute" title="Link to this heading">#</a></h1>
-<p>We welcome contributions! See our roadmap:</p>
-<ul class="simple">
-<li><p>[ ] <strong>Integrate Xeno Canto API</strong> for direct dataset downloads.</p></li>
-<li><p>[ ] <strong>Add ROIs analysis</strong> using <cite>scikit-maad</cite>. This will allo automatic syllables detection and gerenration.</p></li>
-<li><p>[ ] <strong>Improve FF parametrization</strong> for small motor gestures, chunks.</p></li>
-</ul>
-<p>To report issues or suggest features, open a <a class="reference external" href="https://github.com/wavesongs/wavesongs/issues">GitHub Issue</a>.</p>
-</section>
 <section id="references">
 <h1>📚 References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
 <p class="rubric">Articles</p>
-<div class="docutils container" id="id5">
+<div class="docutils container" id="id6">
 <div role="list" class="citation-list">
-<div class="citation" id="id12" role="doc-biblioentry">
+<div class="citation" id="id13" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">A1</a><span class="fn-bracket">]</span></span>
 <p>Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. <em>Nature</em>, 495(7439):59–64, Mar 2013. URL: <a class="reference external" href="https://doi.org/10.1038/nature11967">https://doi.org/10.1038/nature11967</a>, <a class="reference external" href="https://doi.org/10.1038/nature11967">doi:10.1038/nature11967</a>.</p>
 </div>
 </div>
 </div>
 <p class="rubric">Books</p>
-<div class="docutils container" id="id15">
+<div class="docutils container" id="id16">
 <div role="list" class="citation-list">
-<div class="citation" id="id16" role="doc-biblioentry">
+<div class="citation" id="id17" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">B1</a><span class="fn-bracket">]</span></span>
 <p>Gabriel Mindlin and Rodrigo Laje. The physics of birdsong. <em>The Physics of Birdsong: , Biological and Medical Physics, Biomedical Engineering. ISBN 978-3-540-25399-0. Springer-Verlag Berlin Heidelberg, 2005</em>, pages, 01 2005. <a class="reference external" href="https://doi.org/10.1007/3-540-28249-1">doi:10.1007/3-540-28249-1</a>.</p>
 </div>
 </div>
 </div>
 <p class="rubric">Software</p>
-<div class="docutils container" id="id21">
+<div class="docutils container" id="id22">
 <div role="list" class="citation-list">
-<div class="citation" id="id24" role="doc-biblioentry">
+<div class="citation" id="id25" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">S1</a><span class="fn-bracket">]</span></span>
 <p>Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and SciPy 1.0 Contributors. SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. <em>Nature Methods</em>, 17:261–272, 2020. <a class="reference external" href="https://doi.org/10.1038/s41592-019-0686-2">doi:10.1038/s41592-019-0686-2</a>.</p>
 </div>
-<div class="citation" id="id22" role="doc-biblioentry">
+<div class="citation" id="id23" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">S2</a><span class="fn-bracket">]</span></span>
 <p>Brian McFee, Colin Raffel, Dawen Liang, Daniel PW Ellis, Matt McVicar, Eric Battenberg, and Oriol Nieto. Librosa: audio and music signal analysis in python. In <em>Proceedings of the 14th Python in Science Conference</em>, 18–25. 2015.</p>
 </div>
-<div class="citation" id="id23" role="doc-biblioentry">
+<div class="citation" id="id24" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">S3</a><span class="fn-bracket">]</span></span>
 <p>Juan Sebastián Ulloa, Sylvain Haupert, Juan Felipe Latorre, Thierry Aubin, and Jérôme Sueur. Scikit‐maad: An open‐source and modular toolbox for quantitative soundscape analysis in Python. <em>Methods in Ecology and Evolution</em>, pages 2041–210X.13711, September 2021. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13711">https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13711</a>, <a class="reference external" href="https://doi.org/10.1111/2041-210X.13711">doi:10.1111/2041-210X.13711</a>.</p>
 </div>
 </div>
 </div>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>The model performance depends on the syllable quaility and type. Complex syllables may have higher errors. The best performance is obtained in simple syllables well defined without noise and not strong harmonics.</p>
+</aside>
+</aside>
 </section>
 
 
@@ -545,9 +564,9 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">⚒️ Installation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">🗂️ Documentation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contribute">🌱 Contribute</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license">🔐 License</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">📒 Citation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contribute">🌱 Contribute</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">📚 References</a></li>
 </ul>
 

@@ -29,8 +29,9 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=452e63f8" />
   
@@ -44,8 +45,14 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/wavesongs/data/xc';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -356,10 +363,10 @@ document.write(`
 <span></span><span class="sd">&quot;&quot;&quot;Query and download data from Xeno Canto&quot;&quot;&quot;</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">maad</span><span class="w"> </span><span class="kn">import</span> <span class="n">util</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="c1"># %%</span>
@@ -378,10 +385,8 @@ document.write(`
 <span class="sd">    `maad.utils.xc_download &lt;https://scikit-maad.github.io/util.html#xeno-canto&gt;`_.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        english_name (str, optional): </span>
-<span class="sd">            _description_. Defaults to &quot;Rufous-collared Sparrow&quot;.</span>
-<span class="sd">        scientific_name (str, optional):</span>
-<span class="sd">            _description_. Defaults to &quot;Zonotrichia capensis&quot;.</span>
+<span class="sd">        df_dataset (pd.DataFrame):</span>
+<span class="sd">            Data Frame with the information to download.</span>
 <span class="sd">        country (str, optional):</span>
 <span class="sd">            _description_. Defaults to &quot;Colombia&quot;.</span>
 <span class="sd">        rootdir (str, optional):</span>
@@ -433,8 +438,7 @@ document.write(`
 <div class="viewcode-block" id="query_audios">
 <a class="viewcode-back" href="../../../_autosummary/wavesongs.data.xc.html#wavesongs.data.xc.query_audios">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">query_audios</span><span class="p">(</span>
-    <span class="n">english_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
-    <span class="n">scientific_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+    <span class="n">specie_names</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]],</span>
     <span class="n">max_nb_files</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2025</span><span class="p">,</span>
     <span class="n">info</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
@@ -445,27 +449,30 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Query me from `Xeno Canto &lt;https://xeno-canto.org/&gt;`_ </span>
 <span class="sd">    with `maad.utils.xc_multi_query &lt;https://scikit-maad.github.io/util.html#xeno-canto&gt;`_.</span>
-
+<span class="sd">    </span>
 <span class="sd">    Args:</span>
-<span class="sd">        english_name (str, optional): </span>
-<span class="sd">            _description_. Defaults to &quot;Rufous-collared Sparrow&quot;.</span>
-<span class="sd">        scientific_name (str, optional):</span>
-<span class="sd">            _description_. Defaults to &quot;Zonotrichia capensis&quot;.</span>
-<span class="sd">        country (str, optional):</span>
-<span class="sd">            _description_. Defaults to &quot;Colombia&quot;.</span>
+<span class="sd">        specie_names (list[str], list[list[str]]): </span>
+<span class="sd">            List with english and scientific specie names.</span>
+<span class="sd">        max_nb_files (int, optional):</span>
+<span class="sd">            Maximum number of files to download. Defaults to None.</span>
+<span class="sd">        random_seed (int, optional):</span>
+<span class="sd">            Random seed. Defaults to 2025.</span>
+<span class="sd">        info (dict, optional):</span>
+<span class="sd">            Dictionary with information to query. Defaults to {}.</span>
+<span class="sd">        format_time (bool, optional):</span>
+<span class="sd">            Format time. Defaults to True.</span>
+<span class="sd">        format_date (bool, optional):</span>
+<span class="sd">            Format date. Defaults to True.</span>
 <span class="sd">        verbose (bool, optional):</span>
-<span class="sd">            _description_. Defaults to True.</span>
+<span class="sd">            Verbose. Defaults to True.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        df_query (pd.DataFrame) : Data Frame</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">english_name</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">scientific_name</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">english_name</span><span class="p">,</span> <span class="n">scientific_name</span><span class="p">]]</span>
-    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">english_name</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">scientific_name</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">english_name</span><span class="p">,</span> <span class="n">scientific_name</span><span class="p">))</span>
-
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">specie_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
+        <span class="n">specie_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">specie_names</span><span class="p">]</span>
     <span class="n">df_species</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">specie_names</span><span class="p">,</span>
         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;english name&#39;</span><span class="p">,</span> <span class="s2">&quot;scientific name&quot;</span><span class="p">]</span>
         <span class="p">)</span>
 
@@ -478,10 +485,9 @@ document.write(`
     <span class="n">df_query</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
     <span class="n">df_query</span><span class="p">[</span><span class="s1">&#39;gen&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gen</span>
     <span class="n">df_query</span><span class="p">[</span><span class="s1">&#39;sp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span>
-    <span class="c1"># i = 3</span>
+
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="n">df_query</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
-        <span class="c1"># i += 1</span>
 
     <span class="n">df_dataset</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">xc_multi_query</span><span class="p">(</span>
         <span class="n">df_query</span><span class="o">=</span><span class="n">df_query</span><span class="p">,</span>

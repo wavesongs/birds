@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=452e63f8" />
   
@@ -45,8 +46,16 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/SyntheticSongs';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -431,12 +440,17 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-gesture-curves">Motor Gesture Curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-syllable">Synthetic Syllable</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-directory">Project Directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-syllable">Base Syllable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-gesture">Motor Gesture</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#curves">Curves</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunning-coefficients">Tunning Coefficients</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Motor Gesture Curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-gesture-curves">Motor Gesture Curves</a></li>
 </ul>
 </li>
 </ul>
@@ -452,62 +466,59 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pure-synthetic-songs">
 <h1>🎵 Pure Synthetic Songs<a class="headerlink" href="#pure-synthetic-songs" title="Link to this heading">#</a></h1>
-<br>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This example shows the interactive capabilities of Matplotlib backends, and this will not appear in the static documentation. Please run this code on your machine to see the interactivity.</p>
-</div>
-<p>If you are using Google Colab uncomment and execute the following cell:</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ! git clone https://github.com/wavesongs/wavesongs</span>
-<span class="c1"># ! pip install wavesongs</span>
-
-<span class="c1"># # enable hird party widgets (ipympl)</span>
-<span class="c1"># from google.colab import output</span>
-<span class="c1"># output.enable_custom_widget_manager()</span>
-
-<span class="c1"># # correct ProjDirs parameters,</span>
-<span class="c1"># audios = &quot;/content/wavesongs/assets/audio&quot;</span>
-<span class="c1"># results = &quot;/content/wavesongs/assets/audio/results&quot;</span>
+<p>This tutorial explains how to generate pure synthetic songs through the motor gestures. For this guide, there is not need of recording sample, however you must define the project directory.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Google Colab Execution</p>
+<p>If you are using Google Colab install the pacakge via pypi with the following code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>wavesongs
 </pre></div>
 </div>
-</div>
-</details>
-</div>
-<div class="admonition caution" id="warning">
-<p class="admonition-title">Caution</p>
-<p>If you encounter an error message, reset the kernel and run the above cell again. After that, everything should work successfully.</p>
 </div>
 <section id="libraries">
 <h2>Libraries<a class="headerlink" href="#libraries" title="Link to this heading">#</a></h2>
 <p>Import the required classes and functions from <code class="docutils literal notranslate"><span class="pre">wavesongs</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %matplotlib ipympl</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.objs.syllable</span><span class="w"> </span><span class="kn">import</span> <span class="n">Syllable</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.paths</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjDirs</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.models.bird</span><span class="w"> </span><span class="kn">import</span> <span class="n">_PARAMS</span><span class="p">,</span> <span class="n">alpha_beta</span><span class="p">,</span> <span class="n">motor_gestures</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
+<section id="synthetic-syllable">
+<h2>Synthetic Syllable<a class="headerlink" href="#synthetic-syllable" title="Link to this heading">#</a></h2>
+<section id="project-directory">
+<h3>Project Directory<a class="headerlink" href="#project-directory" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">ProjDirs</span><span class="p">(</span><span class="n">audios</span><span class="o">=</span><span class="s2">&quot;./assets/audio&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="s2">&quot;./assets/results&quot;</span><span class="p">)</span>
-<span class="n">synth</span> <span class="o">=</span> <span class="n">Syllable</span><span class="p">(</span><span class="n">proj_dirs</span><span class="o">=</span><span class="n">proj_dirs</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="mi">44100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">ProjDirs</span><span class="p">(</span><span class="n">audios</span><span class="o">=</span><span class="s2">&quot;./assets/audios&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="s2">&quot;./assets/results&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="base-syllable">
+<h3>Base Syllable<a class="headerlink" href="#base-syllable" title="Link to this heading">#</a></h3>
+<p>First, let’s create a base syllable with a defined duration and a sample rate. The object created is a simple pulse of amplitud 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">synth</span> <span class="o">=</span> <span class="n">Syllable</span><span class="p">(</span><span class="n">proj_dirs</span><span class="o">=</span><span class="n">proj_dirs</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="mi">44100</span><span class="p">)</span>
+<span class="c1"># add plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="motor-gesture">
+<h3>Motor Gesture<a class="headerlink" href="#motor-gesture" title="Link to this heading">#</a></h3>
+<p>The next step is to define the motor gesture coefficients. These coefficients will generate the air-sac pressure and labial tension curves, forming the motor gesture. This will produce a synthetic syllable, for which we need to compute its acoustical features by defining some spectral parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Motor gesture coefficients</span>
 
-<span class="c1"># Motor gestures coefficients</span>
 <span class="n">z</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;a0&quot;</span><span class="p">:</span> <span class="mf">0.11</span><span class="p">,</span>
     <span class="s2">&quot;b0&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>
@@ -523,10 +534,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/saguileran/anaconda3/envs/wavesongs/lib/python3.12/site-packages/librosa/core/spectrum.py:387: ComplexWarning: Casting complex values to real discards the imaginary part
-  stft_matrix[..., bl_s + off_start : bl_t + off_start] = fft.rfft(
-</pre></div>
-</div>
 <img alt="../_images/9e69f7e39a8f601d7bb9588cb93fc8993475dce17a674b4bb9bbe5e9b6d19420.png" src="../_images/9e69f7e39a8f601d7bb9588cb93fc8993475dce17a674b4bb9bbe5e9b6d19420.png" />
 </div>
 </div>
@@ -544,8 +551,8 @@ document.write(`
                 </audio>
               </div></div>
 </div>
-<section id="motor-gesture-curves">
-<h3>Motor Gesture Curves<a class="headerlink" href="#motor-gesture-curves" title="Link to this heading">#</a></h3>
+<section id="curves">
+<h4>Curves<a class="headerlink" href="#curves" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="o">.</span><span class="n">alpha_beta</span><span class="p">(</span><span class="n">synth</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -558,8 +565,11 @@ document.write(`
 </div>
 </section>
 </section>
+</section>
 <section id="tunning-coefficients">
 <h2>Tunning Coefficients<a class="headerlink" href="#tunning-coefficients" title="Link to this heading">#</a></h2>
+<p>As you experienced, the motor gesture is out of the region of oscillations (gray region), so the audio generated is not correct. The beginning of the audio is missing because the beginning of the motor gesture is below the saddle node line. To improve the song created, the motor gesture has to be moved inside the region. This can be done in several ways, but here is a short description of the model behavior: to get more harmonics in the song, more close or separeted, move the motor gesture to the left; to get lower or higher fundamental frequencies, move the motor gesture down or up, respectively.</p>
+<p>It is also possible to get very low or high fundamental frequency by changing the time scale parameter, <span class="math notranslate nohighlight">\(\gamma\)</span>. To do that, modify the <code class="docutils literal notranslate"><span class="pre">gm</span></code> key of the <code class="docutils literal notranslate"><span class="pre">_PARAMS</span></code> dictionary. The default value is 40000.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_opt</span> <span class="o">=</span> <span class="p">{</span>
@@ -577,13 +587,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/saguileran/anaconda3/envs/wavesongs/lib/python3.12/site-packages/librosa/core/spectrum.py:387: ComplexWarning: Casting complex values to real discards the imaginary part
-  stft_matrix[..., bl_s + off_start : bl_t + off_start] = fft.rfft(
-</pre></div>
-</div>
 <img alt="../_images/16a296952c736201418570c3668aa6b72ab9a7ee4bc254238400e5784b75f574.png" src="../_images/16a296952c736201418570c3668aa6b72ab9a7ee4bc254238400e5784b75f574.png" />
 </div>
 </div>
+<p>There you go!</p>
+<p>The song obtained is much better because the beginning of the motor gesture is close to the saddle node line. The harmonics are stronger than the fundamental frequency, and it is not well computed. Although this can be improved, we are interested in demonstrating this behavior since it can affect the synthetic score. So, take it in account when you are generating synthetic syllables from recording examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">synth_opt</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
@@ -598,8 +606,8 @@ document.write(`
                 </audio>
               </div></div>
 </div>
-<section id="id1">
-<h3>Motor Gesture Curves<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="motor-gesture-curves">
+<h3>Motor Gesture Curves<a class="headerlink" href="#motor-gesture-curves" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="o">.</span><span class="n">alpha_beta</span><span class="p">(</span><span class="n">synth_opt</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -607,9 +615,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f25667268703768449eb81449311ba967d8604eb3e36fec56e36af93dc7833dc.png" src="../_images/f25667268703768449eb81449311ba967d8604eb3e36fec56e36af93dc7833dc.png" />
+<img alt="../_images/778bd8f74ea66c1583341cc8962ed9deeb2ec8fee0537079613ff0c838fad981.png" src="../_images/778bd8f74ea66c1583341cc8962ed9deeb2ec8fee0537079613ff0c838fad981.png" />
 </div>
 </div>
+<hr>
+<p>This tutorial demonstrated how the physical model behaves and how the coefficients improve or worsen the resulting synthetic syllable. Now it is your time to play with the coefficients and generate the syllable you want. You can generate not just lines but also quadratic curves by changing the values, especially <code class="docutils literal notranslate"><span class="pre">b0</span></code>.</p>
 </section>
 </section>
 </section>
@@ -660,12 +670,17 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-gesture-curves">Motor Gesture Curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-syllable">Synthetic Syllable</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-directory">Project Directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-syllable">Base Syllable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-gesture">Motor Gesture</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#curves">Curves</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunning-coefficients">Tunning Coefficients</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Motor Gesture Curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-gesture-curves">Motor Gesture Curves</a></li>
 </ul>
 </li>
 </ul>

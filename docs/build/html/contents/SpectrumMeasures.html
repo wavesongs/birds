@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=452e63f8" />
   
@@ -45,8 +46,14 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/SpectrumMeasures';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -431,6 +438,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-directory">Project Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-song">Define Song</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-data">Select Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-data-frame">Measures Data Frame</a></li>
 </ul>
             </nav>
         </div>
@@ -444,57 +455,66 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="spectrum-measures">
 <h1>📏 Spectrum Measures<a class="headerlink" href="#spectrum-measures" title="Link to this heading">#</a></h1>
-<br>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This example shows the interactive capabilities of Matplotlib backends, and this will not appear in the static documentation. Please run this code on your machine to see the interactivity.</p>
 </div>
-<p>If you are using Google Colab uncomment and execute the following cell:</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ! git clone https://github.com/wavesongs/wavesongs</span>
-<span class="c1"># ! pip install wavesongs</span>
-
-<span class="c1"># # enable hird party widgets (ipympl)</span>
-<span class="c1"># from google.colab import output</span>
-<span class="c1"># output.enable_custom_widget_manager()</span>
-
-<span class="c1"># # correct ProjDirs parameters,</span>
-<span class="c1"># audios = &quot;/content/wavesongs/assets/audio&quot;</span>
-<span class="c1"># results = &quot;/content/wavesongs/assets/audio/results&quot;</span>
+<p>In this tutorial you will learn how to measure data from spectrums. Although there are many tools to get spectrum measure we are interested in select data from spectrum. Since we are interested into analyze birdsongs, we want to measure the maximum and mimum frequency of the theme and trill, number of trills, trill rate, trill and theme length, etc.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Google Colab Execution</p>
+<p>If you are using Google Colabinstall the pacakge via pypi with the following code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/wavesongs/wavesongs
+!<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>wavesongs
+<span class="c1"># enable hird party widgets (ipympl)</span>
+from<span class="w"> </span>google.colab<span class="w"> </span>import<span class="w"> </span>output
+output.enable_custom_widget_manager<span class="o">()</span>
 </pre></div>
 </div>
+<p>In addition, you have to change the results and audio folder to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">audios</span> <span class="o">=</span> <span class="s2">&quot;/content/wavesongs/assets/audio&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="s2">&quot;/content/wavesongs/assets/audio/results&quot;</span>
+</pre></div>
 </div>
-</details>
-</div>
-<div class="admonition caution" id="warning">
+<p>This is because in Google Colab all is downloaded at the <code class="docutils literal notranslate"><span class="pre">contents</span></code> folder.</p>
+<div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>If you encounter an error message, reset the kernel and run the above cell again. After that, everything should work successfully.</p>
+<p>If you encounter an error message, reset the kernel and run the above cell again. After that, everything should work successfully. Ensure that the audios and results variables are correctly set to the appropriate paths in your environment.</p>
+</div>
 </div>
 <section id="libraries">
 <h2>Libraries<a class="headerlink" href="#libraries" title="Link to this heading">#</a></h2>
 <p>Import the required classes and functions from <code class="docutils literal notranslate"><span class="pre">wavesongs</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %matplotlib ipympl</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> ipympl
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.objs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Song</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.objs.song</span><span class="w"> </span><span class="kn">import</span> <span class="n">Song</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.paths</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjDirs</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">wavesongs.utils.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_measures</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="project-directory">
+<h2>Project Directory<a class="headerlink" href="#project-directory" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">ProjDirs</span><span class="p">(</span><span class="n">audios</span><span class="o">=</span><span class="s2">&quot;./assets/audio&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="s2">&quot;./assets/results&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">audios</span> <span class="o">=</span> <span class="s2">&quot;./assets/audios&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="s2">&quot;./assets/results&quot;</span>
 
+<span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">ProjDirs</span><span class="p">(</span><span class="n">audios</span><span class="o">=</span><span class="n">audios</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-song">
+<h2>Define Song<a class="headerlink" href="#define-song" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Region of Interest</span>
 <span class="n">tlim_roi</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">)</span>
 
 <span class="n">copeton_song</span> <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="n">proj_dirs</span><span class="p">,</span> <span class="n">file_id</span><span class="o">=</span><span class="s2">&quot;574179401&quot;</span><span class="p">,</span> <span class="n">tlim</span><span class="o">=</span><span class="n">tlim_roi</span><span class="p">)</span>
@@ -505,7 +525,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3872d7ec47f4a0d710b0399f5d0d3c703d4ebcc099774fcec1777e58e411a5fb.png" src="../_images/3872d7ec47f4a0d710b0399f5d0d3c703d4ebcc099774fcec1777e58e411a5fb.png" />
+<img alt="../_images/7b4363959319731332a5032aa64e4c7c8aaa63978d85c2e80950ad6c2618a80f.png" src="../_images/7b4363959319731332a5032aa64e4c7c8aaa63978d85c2e80950ad6c2618a80f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -522,6 +542,9 @@ document.write(`
                 </audio>
               </div></div>
 </div>
+</section>
+<section id="select-data">
+<h2>Select Data<a class="headerlink" href="#select-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">klicker_data</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">spectrogram_data</span><span class="p">(</span><span class="n">copeton_song</span><span class="p">)</span>
@@ -532,10 +555,21 @@ document.write(`
 <img alt="../_images/e2e3719e17a9da32aa4fafb36d8db01e5555a54933632054b173024b85fed5d3.png" src="../_images/e2e3719e17a9da32aa4fafb36d8db01e5555a54933632054b173024b85fed5d3.png" />
 </div>
 </div>
+<p>You will have a similar image as below.</p>
+<figure class="align-center" id="fig-measures">
+<a class="reference internal image-reference" href="../_images/MeasuresExample.png"><img alt="measures_example" src="../_images/MeasuresExample.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Data measures example</span><a class="headerlink" href="#fig-measures" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="measures-data-frame">
+<h2>Measures Data Frame<a class="headerlink" href="#measures-data-frame" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_measures</span> <span class="o">=</span> <span class="n">get_measures</span><span class="p">(</span><span class="n">klicker_data</span><span class="p">,</span> <span class="n">copeton_song</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_measures</span><span class="p">)</span>
+<span class="n">df_measures</span>
 </pre></div>
 </div>
 </div>
@@ -660,6 +694,10 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-directory">Project Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-song">Define Song</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-data">Select Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-data-frame">Measures Data Frame</a></li>
 </ul>
   </nav></div>
 

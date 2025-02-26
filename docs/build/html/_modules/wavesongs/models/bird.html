@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=452e63f8" />
   
@@ -44,8 +45,14 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/wavesongs/models/bird';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -383,8 +390,12 @@ document.write(`
     <span class="n">Union</span><span class="p">,</span>
     <span class="n">Tuple</span><span class="p">,</span>
     <span class="n">AnyStr</span><span class="p">,</span>
-    <span class="n">Literal</span>
+    <span class="n">Literal</span><span class="p">,</span>
+    <span class="n">TypeVar</span>
 <span class="p">)</span>
+
+<span class="n">Syllable</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;Syllable&#39;</span><span class="p">)</span>
+
 
 <span class="c1"># Defining motor gestures model constants, measured by Gabo Mindlin</span>
 <span class="n">_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
@@ -404,21 +415,23 @@ document.write(`
 
 <span class="sd">.. table:: Birdsongs model parameters :cite:p:`a-Amador2013`.</span>
 <span class="sd">    :width: 80%</span>
-<span class="sd">    :widths: 3 6 3 3</span>
+<span class="sd">    :widths: 2 6 3 3</span>
 
 <span class="sd">    ==============  ========================  =======  ====================</span>
 <span class="sd">    Constant        Description               Value     Unit     </span>
 <span class="sd">    ==============  ========================  =======  ====================  </span>
-<span class="sd">    :math:`\gamma`  Time scaling constant     40000    :math:`adm`</span>
+<span class="sd">    :math:`\gamma`  Time scaling constant     40000    :math:`dms`</span>
 <span class="sd">    :math:`C`       Speed of sound in media   343      :math:`m / s`</span>
 <span class="sd">    :math:`L`       Trachea length            0.025    :math:`m`</span>
-<span class="sd">    :math:`r`       Reflection coeficient     0.65     :math:`adm`</span>
+<span class="sd">    :math:`r`       Reflection coeficient     0.65     :math:`dms`</span>
 <span class="sd">    :math:`Ch`      OEC Compliance            1.43     :math:`m^3 / Pa`</span>
 <span class="sd">    :math:`MG`      Beak Inertance            20       :math:`kg / m^4`</span>
 <span class="sd">    :math:`MB`      Glottis Inertance         10000    :math:`kg / m^4`</span>
 <span class="sd">    :math:`RB`      Beak Resistance           5000000  :math:`s\; kg / m^4`</span>
 <span class="sd">    :math:`Rh`      OEC Resistence            24000    :math:`s\;kg / m^4`</span>
 <span class="sd">    ==============  ========================  =======  ====================</span>
+
+<span class="sd">Where :math:`dms` means dimensionless.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># bifurcation saddle nodes and array length</span>
 <span class="n">_N</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -463,21 +476,20 @@ document.write(`
 
 <span class="sd">    \begin{equation}</span>
 <span class="sd">    \begin{aligned}[c]</span>
-<span class="sd">        &amp; \text{Interpretability}\\ \\</span>
+<span class="sd">        &amp; \text{Performance}\\ \\</span>
 <span class="sd">        &amp; \alpha(t) = a_0 \\</span>
 <span class="sd">        &amp; \beta(t) = b_0 + b_1 \tilde{FF} + b_2 \tilde{FF}^2</span>
 <span class="sd">    \end{aligned}</span>
 <span class="sd">    \qquad\qquad\qquad</span>
 <span class="sd">    \begin{aligned}[c]</span>
-<span class="sd">        &amp; \text{Performance}\\ \\</span>
+<span class="sd">        &amp; \text{Interpretability}\\ \\</span>
 <span class="sd">        &amp; \alpha(t) = a_0 \\</span>
 <span class="sd">        &amp; \beta(t) = b_0 + b_1 t + b_2 t^2</span>
 <span class="sd">    \end{aligned}</span>
 <span class="sd">    \end{equation}</span>
 
-
-<span class="sd">The best performance, lowest relative errors, are obtained when the rescaled {eq}`My label</span>
-<span class="sd">fundamental frequency is used as Anzarts, with :math:`\tilde{FF}=FF/10^4`. </span>
+<span class="sd">The best performance, with the lowest relative errors, is obtained when the rescaled </span>
+<span class="sd">fundamental frequency is used as input through a quadratic composition, with :math:`\tilde{FF}=FF/10^4`. </span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1">#%%</span>
 <div class="viewcode-block" id="bifurcation_ode">
@@ -559,8 +571,9 @@ document.write(`
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
 <span class="sd">        alpha : np.array([1,2...N])</span>
-<span class="sd">            Bronchis pressure</span>
+<span class="sd">            Bronchis pressure, also known as air-sac pressure.</span>
 <span class="sd">        beta : np.array</span>
+<span class="sd">            Labial tension.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
@@ -593,7 +606,7 @@ document.write(`
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="n">curves</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">],</span>
     <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Syllable</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 

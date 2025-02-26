@@ -1,4 +1,10 @@
-# ⚙️ Physical Model
+# ⚙️ Physical Model 
+
+:::{important}
+This documentation is under construction.
+:::
+
+Detailed description of the physical model and numerical solution of the pacakge.
 
 :::{image} ../../assets/img/model.png
 :alt: Physical model
@@ -8,6 +14,8 @@
 
 
 ## Syrinx
+
+Modeled as a nonlinear ha
 
 ```{math}
 :label: syrinx_general
@@ -22,10 +30,14 @@
 \end{align}
 ```
 
+Here, is the air-sac pressure and is the labial tension.
+
 {cite:p}`neuromuscular,muscles_role,Syrinx_muscles,Amador2013,syrinx_first_model`
 
 
 ## Trache
+
+Modeled as a tube with one end open, the one coneecting with the syrinx, and the other closed, the one connected to the OEC.
 
 ```{math}
 :label: trachea
@@ -39,7 +51,9 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 
 {cite:p}``
 
-## OEC
+## Oropharingeal- Esophageal Cavity (OEC)
+
+Modeled as a Helmholtz resonator.
 
 ```{math}
 :label: OEC
@@ -82,5 +96,4 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 
 ```{eval-rst}
 .. bibliography:: ../references/articles.bib
-   :all:
 ```

@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=452e63f8" />
   
@@ -45,8 +46,14 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/Installation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -419,14 +426,14 @@ document.write(`
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.python.org/">Python</a> 3.10+</p></li>
+<li><p><a class="reference external" href="https://www.python.org/">Python</a> ≥ 3.10</p></li>
 <li><p><a class="reference external" href="https://git-scm.com/">Git</a> (optional)</p></li>
 <li><p><a class="reference external" href="https://anaconda.org/anaconda/conda">Conda</a> (optional)</p></li>
 </ul>
 </section>
 <section id="basic-installation">
 <h2>Basic Installation<a class="headerlink" href="#basic-installation" title="Link to this heading">#</a></h2>
-<p><strong>WaveSongs</strong> is available at <a class="reference external" href="https://pypi.org/">Pypi</a>. To install the latest stable version, run:</p>
+<p><strong>WaveSongs</strong> is available at <a class="reference external" href="https://pypi.org/project/wavesongs/">Pypi</a>. To install the latest stable version, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>wavesongs
 </pre></div>
 </div>
@@ -476,18 +483,19 @@ conda<span class="w"> </span>activate<span class="w"> </span>wavesongs-env
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
-<p>Install WaveSongs in editable mode:</p>
+<p>You can see all the required libraries in the <a class="reference external" href="https://github.com/wavesongs/wavesongs/blob/main/requirements.txt"><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></a> file or in the <a class="reference external" href="https://github.com/wavesongs/wavesongs/blob/main/pyproject.toml"><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></a> file.</p>
+<p>Finally, install <strong>WaveSongs</strong> in editable mode</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is highly recommended to use Python notebooks, however, Python and ipython terminals also work.</p>
+<p>It is highly recommended to use Jupyter notebooks for an interactive development experience. However, Python and IPython terminals are also supported and can be used effectively.</p>
 </div>
 </section>
 <section id="os-support">
 <h2>OS Support<a class="headerlink" href="#os-support" title="Link to this heading">#</a></h2>
-<p><strong>WaveSongs</strong> is developed and tested on Linux. It should also work on macOS and Windows. If you encounter a prooblem, please let me know by opening an issue or a pull request.ss</p>
+<p><strong>WaveSongs</strong> is developed and tested on Linux. It should also work on macOS and Windows. If you encounter a prooblem, please let us know by opening an issue or a pull request.</p>
 </section>
 </section>
 

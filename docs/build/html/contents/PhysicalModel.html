@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=452e63f8" />
   
@@ -45,8 +46,14 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/PhysicalModel';</script>
@@ -403,7 +410,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syrinx">Syrinx</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trache">Trache</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oec">OEC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oropharingeal-esophageal-cavity-oec">Oropharingeal- Esophageal Cavity (OEC)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-problem">Minimization Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerial-solution">Numerial Solution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -420,10 +427,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="physical-model">
 <h1>⚙️ Physical Model<a class="headerlink" href="#physical-model" title="Link to this heading">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This documentation is under construction.</p>
+</div>
+<p>Detailed description of the physical model and numerical solution of the pacakge.</p>
 <a class="reference internal image-reference" href="../_images/model.png"><img alt="Physical model" class="align-center" src="../_images/model.png" style="width: 70%;" />
 </a>
 <section id="syrinx">
 <h2>Syrinx<a class="headerlink" href="#syrinx" title="Link to this heading">#</a></h2>
+<p>Modeled as a nonlinear ha</p>
 <div class="math notranslate nohighlight" id="equation-syrinx-general">
 <span class="eqno">(1)<a class="headerlink" href="#equation-syrinx-general" title="Link to this equation">#</a></span>\[\frac{dx^2}{dt^2} = \gamma^2[-\alpha (t)-\beta (t) x  + x^2 - x^3] - \gamma (1+ x )x\frac{dx}{dy}\]</div>
 <div class="math notranslate nohighlight" id="equation-syrinx-2eq">
@@ -431,10 +444,12 @@ document.write(`
     &amp; \frac{dx}{dt} = y\nonumber\\
     &amp; \frac{dy}{dt} = \gamma^2[-\alpha (t)-\beta (t) x  + x^2 - x^3] - \gamma (1+ x )xy 
 \end{align}\end{split}\]</div>
+<p>Here, is the air-sac pressure and is the labial tension.</p>
 <p><span id="id1">[<a class="reference internal" href="#id2" title="Rodrigo Laje, Timothy J. Gardner, and Gabriel B. Mindlin. Neuromuscular control of vocalizations in birdsong: a model. Phys. Rev. E, 65:051921, May 2002. URL: https://link.aps.org/doi/10.1103/PhysRevE.65.051921, doi:10.1103/PhysRevE.65.051921.">1</a>, <a class="reference internal" href="#id3" title="Franz Goller and Roderick A. Suthers. Role of syringeal muscles in controlling the phonology of bird song. https://doi.org/10.1152/jn.1996.76.1.287, 76:287-300, 1996. URL: https://journals.physiology.org/doi/10.1152/jn.1996.76.1.287, doi:10.1152/JN.1996.76.1.287.">2</a>, <a class="reference internal" href="#id6" title="Ole Næsbye Larsen and Franz Goller. Direct observation of syringeal muscle function in songbirds and a parrot. Journal of Experimental Biology, 205:25-35, 1 2002. URL: https://journals.biologists.com/jeb/article/205/1/25/33066/Direct-observation-of-syringeal-muscle-function-in, doi:10.1242/JEB.205.1.25.">3</a>, <a class="reference internal" href="#id8" title="Gabriel B. Mindlin &amp; Daniel Margoliash Ana Amador, Yonatan Sanz Perl. Elemental gesture dynamics are encoded by song premotor cortical neurons. Nature, 495(7439):59-64, Mar 2013. URL: https://doi.org/10.1038/nature11967, doi:10.1038/nature11967.">4</a>, <a class="reference internal" href="#id9" title="Tim Gardner, G. Cecchi, M. Magnasco, R. Laje, and Gabriel B. Mindlin. Simple motor gestures for birdsongs. Physical Review Letters, 87:208101, 10 2001. URL: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.87.208101, doi:10.1103/PhysRevLett.87.208101.">5</a>]</span></p>
 </section>
 <section id="trache">
 <h2>Trache<a class="headerlink" href="#trache" title="Link to this heading">#</a></h2>
+<p>Modeled as a tube with one end open, the one coneecting with the syrinx, and the other closed, the one connected to the OEC.</p>
 <div class="math notranslate nohighlight" id="equation-trachea">
 <span class="eqno">(3)<a class="headerlink" href="#equation-trachea" title="Link to this equation">#</a></span>\[\begin{split}\begin{gather}\label{trache_edos}
 p_i (t) = A y(t) + p_{back}\left( t - \frac{L}{c} \right) \\
@@ -444,8 +459,9 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 \end{gather}\end{split}\]</div>
 <p>{cite:p}``</p>
 </section>
-<section id="oec">
-<h2>OEC<a class="headerlink" href="#oec" title="Link to this heading">#</a></h2>
+<section id="oropharingeal-esophageal-cavity-oec">
+<h2>Oropharingeal- Esophageal Cavity (OEC)<a class="headerlink" href="#oropharingeal-esophageal-cavity-oec" title="Link to this heading">#</a></h2>
+<p>Modeled as a Helmholtz resonator.</p>
 <div class="math notranslate nohighlight" id="equation-oec">
 <span class="eqno">(4)<a class="headerlink" href="#equation-oec" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}\label{OEC_edos}
    \frac{d}{dt} p_g &amp;= p_g'= dp_g \nonumber\\
@@ -504,14 +520,6 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">7</a><span class="fn-bracket">]</span></span>
 <p>Neville H. Fletcher, Tobias Riede, and Roderick A. Suthers. Model for vocalization by a bird with distensible vocal cavity and open beak. <em>The Journal of the Acoustical Society of America</em>, 119:1005, 1 2006. URL: <a class="reference external" href="https://asa.scitation.org/doi/abs/10.1121/1.2159434">https://asa.scitation.org/doi/abs/10.1121/1.2159434</a>, <a class="reference external" href="https://doi.org/10.1121/1.2159434">doi:10.1121/1.2159434</a>.</p>
 </div>
-<div class="citation" id="id7" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
-<p>Roberto Bistel, Alejandro Martinez, and Gabriel B. Mindlin. An analysis of the persistence of zonotrichia capensis themes using dynamical systems and machine learning tools. <em>Chaos, Solitons and Fractals</em>, 12 2022. <a class="reference external" href="https://doi.org/10.1016/J.CHAOS.2022.112803">doi:10.1016/J.CHAOS.2022.112803</a>.</p>
-</div>
-<div class="citation" id="id10" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
-<p>Laurent Lellouch, Sandrine Pavoine, Frédéric Jiguet, Hervé Glotin, and Jérôme Sueur. Monitoring temporal change of bird communities with dissimilarity acoustic indices. <em>Methods in Ecology and Evolution</em>, 5:495–505, 2014. <a class="reference external" href="https://doi.org/10.1111/2041-210X.12178">doi:10.1111/2041-210X.12178</a>.</p>
-</div>
 </div>
 </div>
 </section>
@@ -564,7 +572,7 @@ p_{out} (t) = (1-r)p_i\left( t - \frac{L}{c} \right)\\
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syrinx">Syrinx</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trache">Trache</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oec">OEC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oropharingeal-esophageal-cavity-oec">Oropharingeal- Esophageal Cavity (OEC)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-problem">Minimization Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerial-solution">Numerial Solution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>

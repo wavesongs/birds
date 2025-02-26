@@ -28,8 +28,12 @@ from typing import (
     Union,
     Tuple,
     AnyStr,
-    Literal
+    Literal,
+    TypeVar
 )
+
+Syllable = TypeVar('Syllable')
+
 
 # Defining motor gestures model constants, measured by Gabo Mindlin
 _PARAMS = {
@@ -49,21 +53,23 @@ r"""dict : Model parameters
 
 .. table:: Birdsongs model parameters :cite:p:`a-Amador2013`.
     :width: 80%
-    :widths: 3 6 3 3
+    :widths: 2 6 3 3
 
     ==============  ========================  =======  ====================
     Constant        Description               Value     Unit     
     ==============  ========================  =======  ====================  
-    :math:`\gamma`  Time scaling constant     40000    :math:`adm`
+    :math:`\gamma`  Time scaling constant     40000    :math:`dms`
     :math:`C`       Speed of sound in media   343      :math:`m / s`
     :math:`L`       Trachea length            0.025    :math:`m`
-    :math:`r`       Reflection coeficient     0.65     :math:`adm`
+    :math:`r`       Reflection coeficient     0.65     :math:`dms`
     :math:`Ch`      OEC Compliance            1.43     :math:`m^3 / Pa`
     :math:`MG`      Beak Inertance            20       :math:`kg / m^4`
     :math:`MB`      Glottis Inertance         10000    :math:`kg / m^4`
     :math:`RB`      Beak Resistance           5000000  :math:`s\; kg / m^4`
     :math:`Rh`      OEC Resistence            24000    :math:`s\;kg / m^4`
     ==============  ========================  =======  ====================
+
+Where :math:`dms` means dimensionless.
 """
 # bifurcation saddle nodes and array length
 _N = 1000
@@ -108,21 +114,20 @@ and labial wall tension (:math:`\beta`). This function has two approaches:
 
     \begin{equation}
     \begin{aligned}[c]
-        & \text{Interpretability}\\ \\
+        & \text{Performance}\\ \\
         & \alpha(t) = a_0 \\
         & \beta(t) = b_0 + b_1 \tilde{FF} + b_2 \tilde{FF}^2
     \end{aligned}
     \qquad\qquad\qquad
     \begin{aligned}[c]
-        & \text{Performance}\\ \\
+        & \text{Interpretability}\\ \\
         & \alpha(t) = a_0 \\
         & \beta(t) = b_0 + b_1 t + b_2 t^2
     \end{aligned}
     \end{equation}
 
-
-The best performance, lowest relative errors, are obtained when the rescaled {eq}`My label
-fundamental frequency is used as Anzarts, with :math:`\tilde{FF}=FF/10^4`. 
+The best performance, with the lowest relative errors, is obtained when the rescaled 
+fundamental frequency is used as input through a quadratic composition, with :math:`\tilde{FF}=FF/10^4`. 
 """
 #%%
 def bifurcation_ode(f1, f2):
@@ -199,8 +204,9 @@ def alpha_beta(
     Return
     ------
         alpha : np.array([1,2...N])
-            Bronchis pressure
+            Bronchis pressure, also known as air-sac pressure.
         beta : np.array
+            Labial tension.
 
     Example
     -------
@@ -230,7 +236,7 @@ def motor_gestures(
     obj: Any,
     curves: List[np.array],
     params: Dict = _PARAMS
-) -> Any:
+) -> Syllable:
     """
 
 

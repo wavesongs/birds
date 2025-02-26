@@ -3,13 +3,13 @@
 
 ## Prerequisites
 
-- [Python](https://www.python.org/) 3.10+
+- [Python](https://www.python.org/) ≥ 3.10
 - [Git](https://git-scm.com/) (optional)
 - [Conda](https://anaconda.org/anaconda/conda) (optional)
 
 ## Basic Installation
 
-**WaveSongs** is available at [Pypi](https://pypi.org/). To install the latest stable version, run:
+**WaveSongs** is available at [Pypi](https://pypi.org/project/wavesongs/). To install the latest stable version, run:
 
 ```bash
 pip install wavesongs
@@ -75,16 +75,18 @@ Install the required dependencies
 pip install -r requirements.txt
 ```
 
-Install WaveSongs in editable mode:
+You can see all the required libraries in the [`requirements.txt`](https://github.com/wavesongs/wavesongs/blob/main/requirements.txt) file or in the [`pyproject.toml`](https://github.com/wavesongs/wavesongs/blob/main/pyproject.toml) file.
+
+Finally, install **WaveSongs** in editable mode
 
 ```bash
 pip install -e .
 ```
 
 :::{note}
-It is highly recommended to use Python notebooks, however, Python and ipython terminals also work.  
+It is highly recommended to use Jupyter notebooks for an interactive development experience. However, Python and IPython terminals are also supported and can be used effectively.
 :::
 
 ## OS Support
 
-**WaveSongs** is developed and tested on Linux. It should also work on macOS and Windows. If you encounter a prooblem, please let me know by opening an issue or a pull request.ss
+**WaveSongs** is developed and tested on Linux. It should also work on macOS and Windows. If you encounter a prooblem, please let us know by opening an issue or a pull request.

@@ -1,0 +1,1160 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wavesongs.optimizer &#8212; WaveSongs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=452e63f8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=905f06ed"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/wavesongs/optimizer';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">WaveSongs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/wavesongs/wavesongs" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../contents/Installation.html">⚒️ Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/GettingStarted.html">🚀 Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_autosummary/wavesongs.html">wavesongs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../_autosummary/wavesongs.data.html">wavesongs.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/wavesongs.data.xc.html">wavesongs.data.xc</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../_autosummary/wavesongs.models.html">wavesongs.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/wavesongs.models.bird.html">wavesongs.models.bird</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../_autosummary/wavesongs.objs.html">wavesongs.objs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/wavesongs.objs.song.html">wavesongs.objs.song</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/wavesongs.objs.syllable.html">wavesongs.objs.syllable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/wavesongs.optimizer.html">wavesongs.optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_autosummary/wavesongs.plot.html">wavesongs.plot</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../_autosummary/wavesongs.utils.html">wavesongs.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/wavesongs.utils.paths.html">wavesongs.utils.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/wavesongs.utils.tools.html">wavesongs.utils.tools</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wavesongs/wavesongs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wavesongs/wavesongs/issues/new?title=Issue%20on%20page%20%2F_modules/wavesongs/optimizer.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for wavesongs.optimizer</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A collection of functions to solve the minimization problem.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># from model.song import Song</span>
+<span class="c1"># from model.syllable import Syllable</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">from</span> <span class="nn">wavesongs.models.bird</span> <span class="kn">import</span> <span class="n">set_params</span><span class="p">,</span> <span class="n">set_z</span><span class="p">,</span> <span class="n">_PARAMS</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span> <span class="k">as</span> <span class="n">Display</span>
+
+<span class="c1"># from numpy.typing import np.ndarray</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">AnyStr</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">List</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">brute</span><span class="p">,</span>
+    <span class="n">basinhopping</span><span class="p">,</span>
+    <span class="n">differential_evolution</span><span class="p">,</span>
+    <span class="n">shgo</span><span class="p">,</span>
+    <span class="n">dual_annealing</span><span class="p">,</span>
+    <span class="n">direct</span><span class="p">,</span>
+    <span class="n">root</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">__methods__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;basinhopping&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;differential_evolution&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shgo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dual_annealing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fmin&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># trust regions ranges for minimization</span>
+<span class="n">_aplha_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">_beta_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">_gm_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1e4</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">)</span>
+<span class="n">_a0_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">_b0_range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">_b1_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">_b2_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># ==========================================================================</span>
+<span class="c1"># --------------------------- Residual Functions ---------------------------</span>
+<span class="c1"># ==========================================================================</span>
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual">[docs]</a>
+<span class="k">def</span> <span class="nf">residual</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list [a0,b0,b1,b2]</span>
+
+<span class="sd">        paramvs : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">set_z</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">SCIFF</span>  <span class="c1"># + synth_syllable.scoreFF</span></div>
+
+    <span class="c1"># scoreSCI +  syllable_synth.scoreFF</span>
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual_sci">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual_sci">[docs]</a>
+<span class="k">def</span> <span class="nf">residual_sci</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list [a0,b0,b1,b2]</span>
+
+<span class="sd">        paramvs : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">set_z</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">SCIFF</span>  <span class="c1"># scoreSCI +  syllable_synth.scoreFF</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual_sci_a0">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual_sci_a0">[docs]</a>
+<span class="k">def</span> <span class="nf">residual_sci_a0</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list</span>
+
+<span class="sd">        params : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a0&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">])}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">scoreSCI</span>  <span class="c1"># syllable_synth.scoreFF</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual_ff">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual_ff">[docs]</a>
+<span class="k">def</span> <span class="nf">residual_ff</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list</span>
+
+<span class="sd">        params : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">set_z</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">scoreFF</span>  <span class="c1"># + syllable_synth.scoreCentroid</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual_ff_b02">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual_ff_b02">[docs]</a>
+<span class="k">def</span> <span class="nf">residual_ff_b02</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list</span>
+
+<span class="sd">        params : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;b0&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;b2&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">scoreFF</span>  <span class="c1"># + syllable_synth.scoreCentroid</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual_ff_b1">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual_ff_b1">[docs]</a>
+<span class="k">def</span> <span class="nf">residual_ff_b1</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list</span>
+
+<span class="sd">        params : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;b1&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">])}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">scoreFF</span>  <span class="c1"># + syllable_synth.scoreCentroid</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="residual_correlation">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.residual_correlation">[docs]</a>
+<span class="k">def</span> <span class="nf">residual_correlation</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="o">*</span><span class="n">params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        z : list</span>
+
+<span class="sd">        params : tuple</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        SCIFF: np.ndarray</span>
+<span class="sd">            Fundamental Frequency and Spectral Content Index scores</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">syllable</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">set_z</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">set_params</span><span class="p">(</span><span class="n">syllable</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="n">synth_syllable</span> <span class="o">=</span> <span class="n">syllable</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">synth_syllable</span><span class="o">.</span><span class="n">residualCorrelation</span></div>
+
+
+
+<span class="c1"># ==========================================================================</span>
+<span class="c1"># --------------------------- Optimizer Functions --------------------------</span>
+<span class="c1"># ==========================================================================</span>
+<span class="c1"># ----------------</span>
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="optimal">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.optimal">[docs]</a>
+<span class="k">def</span> <span class="nf">optimal</span><span class="p">(</span>
+    <span class="n">syllable</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="n">Ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">full_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        syllable : Syllable</span>
+
+<span class="sd">        params : dict</span>
+
+<span class="sd">        method : str = &quot;brute&quot;</span>
+
+<span class="sd">        Ns : int, optional = 20</span>
+
+<span class="sd">        full_output : bool, optional = False</span>
+
+<span class="sd">        disp : bool, optional = False</span>
+
+<span class="sd">        workers : int, optional = 1</span>
+
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        parameters: Dict</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="n">syllable</span><span class="p">,)</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="p">(</span><span class="n">_a0_range</span><span class="p">,</span> <span class="n">_b0_range</span><span class="p">,</span> <span class="n">_b1_range</span><span class="p">,</span> <span class="n">_b2_range</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span><span class="p">:</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">fval</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">Jout</span> <span class="o">=</span> <span class="n">brute</span><span class="p">(</span>
+            <span class="n">residual</span><span class="p">,</span>
+            <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+            <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+            <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+            <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The method </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> does not exits.&quot;</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">tdiff</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="n">a0</span><span class="p">,</span> <span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Optimal values: a_0=</span><span class="si">{</span><span class="n">a0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, b_0=</span><span class="si">{</span><span class="n">b0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, b_1=</span><span class="si">{</span><span class="n">b1</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">,&quot;</span>
+        <span class="o">+</span> <span class="s2">&quot; b_2=</span><span class="si">{b2:.4f}</span><span class="s2">, t=</span><span class="si">{tdiff:.2f}</span><span class="s2"> min&quot;</span>
+    <span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">set_z</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">syllable</span><span class="o">.</span><span class="n">z</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="optimal_bs">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.optimal_bs">[docs]</a>
+<span class="k">def</span> <span class="nf">optimal_bs</span><span class="p">(</span>
+    <span class="n">syllable</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="n">Ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">full_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        syllable : Syllable</span>
+
+<span class="sd">        params : dict</span>
+
+<span class="sd">        method : str = &quot;brute&quot;</span>
+
+<span class="sd">        Ns : int, optional = 20</span>
+
+<span class="sd">        full_output : bool, optional = False</span>
+
+<span class="sd">        disp : bool, optional = False</span>
+
+<span class="sd">        workers : int, optional = 1</span>
+
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        params: Dict</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="n">syllable</span><span class="p">,)</span>
+    <span class="c1"># ---------------- b0 and b2 --------------------</span>
+    <span class="n">ranges02</span> <span class="o">=</span> <span class="p">(</span><span class="n">_b0_range</span><span class="p">,</span> <span class="n">_b2_range</span><span class="p">)</span>
+    <span class="n">start02</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span><span class="p">:</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">fval</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">Jout</span> <span class="o">=</span> <span class="n">brute</span><span class="p">(</span>
+            <span class="n">residual_ff_b02</span><span class="p">,</span>
+            <span class="n">ranges</span><span class="o">=</span><span class="n">ranges02</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+            <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+            <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+            <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">end02</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">b0</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="n">tdiff</span> <span class="o">=</span> <span class="p">(</span><span class="n">end02</span> <span class="o">-</span> <span class="n">start02</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Optimal values: b_0=</span><span class="si">{</span><span class="n">b0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, b_2=</span><span class="si">{</span><span class="n">b2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="n">tdiff</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min&quot;</span>
+    <span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;b0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">b0</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;b2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">b2</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="c1"># ---------------- b1--------------------</span>
+    <span class="n">ranges1</span> <span class="o">=</span> <span class="p">(</span><span class="n">_b1_range</span><span class="p">,)</span>
+    <span class="n">start1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span><span class="p">:</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">fval</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">Jout</span> <span class="o">=</span> <span class="n">brute</span><span class="p">(</span>
+            <span class="n">residual_ff_b1</span><span class="p">,</span>
+            <span class="n">ranges</span><span class="o">=</span><span class="n">ranges1</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+            <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+            <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+            <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The method </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> does not exits.&quot;</span><span class="p">)</span>
+    <span class="n">end1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">b1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Optimal values: b_1=</span><span class="si">{</span><span class="n">b1</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="p">(</span><span class="n">end1</span><span class="o">-</span><span class="n">start1</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min&quot;</span>
+    <span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;b1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b1</span>
+
+    <span class="k">return</span> <span class="n">syllable</span><span class="o">.</span><span class="n">z</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="optimal_a">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.optimal_a">[docs]</a>
+<span class="k">def</span> <span class="nf">optimal_a</span><span class="p">(</span>
+    <span class="n">syllable</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="n">Ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">full_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        syllable : Syllable</span>
+
+<span class="sd">        params : dict</span>
+
+<span class="sd">        method : str = &quot;brute&quot;</span>
+
+<span class="sd">        Ns : int, optional = 20</span>
+
+<span class="sd">        full_output : bool, optional = False</span>
+
+<span class="sd">        disp : bool, optional = False</span>
+
+<span class="sd">        workers : int, optional = 1</span>
+
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        params: Dict</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="n">syllable</span><span class="p">,)</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="p">(</span><span class="n">_a0_range</span><span class="p">,)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span><span class="p">:</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">fval</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">Jout</span> <span class="o">=</span> <span class="n">brute</span><span class="p">(</span>
+            <span class="n">residual_sci_a0</span><span class="p">,</span>
+            <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+            <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+            <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+            <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The method </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> does not exits.&quot;</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">a0</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Optimal values: a_0=</span><span class="si">{</span><span class="n">a0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;a0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a0</span>
+    <span class="k">return</span> <span class="n">syllable</span><span class="o">.</span><span class="n">z</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="optimal_gamma">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.optimal_gamma">[docs]</a>
+<span class="k">def</span> <span class="nf">optimal_gamma</span><span class="p">(</span>
+    <span class="n">syllable</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="n">Ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">full_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        syllable : Syllable</span>
+
+<span class="sd">        params : dict</span>
+
+<span class="sd">        method : str = &quot;brute&quot;</span>
+
+<span class="sd">        Ns : int, optional = 20</span>
+
+<span class="sd">        full_output : bool, optional = False</span>
+
+<span class="sd">        disp : bool, optional = False</span>
+
+<span class="sd">        workers : int, optional = 1</span>
+
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        parameters: Dict</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="n">syllable</span><span class="p">,)</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="n">_gm_range</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span><span class="p">:</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">fval</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">Jout</span> <span class="o">=</span> <span class="n">brute</span><span class="p">(</span>
+            <span class="n">residual_sci</span><span class="p">,</span>
+            <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+            <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+            <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+            <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The method </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> does not exits.&quot;</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">x0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;         Optimal values: γ* = </span><span class="si">{</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min&quot;</span>
+    <span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">Z</span><span class="p">[</span><span class="s2">&quot;gm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gamma</span>
+
+    <span class="k">return</span> <span class="n">syllable</span><span class="o">.</span><span class="n">z</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="optimal_params">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.optimal_params">[docs]</a>
+<span class="k">def</span> <span class="nf">optimal_params</span><span class="p">(</span>
+    <span class="n">syllable</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="n">Ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">full_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        syllable : Syllable</span>
+
+<span class="sd">        params : dict</span>
+
+<span class="sd">        method : str = &quot;brute&quot;</span>
+
+<span class="sd">        Ns : int, optional = 20</span>
+
+<span class="sd">        full_output : bool, optional = False</span>
+
+<span class="sd">        disp : bool, optional = False</span>
+
+<span class="sd">        workers : int, optional = 1</span>
+
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        parameters: Dict</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Computing a0*...&quot;</span><span class="p">)</span>
+    <span class="n">z_opt_a0</span> <span class="o">=</span> <span class="n">optimal_a</span><span class="p">(</span>
+        <span class="n">syllable</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+        <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+        <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+        <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z_opt_a0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Computing b0*, b1*, and b2*...&quot;</span><span class="p">)</span>
+    <span class="n">z_opt_b01</span> <span class="o">=</span> <span class="n">optimal_bs</span><span class="p">(</span>
+        <span class="n">syllable</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+        <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+        <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+        <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z_opt_b01</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Time of execution: </span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">z_opt_b01</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="optimal_params_general">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.optimal_params_general">[docs]</a>
+<span class="k">def</span> <span class="nf">optimal_params_general</span><span class="p">(</span>
+    <span class="n">syllable</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;brute&quot;</span><span class="p">,</span>
+    <span class="n">Ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">full_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        syllable : Syllable</span>
+
+<span class="sd">        params : dict</span>
+
+<span class="sd">        method : str = &quot;brute&quot;</span>
+
+<span class="sd">        Ns : int, optional = 20</span>
+
+<span class="sd">        full_output : bool, optional = False</span>
+
+<span class="sd">        disp : bool, optional = False</span>
+
+<span class="sd">        workers : int, optional = 1</span>
+
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        parameters: Dict</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># args = tuple(params.values())+(syllable,)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computing optimal variables: a0*, b0*, b1*, and b2*...&quot;</span><span class="p">)</span>
+    <span class="n">z_opt_b01</span> <span class="o">=</span> <span class="n">optimal</span><span class="p">(</span>
+        <span class="n">syllable</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">Ns</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
+        <span class="n">full_output</span><span class="o">=</span><span class="n">full_output</span><span class="p">,</span>
+        <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span>
+        <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z_opt_b01</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished&quot;</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time of execution = </span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">syllable</span><span class="o">.</span><span class="n">z</span></div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="all_optimal_gammas">
+<a class="viewcode-back" href="../../_autosummary/wavesongs.optimizer.html#wavesongs.optimizer.all_optimal_gammas">[docs]</a>
+<span class="k">def</span> <span class="nf">all_optimal_gammas</span><span class="p">(</span><span class="n">bird</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="n">gammas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">bird</span><span class="o">.</span><span class="n">no_syllables</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">bird</span><span class="o">.</span><span class="n">no_syllables</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Syllable </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">bird</span><span class="o">.</span><span class="n">no_syllables</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">syllable</span> <span class="o">=</span> <span class="n">bird</span><span class="o">.</span><span class="n">Syllable</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">gammas</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">optimal_gamma</span><span class="p">(</span><span class="n">syllable</span><span class="p">)</span>
+
+    <span class="n">syllable</span><span class="o">.</span><span class="n">optimal_gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">gammas</span><span class="p">)</span>
+    <span class="n">syllable</span><span class="o">.</span><span class="n">Gammas</span> <span class="o">=</span> <span class="n">gammas</span>
+    <span class="c1"># syllable = syllable0</span>
+    <span class="c1"># syllable.p[&quot;gm&quot;].set(value=syllable.optimal_gamma, vary=False)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time of execution = </span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">syllable</span><span class="o">.</span><span class="n">optimal_gamma</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sebastian Aguilera Novoa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright SAN, 2025-present.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

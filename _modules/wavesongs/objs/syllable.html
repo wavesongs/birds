@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wavesongs.objs.syllable &#8212; WaveSongs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=452e63f8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=905f06ed"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=cb1a7266"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/wavesongs/objs/syllable';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">WaveSongs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/wavesongs/wavesongs" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/Installation.html">⚒️ Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/DownloadSamples.html">📥 Download Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/GettingStarted.html">🚀 Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/SpectrumMeasures.html">📏 Spectrum Measures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/SyntheticSongs.html">🎵 Pure Synthetic Songs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contents/PhysicalModel.html">⚙️ Physical Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.html">wavesongs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.data.html">wavesongs.data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.data.xc.html">wavesongs.data.xc</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.models.html">wavesongs.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.models.bird.html">wavesongs.models.bird</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.objs.html">wavesongs.objs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.objs.song.html">wavesongs.objs.song</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.objs.syllable.html">wavesongs.objs.syllable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.optimizer.html">wavesongs.optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../_autosummary/wavesongs.plot.html">wavesongs.plot</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.html">wavesongs.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.paths.html">wavesongs.utils.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/wavesongs.utils.tools.html">wavesongs.utils.tools</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wavesongs/wavesongs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wavesongs/wavesongs/issues/new?title=Issue%20on%20page%20%2F_modules/wavesongs/objs/syllable.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for wavesongs.objs.syllable</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Store and compute acoustica features from syllables.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">wavesongs.utils.paths</span> <span class="kn">import</span> <span class="n">ProjDirs</span>
+<span class="kn">from</span> <span class="nn">wavesongs.utils.tools</span> <span class="kn">import</span> <span class="n">envelope</span><span class="p">,</span> <span class="n">is_notebook</span>
+
+<span class="kn">from</span> <span class="nn">wavesongs.models.bird</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_PARAMS</span><span class="p">,</span>
+    <span class="n">_Z</span><span class="p">,</span>
+    <span class="n">alpha_beta</span><span class="p">,</span>
+    <span class="n">motor_gestures</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">maad.sound</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">normalize</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Audio</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">basename</span><span class="p">,</span>
+    <span class="n">normpath</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">librosa</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">stft</span><span class="p">,</span>
+    <span class="n">reassigned_spectrogram</span><span class="p">,</span>
+    <span class="n">amplitude_to_db</span><span class="p">,</span>
+    <span class="n">fft_frequencies</span><span class="p">,</span>
+    <span class="n">times_like</span><span class="p">,</span>
+    <span class="n">yin</span><span class="p">,</span>
+    <span class="n">load</span><span class="p">,</span>
+    <span class="n">pyin</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">librosa.feature</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">spectral_centroid</span><span class="p">,</span>
+    <span class="n">mfcc</span><span class="p">,</span>
+    <span class="n">rms</span><span class="p">,</span>
+    <span class="n">melspectrogram</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">maad.sound</span> <span class="kn">import</span> <span class="n">normalize</span>
+<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">AnyStr</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+    <span class="n">Literal</span><span class="p">,</span>
+    <span class="n">TypeVar</span>
+<span class="p">)</span>
+
+<span class="n">Syllable</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;Syllable&#39;</span><span class="p">)</span>
+<span class="n">Song</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;Song&#39;</span><span class="p">)</span>
+<span class="n">DataFrame</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;pandas.core.frame.DataFrame&#39;</span><span class="p">)</span>
+<span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable">[docs]</a>
+<span class="k">class</span> <span class="nc">Syllable</span><span class="p">:</span>
+    <span class="c1">#%%</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Object class to store, characterize, and compare syllables. </span>
+<span class="sd">    See :func:`~wavesongs.objs.syllable.Syllable.__init__`. :class:`~wavesongs.objs.song.Song`</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        proj_dirs : ProjDirs | None </span>
+<span class="sd">            Object to manage project directories</span>
+<span class="sd">        song : Syllable | Song | None</span>
+<span class="sd">            Object</span>
+<span class="sd">        params : dict | None</span>
+<span class="sd">            Diccionary with all or some constat of the physical</span>
+<span class="sd">            model motor gestures</span>
+<span class="sd">        tlim : tuple</span>
+<span class="sd">            Time range</span>
+<span class="sd">        flim : tuple</span>
+<span class="sd">            Frequency range</span>
+<span class="sd">        sr : int</span>
+<span class="sd">            Sample rate</span>
+<span class="sd">        no_syllable : int </span>
+<span class="sd">            Sylalble number in song</span>
+<span class="sd">        id : str</span>
+<span class="sd">            Type of the object, &quot;syllable&quot; or &quot;synth-syllable&quot;</span>
+<span class="sd">        info : dict</span>
+<span class="sd">            Audio metadata about the audio.</span>
+<span class="sd">        type : str</span>
+<span class="sd">            A short description about the part, theme or trill, and the behaviour of the</span>
+<span class="sd">            fundamental frequency: plane, up, down, up-down, down-up, and complex. </span>
+<span class="sd">            Template: &quot;{part}-{behaviour}&quot;. Example: theme-up </span>
+<span class="sd">            </span>
+<span class="sd">    </span>
+<span class="sd">    Raise</span>
+<span class="sd">    -----</span>
+<span class="sd">        asdasd232</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">        adasds</span>
+<span class="sd">    </span>
+<span class="sd">    Warning</span>
+<span class="sd">    -------</span>
+<span class="sd">        12qsdad</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable.__init__">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">file_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AnyStr</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">proj_dirs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProjDirs</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tlim</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span>
+        <span class="n">sr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">44100</span><span class="p">,</span>
+        <span class="n">no_syllable</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;syllable&quot;</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">duration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_id (Optional[AnyStr], optional): _description_. Defaults to None.</span>
+<span class="sd">            proj_dirs (Optional[ProjDirs], optional): _description_. Defaults to None.</span>
+<span class="sd">            obj (Any, optional): _description_. Defaults to None.</span>
+<span class="sd">            tlim (Tuple[float], optional): _description_. Defaults to (0, 60).</span>
+<span class="sd">            sr (int, optional): _description_. Defaults to 44100.</span>
+<span class="sd">            no_syllable (int, optional): _description_. Defaults to 0.</span>
+<span class="sd">            id (AnyStr, optional): _description_. Defaults to &quot;syllable&quot;.</span>
+<span class="sd">            metadata (Dict, optional): _description_. Defaults to {}.</span>
+<span class="sd">            type (AnyStr, optional): _description_. Defaults to &quot;&quot;.</span>
+<span class="sd">            duration (Optional[int], optional): _description_. Defaults to None.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            Exception: _description_</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span> <span class="o">=</span> <span class="n">no_syllable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">proj_dirs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_id</span> <span class="o">=</span> <span class="n">file_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="o">=</span> <span class="n">sr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tlim</span> <span class="o">=</span> <span class="n">tlim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="c1"># defining syllable by songs or file_id with proj_dirs object </span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">file_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">proj_dirs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="c1"># self.__dict__.update(obj.__dict__)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">proj_dirs</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">file_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">t0_bs</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">t0_bs</span> <span class="o">+</span> <span class="n">tlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">info</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">sr</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">s</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">t0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">max_amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">acoustical_features</span><span class="p">(</span>
+                <span class="n">NN</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                <span class="n">ff_method</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">ff_method</span><span class="p">,</span>
+                <span class="n">umbral_FF</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">umbral_FF</span><span class="p">,</span>
+                <span class="n">Nt</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">Nt</span><span class="p">,</span>
+                <span class="n">center</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                <span class="n">overlap</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">overlap</span><span class="p">,</span>
+                <span class="n">flim</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">flim</span><span class="p">,</span>
+                <span class="n">llambda</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">llambda</span><span class="p">,</span>
+                <span class="n">n_mfcc</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">n_mfcc</span><span class="p">,</span>
+                <span class="n">n_mels</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">n_mels</span><span class="p">,</span>
+                <span class="n">stft_window</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">stft_window</span>
+            <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="p">(</span><span class="n">file_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">proj_dirs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">proj_dirs</span><span class="o">.</span><span class="n">find_audio</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">normpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">))</span>
+        
+            <span class="n">s</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="n">mono</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">t0_bs</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="o">=</span> <span class="n">sr</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">t0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">max_amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">file_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">duration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;synthetic&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;synth-&quot;</span> <span class="o">+</span><span class="nb">id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span> <span class="o">=</span> <span class="n">no_syllable</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span> <span class="o">=</span> <span class="n">proj_dirs</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span>
+        
+            <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="o">=</span> <span class="n">sr</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">duration</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">sr</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">t0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t0_bs</span> <span class="o">=</span> <span class="mi">0</span>            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;You have to enter a file_id with a&quot;</span>
+                            <span class="o">+</span> <span class="s2">&quot; project object or a song or syllable object&quot;</span><span class="p">)</span>    </div>
+
+    <span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable.acoustical_features">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.acoustical_features">[docs]</a>
+    <span class="k">def</span> <span class="nf">acoustical_features</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">NN</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="n">ff_method</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;yin&quot;</span><span class="p">,</span> <span class="s2">&quot;pyin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;yin&quot;</span><span class="p">,</span>
+        <span class="n">umbral_FF</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">flim</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1e3</span><span class="p">,</span> <span class="mf">2e4</span><span class="p">),</span>
+        <span class="n">Nt</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">center</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">overlap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">llambda</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">n_mfcc</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">n_mels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">stft_window</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="s2">&quot;hann&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Coputing acoustical tempo-spectral variables</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            NN : int</span>
+<span class="sd">            llambda : float</span>
+
+<span class="sd">            overlap : float</span>
+
+<span class="sd">            center : bool = False</span>
+
+<span class="sd">            umbral_FF : int</span>
+
+<span class="sd">            ff_method : str</span>
+
+<span class="sd">            Nt : int</span>
+
+<span class="sd">            n_mfcc : int</span>
+
+<span class="sd">            n_mels : int</span>
+
+<span class="sd">            stft_window : str</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stft_window</span> <span class="o">=</span> <span class="n">stft_window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_mfcc</span> <span class="o">=</span> <span class="n">n_mfcc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_mels</span> <span class="o">=</span> <span class="n">n_mels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flim</span> <span class="o">=</span> <span class="n">flim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nt</span> <span class="o">=</span> <span class="n">Nt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NN</span> <span class="o">=</span> <span class="n">NN</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ff_method</span> <span class="o">=</span> <span class="n">ff_method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">umbral_FF</span> <span class="o">=</span> <span class="n">umbral_FF</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">llambda</span> <span class="o">=</span> <span class="n">llambda</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overlap</span> <span class="o">=</span> <span class="n">overlap</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">envelope</span> <span class="o">=</span> <span class="n">envelope</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Nt</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">time0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sr</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_interval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">time_s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_interval</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t0_bs</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">win_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="o">//</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="o">//</span><span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_overlap</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">overlap</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">)</span>
+        <span class="c1"># ------------- ACOUSTIC FEATURES -------------------------------</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stft</span> <span class="o">=</span> <span class="n">stft</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                         <span class="n">n_fft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                         <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                         <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                         <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft_window</span><span class="p">,</span>
+                         <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                         <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">freqs</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">mags</span> <span class="o">=</span> <span class="n">reassigned_spectrogram</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                                <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                                <span class="n">S</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">,</span>
+                                <span class="n">n_fft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                                <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                                <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span>
+                                <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft_window</span><span class="p">,</span> 
+                                <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                                <span class="n">reassign_frequencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">reassign_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">ref_power</span><span class="o">=</span><span class="mf">1e-06</span><span class="p">,</span>
+                                <span class="n">fill_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                                <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                             <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Sxx_dB</span>  <span class="o">=</span> <span class="n">amplitude_to_db</span><span class="p">(</span><span class="n">mags</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freqs</span> <span class="o">=</span> <span class="n">freqs</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="n">times</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">Sxx</span> <span class="o">=</span> <span class="n">mags</span> 
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">FF_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">fft_frequencies</span><span class="p">(</span><span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">times_like</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">,</span>
+                               <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                               <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                               <span class="n">n_fft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">)</span> <span class="c1">#, axis=-1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_msf</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FF_coef</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                      <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FF_coef</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+                      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FF_coef</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_msf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f_msf</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">centroid</span> <span class="o">=</span> <span class="n">spectral_centroid</span><span class="p">(</span>
+                            <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                            <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                            <span class="n">S</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">),</span>
+                            <span class="n">n_fft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                            <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                            <span class="n">freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">freqs</span><span class="p">,</span>
+                            <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span> 
+                            <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft_window</span><span class="p">,</span>
+                            <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                            <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                         <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mfccs</span> <span class="o">=</span> <span class="n">mfcc</span><span class="p">(</span>
+                        <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                        <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                        <span class="n">S</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">,</span>
+                        <span class="n">n_mfcc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_mfcc</span><span class="p">,</span>
+                        <span class="n">dct_type</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">norm</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span>
+                        <span class="n">lifter</span><span class="o">=</span><span class="mi">0</span>
+                    <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rms</span> <span class="o">=</span> <span class="n">rms</span><span class="p">(</span>
+                        <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                        <span class="n">S</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">,</span>
+                        <span class="n">frame_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                        <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                        <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                        <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s_mel</span> <span class="o">=</span> <span class="n">melspectrogram</span><span class="p">(</span>
+                        <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                        <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                        <span class="n">S</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft</span><span class="p">,</span>
+                        <span class="n">n_fft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+                        <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                        <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span>
+                        <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stft_window</span><span class="p">,</span>
+                        <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                        <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span>
+                        <span class="n">power</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+                        <span class="n">n_mels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_mels</span><span class="p">,</span>
+                        <span class="n">fmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">fmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="p">)</span>
+        <span class="c1"># # ------------- Fundamental Frequency computing --------------</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ff_method</span><span class="o">==</span><span class="s2">&quot;pyin&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FF</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">pyin</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                            <span class="n">fmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                            <span class="n">fmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                            <span class="n">frame_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span> 
+                            <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span>
+                            <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                            <span class="n">n_thresholds</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                            <span class="n">beta_parameters</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> 
+                            <span class="n">boltzmann_parameter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="n">resolution</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                            <span class="n">max_transition_rate</span><span class="o">=</span><span class="mf">35.92</span><span class="p">,</span>
+                            <span class="n">switch_prob</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> 
+                            <span class="n">no_trough_prob</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                            <span class="n">fill_na</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                            <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                        <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ff_method</span><span class="o">==</span><span class="s2">&quot;yin&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FF</span> <span class="o">=</span> <span class="n">yin</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                        <span class="n">fmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">fmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                        <span class="n">frame_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span> 
+                        <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span>
+                        <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                        <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                        <span class="n">trough_threshold</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">umbral_FF</span><span class="p">,</span>
+                        <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                    <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ff_method</span><span class="o">==</span><span class="s2">&quot;both&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FF2</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">pyin</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                            <span class="n">fmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                            <span class="n">fmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                            <span class="n">frame_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span> 
+                            <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span>
+                            <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                            <span class="n">n_thresholds</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                            <span class="n">beta_parameters</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> 
+                            <span class="n">boltzmann_parameter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="n">resolution</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                            <span class="n">max_transition_rate</span><span class="o">=</span><span class="mf">35.92</span><span class="p">,</span>
+                            <span class="n">switch_prob</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> 
+                            <span class="n">no_trough_prob</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                            <span class="n">fill_na</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                            <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                        <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FF</span> <span class="o">=</span> <span class="n">yin</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span>
+                        <span class="n">fmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">fmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">sr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+                        <span class="n">frame_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span> 
+                        <span class="n">win_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">win_length</span><span class="p">,</span>
+                        <span class="n">hop_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hop_length</span><span class="p">,</span>
+                        <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                        <span class="n">trough_threshold</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">umbral_FF</span><span class="p">,</span>
+                        <span class="n">pad_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span>
+                    <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ff_method</span><span class="o">==</span><span class="s2">&quot;manual&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not implemented yet.&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeFF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">FF</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FF_fun</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeFF</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">FF</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SCI</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_msf</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">FF_fun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span></div>
+
+    <span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable.solve">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.solve">[docs]</a>
+    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">z</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">_Z</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">_PARAMS</span><span class="p">,</span>
+        <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="s2">&quot;fast&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Syllable</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            z: List[float]</span>
+
+<span class="sd">            params : dict</span>
+
+<span class="sd">            order : int</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">            synth : Syllable</span>
+
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">_PARAMS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">_Z</span>
+        <span class="c1"># update parameters if given</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">z</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="c1"># define alpha and beta parameters</span>
+        <span class="n">curves</span> <span class="o">=</span> <span class="n">alpha_beta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+        <span class="c1"># generate the synthetic syllable</span>
+        <span class="n">synth</span> <span class="o">=</span> <span class="n">motor_gestures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curves</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">synth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">synth_scores</span><span class="p">(</span><span class="n">synth</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">synth</span></div>
+
+    <span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable.synth_scores">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.synth_scores">[docs]</a>
+    <span class="k">def</span> <span class="nf">synth_scores</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">synth</span><span class="p">:</span> <span class="n">Syllable</span><span class="p">,</span>
+        <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Syllable</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            synth : Sylllable</span>
+
+<span class="sd">            order : int</span>
+<span class="sd">        </span>
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+
+<span class="sd">                </span>
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">            synth : Syllable</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">envelope</span> <span class="o">=</span> <span class="n">envelope</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">synth</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="n">synth</span><span class="o">.</span><span class="n">Nt</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">acoustical_features</span><span class="p">(</span>
+            <span class="n">stft_window</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">stft_window</span><span class="p">,</span>
+            <span class="n">umbral_FF</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">umbral_FF</span><span class="p">,</span>
+            <span class="n">ff_method</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">ff_method</span><span class="p">,</span>
+            <span class="n">overlap</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">overlap</span><span class="p">,</span>
+            <span class="n">llambda</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">llambda</span><span class="p">,</span>
+            <span class="n">center</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+            <span class="n">n_mfcc</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">n_mfcc</span><span class="p">,</span>
+            <span class="n">n_mels</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">n_mels</span><span class="p">,</span>
+            <span class="n">NN</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+            <span class="n">Nt</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">Nt</span>
+        <span class="p">)</span>
+        <span class="c1"># residual difference between real and synthetic samples</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaCentroid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">centroid</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaMfccs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">mfccs</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfccs</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaFmsf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">f_msf</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_msf</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaEnv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">envelope</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">envelope</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaSCI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">SCI</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">SCI</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaRMS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">rms</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rms</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaSxx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">Sxx_dB</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Sxx_dB</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaMel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">FF_coef</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">FF_coef</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaFF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">FF</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">FF</span><span class="p">)</span>
+        <span class="c1">## --------- normalizing ----------------------</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaCentroid</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaMfccs</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaMfccs</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaFmsf</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">f_msf</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaSCI</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">SCI</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaEnv</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">envelope</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaRMS</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">rms</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaSxx</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaSxx</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaMel</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaMel</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaFF</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">FF</span>
+        <span class="c1"># --------------- scoring variables --------------------</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreCentroid</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaCentroid</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreFmsf</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaFmsf</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreMfccs</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaMfccs</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreSCI</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaSCI</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreEnv</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaEnv</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreRMS</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaRMS</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreSxx</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaSxx</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreMel</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaMel</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreFF</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">deltaFF</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="c1"># ------------------- removing size dependency -------------------</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreCentroid</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaCentroid</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreMfccs</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaMfccs</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreFmsf</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaFmsf</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreSCI</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaSCI</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreEnv</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaEnv</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreRMS</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaRMS</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreSxx</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaSxx</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreMel</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaSxx</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreFF</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaFF</span><span class="o">.</span><span class="n">size</span>
+        <span class="c1"># -------------------- variables mean -------------------------</span>
+        <span class="c1"># synth.scoreNoHarm = deltaNOP*10**(deltaNOP-2)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreCentroid_mean</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">scoreCentroid</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreFmsf_mean</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaFmsf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaSCI_mean</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaSCI</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreRMS_mean</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">scoreRMS</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaEnv_mean</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaEnv</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">deltaFF_mean</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">deltaFF</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>        
+        <span class="c1"># ------------- acoustic dissimilarity indexes (adi) ---------------</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">correlation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">SKL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">Df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">mfccs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mfccs</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">mfccs</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+            
+            <span class="n">Df</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
+            <span class="n">synth</span><span class="o">.</span><span class="n">correlation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">synth</span><span class="o">.</span><span class="n">SKL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">synth</span><span class="o">.</span><span class="n">Df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">Df</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c1">#synth.Df[np.argwhere(np.isnan(synth.Df))]=-10</span>
+        <span class="c1"># ------------- normalizing adi -----------------</span>
+        <span class="c1"># synth.correlation /= synth.correlation.max()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">SKL</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">SKL</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">Df</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">Df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="c1"># computing adi scores</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreCorrelation</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">correlation</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreSKL</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">SKL</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreDF</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">Df</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="c1"># normalizing</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreCorrelation</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">correlation</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreSKL</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">SKL</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">scoreDF</span> <span class="o">/=</span> <span class="n">synth</span><span class="o">.</span><span class="n">Df</span><span class="o">.</span><span class="n">size</span>
+        <span class="c1"># mean scores</span>
+        <span class="n">mean_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">synth</span><span class="o">.</span><span class="n">correlation</span><span class="o">+</span><span class="n">synth</span><span class="o">.</span><span class="n">Df</span><span class="o">+</span><span class="n">synth</span><span class="o">.</span><span class="n">scoreSKL</span><span class="p">)</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">residualCorrelation</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">scoreFF</span> <span class="o">-</span> <span class="n">mean_scores</span>
+        <span class="n">synth</span><span class="o">.</span><span class="n">SCIFF</span> <span class="o">=</span> <span class="n">synth</span><span class="o">.</span><span class="n">scoreSCI</span> <span class="o">+</span> <span class="n">synth</span><span class="o">.</span><span class="n">scoreFF</span>
+
+        <span class="k">return</span> <span class="n">synth</span></div>
+
+    <span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable.export_mg">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.export_mg">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_mg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">export_curves</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="o">|</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            </span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">            synth : Syllable</span>
+
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;synth&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;You only can export motor gestures&quot;</span>
+                            <span class="o">+</span> <span class="s2">&quot; parameters from synthetic objects&quot;</span><span class="p">)</span>
+        <span class="c1"># ------------ export p values and alpha-beta arrays ------------</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;synth-&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;t_ini&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="s2">&quot;t_end&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="s2">&quot;f_ini&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;f_end&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">flim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;no_syllable&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="p">,</span>
+            <span class="s2">&quot;sr&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span>
+            <span class="s2">&quot;NN&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">NN</span><span class="p">,</span>
+            <span class="s2">&quot;umbral_FF&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">umbral_FF</span><span class="p">,</span>
+            <span class="s2">&quot;ff_method&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ff_method</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+            <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">file_name</span><span class="p">,</span>
+            <span class="s2">&quot;audios_folder&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span><span class="o">.</span><span class="n">AUDIOS</span><span class="p">,</span>
+            <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">),</span>
+            <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">),</span>
+            <span class="s2">&quot;Nt&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Nt</span><span class="p">,</span>
+            <span class="s2">&quot;center&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+            <span class="s2">&quot;overlap&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">overlap</span><span class="p">,</span>
+            <span class="s2">&quot;llambda&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">llambda</span><span class="p">,</span>
+            <span class="s2">&quot;n_mfcc&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_mfcc</span><span class="p">,</span>
+            <span class="s2">&quot;n_mels&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_mels</span><span class="p">,</span>
+            <span class="s2">&quot;stft_window&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stft_window</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">export_curves</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">export_curves</span><span class="p">()</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="n">info</span> <span class="o">|</span> <span class="p">{</span><span class="s2">&quot;curves_csv&quot;</span><span class="p">:</span> <span class="n">path</span><span class="p">}</span> 
+
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s2">-mg.csv&quot;</span>\
+                <span class="k">if</span> <span class="nb">type</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> \
+                <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">-mg.csv&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span><span class="o">.</span><span class="n">mg_param</span> <span class="o">/</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">df_mg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+        <span class="n">df_mg</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Motor gesture parameters saved at </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dataframe</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">df_mg</span></div>
+
+    <span class="c1">#%%</span>
+<div class="viewcode-block" id="Syllable.play">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.play">[docs]</a>
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Audio</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">is_notebook</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not implemented yet!&quot;</span><span class="p">)</span></div>
+
+    <span class="c1">#%%    </span>
+<div class="viewcode-block" id="Syllable.write_audio">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.write_audio">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bit_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">audio_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s1">.wav&#39;</span>
+        <span class="n">path_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span><span class="o">.</span><span class="n">examples</span> <span class="o">/</span> <span class="n">audio_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">path_name</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">bit_depth</span><span class="o">=</span><span class="n">bit_depth</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Audio saved at </span><span class="si">{</span><span class="n">path_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+
+    <span class="c1"># %%</span>
+<div class="viewcode-block" id="Syllable.export_curves">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.export_curves">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_curves</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            _type_: _description_</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="n">curves_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">time_s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">curves_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">curves_array</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span><span class="s2">&quot;beta&quot;</span><span class="p">])</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s2">-curves.csv&quot;</span>\
+                <span class="k">if</span> <span class="nb">type</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> \
+                <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">-curves.csv&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span><span class="o">.</span><span class="n">mg_param</span> <span class="o">/</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">curves_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Curves arrays saved at </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span></div>
+
+
+    <span class="c1"># %%</span>
+<div class="viewcode-block" id="Syllable.import_curves">
+<a class="viewcode-back" href="../../../_autosummary/wavesongs.objs.syllable.html#wavesongs.objs.syllable.Syllable.import_curves">[docs]</a>
+    <span class="k">def</span> <span class="nf">import_curves</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            _type_: _description_</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="n">curves_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">time_s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">])</span>
+        <span class="n">curves_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">curves_array</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s2">-curves.csv&quot;</span>\
+                <span class="k">if</span> <span class="nb">type</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> \
+                <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">no_syllable</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">-curves.csv&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj_dirs</span><span class="o">.</span><span class="n">mg_param</span> <span class="o">/</span> <span class="n">name</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sebastian Aguilera Novoa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright SAN, 2025-present.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
